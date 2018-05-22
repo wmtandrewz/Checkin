@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart = "clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Checkin.HomeDefault" 
+             BackgroundColor="White">
+    
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <chart:ChartView Grid.Row="0" Grid.Column="0" x:Name="checkinChart" HeightRequest="200"/>
+                <Label Grid.Row="0" Grid.Column="0" x:Name="checkinTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+
+                <chart:ChartView Grid.Row="0" Grid.Column="1" x:Name="pendingChart" HeightRequest="200"/>
+                <Label Grid.Row="0" Grid.Column="1" x:Name="pendingTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+
+           </Grid>
+            
+        </StackLayout>
+		
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.SettingsPage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Cancel" Order="Primary" Priority="1" Clicked="CloseButtonClickedEvt" />
+		<ToolbarItem Name="Save" Order="Primary" Priority="2" Clicked="SaveButtonClickedEvt" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout Padding="0,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout BackgroundColor="#b3c0c2">
+				<Label Margin="10,0,0,0" VerticalOptions="Center" Text="SAP Configurations" HeightRequest="40" MinimumHeightRequest="40" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Start" TextColor="#333B3D" BackgroundColor="#b3c0c2" VerticalTextAlignment="Center" />
+			</StackLayout>
+			<StackLayout Padding="10,10,10,10">
+				<Label VerticalOptions="CenterAndExpand" Text="SAP Netweaver URL" FontAttributes="None" FontSize="14" HorizontalTextAlignment="Start" TextColor="Black" />
+				<Entry Text="https://alastor.keells.lk:44300" VerticalOptions="CenterAndExpand" x:Name="SettingsEntrySapUrl" Placeholder="eg: https://alastor.keells.lk:44300" BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#8C8C8C" FontSize="16">
+					<Entry.BackgroundColor>
+						<OnPlatform x:TypeArguments="Color" Android="#e5e5e5" iOS="#ffffff">
+						</OnPlatform>
+					</Entry.BackgroundColor>
+				</Entry>
+				<Label VerticalOptions="CenterAndExpand" Text="SAP Netweaver Cookie" FontAttributes="None" FontSize="14" HorizontalTextAlignment="Start" TextColor="Black" />
+				<Entry Text="sap-XSRF_GWP_100" VerticalOptions="CenterAndExpand" x:Name="SettingsEntrySapCookie" Placeholder="eg: sap-XSRF_GWP_100" BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#8C8C8C" FontSize="16">
+					<Entry.BackgroundColor>
+						<OnPlatform x:TypeArguments="Color" Android="#e5e5e5" iOS="#ffffff">
+						</OnPlatform>
+					</Entry.BackgroundColor>
+				</Entry>
+			</StackLayout>
+
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

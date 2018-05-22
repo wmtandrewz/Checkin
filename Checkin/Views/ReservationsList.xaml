@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.ReservationsList" Title="Reservations List" Icon="drawer_icon.png" NavigationPage.HasBackButton="False" BackgroundColor="#443266">
+	<ContentPage.Content>
+		<StackLayout Padding="0,0,0,0" BackgroundColor="Transparent">
+			<StackLayout Padding="5,21,5,5">
+				<StackLayout>
+					<Label x:Name="ReservationsHotelName" Font="24" FontAttributes="Bold" HeightRequest="30" TextColor="White" HorizontalOptions="Center">
+					</Label>
+					<Label x:Name="ReservationsHotelDate" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Center">
+					</Label>
+					<Label x:Name="UserName" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Center">
+					</Label>
+					<Grid Padding="10,0,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="AUTO" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10*" />
+							<ColumnDefinition Width="2*" />
+						</Grid.ColumnDefinitions>
+						<SearchBar Grid.Row="0" Grid.Column="0" HeightRequest="50" WidthRequest="500" x:Name="ReservationsSearchBar" PlaceholderColor="#BDBDBD" Placeholder="Search" TextChanged="ReservationsSearchBarTextChanged" SearchButtonPressed="ReservationsSearchBarButtonPressed" TextColor="Black" AbsoluteLayout.LayoutBounds="0,1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional">
+							<SearchBar.BackgroundColor>
+								<OnPlatform x:TypeArguments="Color" iOS="Transparent" Android="Transparent" />
+							</SearchBar.BackgroundColor>
+							<SearchBar.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="Black" Android="White" />
+							</SearchBar.TextColor>
+						</SearchBar>
+						<Image x:Name="datepickerimage" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0" Source="Calender.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="OpenCalender" />
+							</Image.GestureRecognizers>
+						</Image>
+					</Grid>
+					<StackLayout>
+						<DatePicker x:Name="reservationDatePicker" VerticalOptions="CenterAndExpand" IsVisible="false" DateSelected="Handle_DateSelected" Unfocused="searchDate">
+							<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+						</DatePicker>
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+			<ActivityIndicator x:Name="ReservationsListIndicator" Color="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<Label x:Name="ReservationsListViewNoItems" VerticalOptions="Center" HorizontalOptions="Center" Text="No reservations found to display!" IsVisible="false" TextColor="White" />
+			<Image x:Name="ListViewManualRefreshIcon" HeightRequest="30" WidthRequest="30" Source="refresh.png" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="false">
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Tapped="RefreshButtonTappedEvt" />
+				</Image.GestureRecognizers>
+			</Image>
+			<ListView x:Name="ReservationsListView" RowHeight="130" SeparatorColor="#660099" SeparatorVisibility="Default" IsPullToRefreshEnabled="true" Refreshing="ReservationsListViewRefresh" ItemSelected="ReservationsListViewItemSelected" CachingStrategy="RetainElement">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding CellColour}">
+								<BoxView WidthRequest="5" BackgroundColor="{Binding TextColor}" />
+								<StackLayout Padding="10,10,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+									<Grid Padding="0,0,50,0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="25" />
+											<RowDefinition Height="1" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="1*" />
+											<ColumnDefinition Width="4*" />
+											<ColumnDefinition Width="4*" />
+										</Grid.ColumnDefinitions>
+										<Image Grid.Row="0" Grid.Column="0" Source="{Binding reservationImage}" IsVisible="true" VerticalOptions="Start" />
+										<Label Grid.Row="0" Grid.Column="1" Text="{Binding ReservationID}" Font="Bold" FontSize="Medium" TextColor="{Binding TextColor}" />
+										<Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="{Binding Status}" Font="Bold" FontSize="14" TextColor="{Binding StatusColor}" HorizontalOptions="EndAndExpand" />
+									</Grid>
+									<Grid Padding="10,0,0,0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="20" />
+											<RowDefinition Height="1" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
+										<Label Grid.Row="0" Grid.Column="0" Text="{Binding GuestName}" Font="Italic" TextColor="{Binding TextColor}" />
+										<Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="navigation_icon2.png" IsVisible="true" HeightRequest="20" WidthRequest="20" VerticalOptions="Start" />
+									</Grid>
+									<Grid Padding="10,0,0,0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="20" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="20*" />
+										</Grid.ColumnDefinitions>
+										<Label Grid.Row="0" Grid.Column="0" Text="{Binding MainClientName}" TextColor="{Binding TextColor}" />
+									</Grid>
+									<Grid Padding="10,0,0,0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="20" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="4*" />
+											<ColumnDefinition Width="12*" />
+											<ColumnDefinition Width="20*" />
+											<ColumnDefinition Width="1*" />
+											<ColumnDefinition Width="3*" />
+										</Grid.ColumnDefinitions>
+										<Image Grid.Row="0" Grid.Column="0" Source="{Binding roomStatusImageText}" IsVisible="true" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+										<Label Grid.Row="0" Grid.Column="1" Text="{Binding roomNumber}" TextColor="Olive" HorizontalOptions="StartAndExpand" />
+										<Label Grid.Row="0" Grid.Column="2" Text="{Binding numberOfVisits}" TextColor="Teal" HorizontalOptions="EndAndExpand" />
+										<Label Grid.Row="0" Grid.Column="3" Text="/" TextColor="Teal" HorizontalOptions="EndAndExpand" />
+										<Label Grid.Row="0" Grid.Column="4" Text="{Binding toatlNumberOfVisits}" TextColor="Teal" HorizontalOptions="StartAndExpand" />
+									</Grid>
+								</StackLayout>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

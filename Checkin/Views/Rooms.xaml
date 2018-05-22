@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Rooms" BackgroundColor="White">
+	<ContentPage.Content>
+		<StackLayout Padding="15,15,15,15" BackgroundColor="Transparent">
+			<ActivityIndicator x:Name="RoomsIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<StackLayout Padding="20,20,20,20" x:Name="RoomDetails">
+				<ListView x:Name="RoomsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="Default" ItemSelected="RoomsListViewItemSelected" CachingStrategy="RetainElement">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid BackgroundColor="Transparent" Padding="0,5,0,0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="5*" />
+										<RowDefinition Height="3*" />
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="5*" />
+										<ColumnDefinition Width="10*" />
+										<ColumnDefinition Width="20*" />
+									</Grid.ColumnDefinitions>
+									<Image Grid.Row="0" Grid.Column="0" Source="{Binding statusImage}" IsVisible="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+									<Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="{Binding roomNumber}" Font="Bold" FontSize="Small" TextColor="Black" />
+									<Label Grid.Row="1" Grid.Column="1" FontFamily="Verdana" Text="{Binding roomType}" Font="Italic" FontSize="Small" TextColor="Black" VerticalOptions="Start" />
+									<Label Grid.Row="1" Grid.Column="2" FontFamily="Verdana" Text="{Binding roomPreferences}" Font="Bold" FontSize="Small" TextColor="{Binding statusColor}" VerticalOptions="Start" />
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+				<Button Text="Dirty Rooms" Clicked="getDirtyRooms" x:Name="DirtyRoomsButton">
+				</Button>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

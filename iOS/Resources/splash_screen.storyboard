@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+    </scenes>
+    <resources>
+        <image name="cinnamon_logo.png" width="877" height="318"/>
+        <image name="CleanRoom.png" width="100" height="100"/>
+        <image name="Comment_black.png" width="75" height="75"/>
+        <image name="Comment.png" width="100" height="100"/>
+        <image name="DirtyRoom.png" width="100" height="100"/>
+        <image name="drawer_icon.png" width="25" height="25"/>
+        <image name="Guest_Icon.png" width="75" height="75"/>
+        <image name="guest.png" width="75" height="75"/>
+        <image name="Guests.png" width="75" height="75"/>
+        <image name="Hotel_3000.bmp" width="460" height="184"/>
+        <image name="Hotel_3005.bmp" width="460" height="184"/>
+        <image name="Hotel_3015.png" width="877" height="318"/>
+        <image name="Hotel_3100.bmp" width="460" height="184"/>
+        <image name="Hotel_3110.bmp" width="460" height="184"/>
+        <image name="Hotel_3115.bmp" width="460" height="184"/>
+        <image name="Hotel_3120.bmp" width="460" height="184"/>
+        <image name="Hotel_3150.bmp" width="460" height="184"/>
+        <image name="Hotel_3160.bmp" width="460" height="184"/>
+        <image name="Hotel_3165.bmp" width="460" height="184"/>
+        <image name="Hotel_3170.bmp" width="460" height="184"/>
+        <image name="Hotel_3300.bmp" width="460" height="184"/>
+        <image name="Hotel_3305.bmp" width="460" height="184"/>
+        <image name="Hotel_3310.bmp" width="460" height="184"/>
+        <image name="icon_original.png" width="50" height="50"/>
+        <image name="icon.png" width="30" height="30"/>
+        <image name="inspected.png" width="100" height="100"/>
+        <image name="line.png" width="200" height="500"/>
+        <image name="navigation_icon.png" width="128" height="128"/>
+        <image name="navigation_icon2.png" width="128" height="128"/>
+        <image name="Reservation_Icon.png" width="75" height="75"/>
+        <image name="RreservationsBackground.jpg" width="236" height="346"/>
+        <image name="SignatureImage.jpg" width="178" height="81"/>
+        <image name="splash_logo.png" width="184" height="237"/>
+        <image name="Unknown.png" width="100" height="100"/>
+        <image name="GuestIOS.png" width="50" height="50"/>
+        <image name="RemarkIOS.png" width="50" height="50"/>
+        <image name="ReservationIOS.png" width="50" height="50"/>
+    </resources>
+</document>

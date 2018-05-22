@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Performa">
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout Padding="0,0,0,10" BackgroundColor="White">
+				<ActivityIndicator x:Name="PerformaIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+				<StackLayout x:Name="PerformaLayout">
+					<StackLayout BackgroundColor="Navy" Padding="10,10,10,10">
+						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Invoice" />
+					</StackLayout>
+					<StackLayout x:Name="headerImage" BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto">
+								</RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="200">
+								</ColumnDefinition>
+								<ColumnDefinition Width="2*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Customer Code " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding customerCode}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium"  TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Customer " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding customer}" />
+						</Grid>
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto">
+								</RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="200">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="VAT Reg. No " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding vatRegNo}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Guest Name" />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding guestName}" />
+							<Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Booking Party " />
+							<Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding bookingParty}" />
+						</Grid>
+					</StackLayout>
+
+                    <StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10" Orientation="Horizontal">
+    					<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+    						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    							<Grid.RowDefinitions>
+    								<RowDefinition Height="Auto">
+    								</RowDefinition>
+    							</Grid.RowDefinitions>
+    							<Grid.ColumnDefinitions>
+    								<ColumnDefinition Width="200">
+    								</ColumnDefinition>
+    								<ColumnDefinition Width="*">
+    								</ColumnDefinition>
+    							</Grid.ColumnDefinitions>
+    							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Prof. Invoice No " />
+    							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding profInvoiceNo}" />
+    							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Date " />
+    							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding date}" />
+    							<Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Arrival " />
+    							<Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding arrival}" />
+    							<Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Departure " />
+    							<Label Grid.Row="3" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding departure}" />
+    							<Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Reservation No  " />
+    							<Label Grid.Row="4" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding reservationNumber}" />
+    							<Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Voucher  " />
+    							<Label Grid.Row="5" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding voucher}" />
+    							<Label Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Reservation Ststus  " />
+    							<Label Grid.Row="6" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding reservationStatus}" />
+    							<Label Grid.Row="7" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Rooms  " />
+    							<Label Grid.Row="7" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding numberOfRooms}" />
+    							<Label Grid.Row="8" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Adults  " />
+    							<Label Grid.Row="8" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding adults}" />
+    							<Label Grid.Row="9" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Child  " />
+    							<Label Grid.Row="9" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding child}" />
+    							<Label Grid.Row="10" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Child F  " />
+    							<Label Grid.Row="10" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding child}" />
+    							<Label Grid.Row="11" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Guide  " />
+    							<Label Grid.Row="11" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding child}" />
+    						</Grid>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="#cfccf9" Padding="10,10,10,10">
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto">
+                                    </RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Room Type " />
+                                <Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="roomTypeLabel" />
+                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Meal Plan" />
+                                <Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="mealPlanLabel" />
+                                <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Occupancy " />
+                                <Label Grid.Row="3" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="occuLabel" />
+                                <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Nos." />
+                                <Label Grid.Row="4" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="nosLabel"/>
+                                <Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Room Nights  " />
+                                <Label Grid.Row="5" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="roomNightsLabel" />
+                                <Label Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Rate" />
+                                <Label Grid.Row="6" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="rateLabel" />
+                                <Label Grid.Row="7" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Currency  " />
+                                <Label Grid.Row="7" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" x:Name="currLabel" />
+                              
+                            </Grid>
+                        </StackLayout>
+					</StackLayout>
+					<StackLayout BackgroundColor="Navy" Padding="10,10,10,10">
+						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Line Items" />
+					</StackLayout>
+					<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10" HeightRequest="60" x:Name="performaItemListView">
+						<ListView x:Name="performaItemDetails" RowHeight="30" SeparatorColor="#660099" ItemTapped="performatListItemSelected" SeparatorVisibility="Default" IsPullToRefreshEnabled="false" CachingStrategy="RetainElement">
+							<ListView.Header>
+								<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Teal">
+									<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto">
+											</RowDefinition>
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*">
+											</ColumnDefinition>
+											<ColumnDefinition Width="*">
+											</ColumnDefinition>
+										</Grid.ColumnDefinitions>
+										<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Starting Date" />
+										<Label Grid.Row="0" Grid.Column="1" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="End Date" />
+										<Label Grid.Row="0" Grid.Column="2" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Description" />
+										<Label Grid.Row="0" Grid.Column="3" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Amount" />
+									</Grid>
+								</StackLayout>
+							</ListView.Header>
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<ViewCell>
+										<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+											<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+												<Grid.RowDefinitions>
+													<RowDefinition Height="Auto">
+													</RowDefinition>
+												</Grid.RowDefinitions>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="*">
+													</ColumnDefinition>
+													<ColumnDefinition Width="*">
+													</ColumnDefinition>
+												</Grid.ColumnDefinitions>
+												<Label Grid.Row="0" Grid.Column="0" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding startDate}" LineBreakMode="TailTruncation"/>
+												<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding endDate}" LineBreakMode="TailTruncation"/>
+												<Label Grid.Row="0" Grid.Column="2" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding descriptiopn}" LineBreakMode="TailTruncation"/>
+												<Label Grid.Row="0" Grid.Column="3" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding amount}" LineBreakMode="TailTruncation"/>
+											</Grid>
+										</StackLayout>
+									</ViewCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</StackLayout>
+					<StackLayout BackgroundColor="#C3C3E5" Padding="10,10,10,10">
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto">
+								</RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Grand Total (LKR) : " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding total}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Total Excluding VAT : " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding totalExcluVat}" />
+							<Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="VAT @ 15% : " />
+							<Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding vat}" />
+							<Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Total Due : " />
+							<Label Grid.Row="3" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding totalDue}" />
+						</Grid>
+						<StackLayout x:Name="advancedValues" BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+							<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto">
+									</RowDefinition>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+								</Grid.ColumnDefinitions>
+								<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding advancedReceivedPositive}" />
+								<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding advancedReceivedPositiveValue}" />
+								<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding advancedReceivedNegative}" />
+								<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding advancedReceivedNegative}" />
+							</Grid>
+						</StackLayout>
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto">
+								</RowDefinition>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Balance Due : " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding balanceDue}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Large" TextColor="Olive" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Grand Total : " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Large" TextColor="Olive" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding total}" />
+						</Grid>
+					</StackLayout>
+					<StackLayout BackgroundColor="Navy" Padding="10,10,10,10">
+						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="General Info" />
+					</StackLayout>
+					<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto">
+								</ColumnDefinition>
+								<ColumnDefinition Width="Auto">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Rooms  " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding rooms}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Generated By  " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding generatedBy}" />
+							<Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="Exchange Rate  " />
+							<Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding exchangeRate}" />
+						</Grid>
+						<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+							<Label FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding paymentDescription}" />
+						</StackLayout>
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Account Holder : " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding accountHolder}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Bank : " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding bank}" />
+							<Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Accunt Number : " />
+							<Label Grid.Row="2" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding accountNumber}" />
+							<Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Swift Code : " />
+							<Label Grid.Row="3" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding swiftCode}" />
+						</Grid>
+						<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10">
+							<Label FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="{Binding description2}" />
+							<Label FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="{Binding description3}" />
+						</StackLayout>
+						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+								<ColumnDefinition Width="*">
+								</ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Printed By : " />
+							<Label Grid.Row="0" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding printedBy}" />
+							<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Date : " />
+							<Label Grid.Row="1" Grid.Column="1" FontAttributes="Italic" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Text="{Binding printedDate}" />
+						</Grid>
+					</StackLayout>
+					<StackLayout Padding="10,10,10,10">
+						<Button Text="Email Performa" Clicked="sendPerforma" BackgroundColor="Green" TextColor="White" x:Name="sendPerformaButton">
+							<Button.BorderRadius>
+								<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
+							</Button.BorderRadius>
+						</Button>
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

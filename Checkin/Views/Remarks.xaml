@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Remarks" BackgroundColor="White">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="0" Clicked="LogoutButtonClickedEvt" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout>
+			<ActivityIndicator x:Name="remarksIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
+				<Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+					
+				</Label>
+				<Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+				</Label>
+			</StackLayout>
+            
+			<StackLayout BackgroundColor="Transparent" Padding="15,20,15,20">
+				<StackLayout x:Name="remarksUnavailabilityIndicator" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+					<Label TextColor="Red" FontSize="Medium" Text="Remarks Not Available!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+				</StackLayout>
+			</StackLayout>
+
+            <StackLayout Padding="20,20,20,20" x:Name="RemarkDetailsLayout" VerticalOptions="StartAndExpand">
+                
+               <ListView x:Name="RemarkDetailsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="None" CachingStrategy="RetainElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell IsEnabled="false">
+                                <Grid VerticalOptions="Center" HorizontalOptions="Start" x:Name="remarksListGrid">
+                                    <Grid.RowDefinitions Padding="0,0,50,0">
+                                        <RowDefinition Height="*">
+                                        </RowDefinition>
+                                      </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="200">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="10*">
+                                        </ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="image11" Grid.Row="0" Grid.Column="0" Source="Comment_black.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                    </Image>
+                                    <Label x:Name="remarkCatName" Grid.Row="0" Grid.Column="1" TextColor="#660099" FontSize="14" FontFamily="Verdana" Font="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding XtipoObserv}" HorizontalTextAlignment="Start"/>
+                                    <Label Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="14" FontFamily="Verdana" x:Name="remarkDesc" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding Xobservacion}" HorizontalTextAlignment="Start"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+          </StackLayout>
+            
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

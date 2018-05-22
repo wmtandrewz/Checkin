@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.ReservationInfo" Title="Reservation Info" NavigationPage.HasBackButton="False" BackgroundColor="White">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="0" Clicked="LogoutButtonClickedEvt" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout Padding="0,0,0,10">
+			<ActivityIndicator x:Name="ReservationsListIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+			<StackLayout x:Name="guestInforDetails">
+				<StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
+					<Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+						
+					</Label>
+					<Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding ClientName}">
+						
+					</Label>
+				</StackLayout>
+				<ScrollView>
+					<StackLayout Padding="10,0,10,0">
+						<StackLayout x:Name="reservationInfoDetails">
+							<Image Source="Guest_Icon.png">
+							</Image>
+							<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+									<RowDefinition Height="50">
+									</RowDefinition>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+								</Grid.ColumnDefinitions>
+								<Label Grid.Row="0" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="AD" FontSize="Medium" Text="Arrival Date : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="ArrivalDateText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding ArrivalDate}" />
+								<Label Grid.Row="1" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="NON" FontSize="Medium" Text="No Of Nights : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="NumberOfNights" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding NoOfNights}" />
+								<Label Grid.Row="2" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" FontSize="Medium" x:Name="DD" Text="Departure Date : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="DepartureDateText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding DepartureDate}" />
+								<Label Grid.Row="3" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="PT" FontSize="Medium" Text="Number Of Pax : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="3" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="PaxText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding PaxCount}" />
+								<Label Grid.Row="4" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="RT" FontSize="Medium" Text="Room Type : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="RoomTypeText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding RoomType}" />
+								<Label Grid.Row="5" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="RN" FontSize="Medium" Text="Room Number : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<!--<Label Grid.Row="5" Grid.Column="1" TextColor="{Binding RoomColor}" FontSize="Medium" x:Name="RoomNoText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding RoomNumber}" />
+								<Button Grid.Row="5" Grid.Column="1" x:Name="AssignRoomButton" Text="Assign Room" BackgroundColor="#ADD8E6" Clicked="AssignRooms" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand">
+									<Button.BorderRadius>
+										<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+									</Button.BorderRadius>
+									<Button.Style>
+									</Button.Style>
+								</Button>-->
+								<Grid Grid.Row="5" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*">
+										</RowDefinition>
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="AUTO">
+										</ColumnDefinition>
+										<ColumnDefinition Width="AUTO">
+										</ColumnDefinition>
+									</Grid.ColumnDefinitions>
+									<Label Grid.Row="0" Grid.Column="0" TextColor="{Binding RoomColor}" FontSize="Medium" x:Name="RoomNoText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding RoomNumber}" LineBreakMode="TailTruncation"/>
+									<Button Grid.Row="0" Grid.Column="1" x:Name="AssignRoomButton" Text="Assign Room" BackgroundColor="#ADD8E6" Clicked="AssignRooms" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand">
+										<Button.BorderRadius>
+											<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+										</Button.BorderRadius>
+										<Button.Style>
+										</Button.Style>
+									</Button>
+								</Grid>
+								<Label Grid.Row="6" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="RS" FontSize="Medium" Text="Room Status : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="6" Grid.Column="1" TextColor="{Binding RoomStatusColor}" FontSize="Medium" x:Name="RoomStatus" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding RoomStatus}" />
+								<Label Grid.Row="7" Grid.Column="0" TextColor="#660099" FontAttributes="Bold" x:Name="MP" FontSize="Medium" Text="Meal Plan : " HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+								<Label Grid.Row="7" Grid.Column="1" TextColor="Black" FontSize="Medium" x:Name="MealPlanText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding MealPlan}" />
+							</Grid>
+						</StackLayout>
+					</StackLayout>
+				</ScrollView>
+				<Button x:Name="RegistrationButton" Grid.Row="0" Grid.Column="1" Text="Registration Card" BackgroundColor="#4169E1" Clicked="ReservationCard" FontSize="Small" TextColor="White">
+					<Button.BorderRadius>
+						<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
+					</Button.BorderRadius>
+					<Button.Style>
+					</Button.Style>
+				</Button>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

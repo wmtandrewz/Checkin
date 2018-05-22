@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.DepartureFlightView" BackgroundColor="White">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+			<ActivityIndicator x:Name="FlightsIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Label FontFamily="Verdana" Text="Depature Flights" Font="Bold" FontSize="Large" TextColor="Blue" VerticalOptions="CenterAndExpand"/>
+            
+            <StackLayout BackgroundColor="Purple">
+                <SearchBar HeightRequest="50" WidthRequest="500" x:Name="FlightSearchBar" TextChanged="SearchBarTextChanged" PlaceholderColor="#BDBDBD" Placeholder="Search Flight" TextColor="Black">
+                        <SearchBar.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color" iOS="Transparent" Android="Transparent" />
+                        </SearchBar.BackgroundColor>
+                        <SearchBar.TextColor>
+                            <OnPlatform x:TypeArguments="Color" iOS="Black" Android="White" />
+                        </SearchBar.TextColor>
+                </SearchBar>
+            </StackLayout>
+            
+			<StackLayout Padding="20,20,20,20" x:Name="FlightDetails">
+                
+               <ListView x:Name="FlightsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="Default" ItemSelected="FlightListItemSelected" CachingStrategy="RetainElement">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid BackgroundColor="Transparent" Padding="0,5,0,0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="5*" />
+                                        <RowDefinition Height="3*" />
+										<RowDefinition Height="3*" />
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*" />
+										<ColumnDefinition Width="10*" />
+										<ColumnDefinition Width="20*" />
+									</Grid.ColumnDefinitions>
+									<Label Grid.Row="0" Grid.Column="0" FontFamily="Verdana" Text="{Binding DepFlight}" Font="Bold" FontSize="Large" TextColor="Green" />
+                                    <Label Grid.Row="1" Grid.Column="0" FontFamily="Verdana" Text="{Binding Airport}" Font="Italic" FontSize="Small" TextColor="Black" VerticalOptions="Start" />
+									<Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="Hotel Departure Time : " Font="Italic" FontSize="Small" TextColor="Black" VerticalOptions="Start" />
+                                    <Label Grid.Row="0" Grid.Column="2" FontFamily="Verdana" Text="{Binding HotelDepTime}" Font="Bold" FontSize="Medium" TextColor="{Binding statusColor}" VerticalOptions="Start" />
+									<Label Grid.Row="1" Grid.Column="1" FontFamily="Verdana" Text="Flight Departure Time : " Font="Italic" FontSize="Small" TextColor="Black" VerticalOptions="Start" />
+                                    <Label Grid.Row="1" Grid.Column="2" FontFamily="Verdana" Text="{Binding AirpDepTime}" Font="Bold" FontSize="Medium" TextColor="{Binding statusColor}" VerticalOptions="Start" />
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+          </StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

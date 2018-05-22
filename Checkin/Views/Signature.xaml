@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:acr="clr-namespace:Acr.XamForms.SignaturePad;assembly=Acr.XamForms.SignaturePad" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Signature">
+	<!--<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Close" Order="Primary" Priority="0" Clicked="CloseButtonClickedEvt" />
+	</ContentPage.ToolbarItems>-->
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,0">
+				<Label x:Name="GuestNameText" HorizontalTextAlignment="Center">
+					<Label.FontFamily>
+						<OnPlatform x:TypeArguments="x:String">
+							<OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+						</OnPlatform>
+					</Label.FontFamily>
+				</Label>
+				<acr:SignaturePadView x:Name="padView" HeightRequest="320" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
+				</acr:SignaturePadView>
+				<Button x:Name="ImageSave" Clicked="ImageSaveButton" Text="Save Signature" BackgroundColor="Green" TextColor="White">
+					<Button.BorderRadius>
+						<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+					</Button.BorderRadius>
+					<Button.Style>
+					</Button.Style>
+				</Button>
+				<Button x:Name="Close" Clicked="CloseButtonClickedEvt" Text="Close" BackgroundColor="Red" TextColor="White">
+					<Button.BorderRadius>
+						<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+					</Button.BorderRadius>
+					<Button.Style>
+					</Button.Style>
+				</Button>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

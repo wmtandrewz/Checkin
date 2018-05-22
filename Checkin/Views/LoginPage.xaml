@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.LoginPage" BackgroundColor="#660099" NavigationPage.HasBackButton="False">
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout>
+				<StackLayout Padding="0,45,0,0">
+					<Image Grid.Row="0" Grid.Column="2" x:Name="SettingsIcon" Margin="0,0,10,0" Source="Three_Dot.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="End" VerticalOptions="Start">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Tapped="SettingsButtonTappedEvt" />
+						</Image.GestureRecognizers>
+					</Image>
+				</StackLayout>
+				<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+					<Image x:Name="CinnamonLogo" Source="cinnamon_logo.png" WidthRequest="230" HeightRequest="230" />
+					<Label x:Name="CheckinText" Text="Cinnamon Check-In" HorizontalTextAlignment="Center" TextColor="White" FontSize="30" Opacity="0">
+						<Label.FontFamily>
+							<OnPlatform x:TypeArguments="x:String">
+								<OnPlatform.iOS>BodoniStd-BookItalic</OnPlatform.iOS>
+								<OnPlatform.Android>Lobster-Regular.ttf#Lobster-Regular</OnPlatform.Android>
+								<OnPlatform.WinPhone>
+								</OnPlatform.WinPhone>
+							</OnPlatform>
+						</Label.FontFamily>
+					</Label>
+				</StackLayout>
+				<StackLayout Padding="10, 20" VerticalOptions="CenterAndExpand">
+					<StackLayout Padding="80, 0 , 80, 0" VerticalOptions="CenterAndExpand">
+						<Entry x:Name="LoginEntryUsername" Text="" Placeholder="Username" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0" WidthRequest="20">
+							<Entry.BackgroundColor>
+								<OnPlatform x:TypeArguments="Color" iOS="White" Android="#660099" />
+							</Entry.BackgroundColor>
+							<!--<Entry.Placeholder>
+								<OnPlatform x:TypeArguments="Color" iOS="#A9A9A9" Android="#E0E0E0" />
+							</Entry.Placeholder>-->
+						</Entry>
+						<Entry x:Name="LoginEntryPassword" Text="" IsPassword="true" Placeholder="Password" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0">
+							<Entry.BackgroundColor>
+								<OnPlatform x:TypeArguments="Color" iOS="White" Android="#660099" />
+							</Entry.BackgroundColor>
+							<!--<Entry.Placeholder>
+								<OnPlatform x:TypeArguments="Color" iOS="#A9A9A9" Android="#E0E0E0" />
+							</Entry.Placeholder>-->
+						</Entry>
+						<Button x:Name="LoginButton" Text="Login" Clicked="LoginButtonClickEvt" BackgroundColor="White" TextColor="Green" FontSize="28" Opacity="0">
+							<Button.BorderRadius>
+								<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+							</Button.BorderRadius>
+							<Button.Style>
+							</Button.Style>
+						</Button>
+					</StackLayout>
+					<Button x:Name="ForgotPasswordButton" Clicked="ForgotPasswordClickEvt" Text="Forgot your password?" BackgroundColor="Transparent" BorderRadius="0" TextColor="#cecece" FontSize="14" Opacity="0" />
+					<ActivityIndicator x:Name="LoginIndicator" Color="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*">
+							</RowDefinition>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10*">
+							</ColumnDefinition>
+							<ColumnDefinition Width="1*">
+							</ColumnDefinition>
+							<ColumnDefinition Width="10*">
+							</ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Button Grid.Row="0" Grid.Column="0" x:Name="NeedHelpButton" Clicked="NeedHelpButtonClickEvt" Text="Help?" BackgroundColor="Transparent" BorderRadius="0" TextColor="#cecece" FontSize="14" Opacity="0"
+							HorizontalOptions="End" VerticalOptions="StartAndExpand" />
+						<Label Grid.Row="0" Grid.Column="1" x:Name="ContactSeperator" Text="|" TextColor="#cecece" FontSize="14" IsVisible="false" HorizontalOptions="Center" VerticalOptions="Center" />
+						<Button Grid.Row="0" Grid.Column="2" x:Name="ContactButton" Clicked="ContactUsClickedEvent" Text="Contact Us!" BackgroundColor="Transparent" BorderRadius="0" TextColor="#cecece" FontSize="14" Opacity="0"
+							HorizontalOptions="Start" VerticalOptions="StartAndExpand" />
+					</Grid>
+					<Label x:Name="TradeMark" Text="Designed and developed by Cinnamon IT" TextColor="#BF9BC4" FontSize="14" HorizontalTextAlignment="Center" IsVisible="false" />
+					<Label x:Name="TradeMark1" Text="Copyrights © 2018" TextColor="#BF9BC4" FontSize="14" HorizontalTextAlignment="Center" IsVisible="false" />
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>
