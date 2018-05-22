@@ -8,6 +8,10 @@ using System.Linq;
 using Checkin.Models.ModelClasses;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using Rg.Plugins.Popup.Services;
+using Checkin.Views;
+using Checkin.Models.ModelClasses.Payloads;
 
 namespace Checkin
 {
@@ -115,11 +119,38 @@ namespace Checkin
             }
             
         }
+
+        async void RemarkItemSelected(object sen, SelectedItemChangedEventArgs e)
+		{
+			RemarksModel remarksModel = (RemarksModel)e.SelectedItem;
+
+			await PopupNavigation.PushAsync(new PopupInputView());
+
+            MessagingCenter.Subscribe<PopupInputView, string>(this, "popup", (sender, arg) => {
+                Debug.WriteLine(arg);
+
+				UpdateRemarks("FO",arg);
+            });
+            
+		}
+
+        async void UpdateRemarks(string obserAc, string arg)
+		{
+			RemarksPayload remarksPayload = new RemarksPayload(Settings.HotelCode, Constants._reservation_id, "", Settings.HotelCode, Constants._reservation_id, obserAc, arg);
+
+            var res = await new PostServiceManager().SetReservationRemarks(remarksPayload);
+
+			if(res=="Success")
+			{
+				this.RemarkDetails();
+			}
+		}
         
 		//Page Loading
 
 		void pageLoading()
 		{
+			
 			Device.BeginInvokeOnMainThread(() =>
 						{
 							remarksIndicator.IsVisible = true;

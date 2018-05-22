@@ -10,6 +10,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Checkin.Models.ModelClasses.Payloads;
+using Checkin.Models.ModelClasses;
 
 namespace Checkin
 {
@@ -125,8 +126,48 @@ namespace Checkin
 			{
 				return "Sorry. Unable to set flight!";
 			}
-
+            
            
+        }
+
+		public async Task<String> SetReservationNotices(ResNoticesModel resNoticesModel)
+        {
+
+			string url = "/sap/opu/odata/sap/ZTMS_MODIFY_RESERVATION_SRV/reserNoticesSet";
+			String result = await this.GetODataService(url, JsonConvert.SerializeObject(resNoticesModel));
+
+            //If result is success
+            if (result == "success")
+            {
+                return "Success";
+            }
+
+            else
+            {
+                return "Sorry. Unable to update notices!";
+            }
+
+
+        }
+
+		public async Task<String> SetReservationRemarks(RemarksPayload remarksModel)
+        {
+
+			string url = "/sap/opu/odata/sap/ZTMS_MODIFY_RESERVATION_SRV/reserRemarksSet";
+			String result = await this.GetODataService(url, JsonConvert.SerializeObject(remarksModel));
+
+            //If result is success
+            if (result == "success")
+            {
+                return "Success";
+            }
+
+            else
+            {
+                return "Sorry. Unable to update remarks!";
+            }
+
+
         }
 
 		public async Task<String> GetODataService(String url, String postBody)

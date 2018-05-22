@@ -23,13 +23,15 @@
 
             <StackLayout Padding="20,20,20,20" x:Name="RemarkDetailsLayout" VerticalOptions="StartAndExpand">
                 
-               <ListView x:Name="RemarkDetailsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="None" CachingStrategy="RetainElement">
+               <ListView x:Name="RemarkDetailsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="None" CachingStrategy="RetainElement" ItemSelected="RemarkItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell IsEnabled="false">
+                            <ViewCell IsEnabled="true">
                                 <Grid VerticalOptions="Center" HorizontalOptions="Start" x:Name="remarksListGrid">
                                     <Grid.RowDefinitions Padding="0,0,50,0">
                                         <RowDefinition Height="*">
+                                        </RowDefinition>
+                                        <RowDefinition Height="5">
                                         </RowDefinition>
                                       </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
@@ -43,14 +45,13 @@
                                     <Image x:Name="image11" Grid.Row="0" Grid.Column="0" Source="Comment_black.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                                     </Image>
                                     <Label x:Name="remarkCatName" Grid.Row="0" Grid.Column="1" TextColor="#660099" FontSize="14" FontFamily="Verdana" Font="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding XtipoObserv}" HorizontalTextAlignment="Start"/>
-                                    <Label Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="14" FontFamily="Verdana" x:Name="remarkDesc" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding Xobservacion}" HorizontalTextAlignment="Start"/>
+                                    <Editor Grid.Row="0" Grid.Column="2" TextColor="Black" IsEnabled="false" WidthRequest="400" HeightRequest="100" BackgroundColor="#edf1ff" FontSize="14" FontFamily="Verdana" x:Name="remarkDesc" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Text="{Binding Xobservacion}"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
           </StackLayout>
-            
-		</StackLayout>
+         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

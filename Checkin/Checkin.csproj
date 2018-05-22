@@ -74,6 +74,10 @@
     <EmbeddedResource Include="Views\Attachments.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\PopupInputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +180,10 @@
     </Compile>
     <Compile Include="Models\ModelClasses\ChartModel.cs" />
     <Compile Include="Models\ModelClasses\Payloads\FlightPayload.cs" />
+    <Compile Include="Models\ModelClasses\Payloads\RemarksPayload.cs" />
+    <Compile Include="Views\PopupInputView.xaml.cs">
+      <DependentUpon>PopupInputView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">
@@ -262,6 +270,12 @@
     </Reference>
     <Reference Include="Microcharts.Forms">
       <HintPath>..\packages\Microcharts.Forms.0.8.3-pre\lib\portable-net45+win8+wpa81+wp8\Microcharts.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

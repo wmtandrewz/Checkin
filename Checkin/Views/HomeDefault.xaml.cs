@@ -4,6 +4,10 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Checkin.Models.ModelClasses;
 using SkiaSharp;
+using Checkin.Models.ModelClasses.Payloads;
+using Rg.Plugins.Popup.Services;
+using Checkin.Views;
+using System.Diagnostics;
 
 namespace Checkin
 {
@@ -95,6 +99,35 @@ namespace Checkin
 
 			pendingTotLabel.Text = pendingPercentage.ToString();
 		}
+
+		protected async override void OnAppearing()
+		{
+
+			//await PopupNavigation.PushAsync(new PopupInputView());
+
+			//MessagingCenter.Subscribe<PopupInputView, string>(this, "popup", (sender, arg) => {
+			//	Debug.WriteLine(arg);
+   //         });
+
+			//ResNoticesModel resNoticesModel = new ResNoticesModel("3000", "0000027687", "", "3000", "0000027687", "3", "haaai thimizzzzzzz");
+   //         //resNoticesModel.ImHotelId = "3000";
+   //         //resNoticesModel.ImReservationId = "27703";
+   //         //resNoticesModel.Mandt = "500";
+   //         //resNoticesModel.XhotelId = "3000";
+   //         //resNoticesModel.XreservaId = "27703";
+   //         //resNoticesModel.Xaccion = "3";
+   //         //resNoticesModel.Xobservacion = "Haai Thimz";
+
+   //         await new PostServiceManager().SetReservationNotices(resNoticesModel);
+
+
+			//RemarksPayload remarksModel = new RemarksPayload("3000","0000027687","","3000","0000027687","FO","Front Office new");
+
+			//await new PostServiceManager().SetReservationRemarks(remarksModel);
+
+			base.OnAppearing();
+		}
 	}
+
 }
 

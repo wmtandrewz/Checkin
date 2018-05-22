@@ -23,5 +23,6 @@ namespace Checkin.Models.ModelClasses
             Xobservacion = xObservaction;
 			Xexterna = xExterna;
         }
+
     }
 }
