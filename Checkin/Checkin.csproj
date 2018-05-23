@@ -78,6 +78,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewRemarkPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RemarkInputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +191,12 @@
     <Compile Include="Models\ModelClasses\Payloads\RemarksPayload.cs" />
     <Compile Include="Views\PopupInputView.xaml.cs">
       <DependentUpon>PopupInputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewRemarkPopup.xaml.cs">
+      <DependentUpon>NewRemarkPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RemarkInputView.xaml.cs">
+      <DependentUpon>RemarkInputView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

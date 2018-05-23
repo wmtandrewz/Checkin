@@ -218,15 +218,11 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\iTunesArtwork%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\iTunesArtwork.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-57.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-114.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-167.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\checkin-logo 1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\checkin-logo 2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\checkin-logo 3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -277,7 +273,6 @@
     <BundleResource Include="Resources\RreservationsBackground.jpg" />
     <BundleResource Include="Resources\SignatureImage.jpg" />
     <BundleResource Include="Resources\Unknown.png" />
-    <BundleResource Include="Resources\cinnamon_logo.png" />
     <BundleResource Include="Resources\drawer_icon.png" />
     <BundleResource Include="Resources\guest.png" />
     <BundleResource Include="Resources\inspected.png" />
@@ -308,6 +303,7 @@
     <BundleResource Include="Resources\attachments.png" />
     <BundleResource Include="Resources\camera.png" />
     <BundleResource Include="Resources\passport.png" />
+    <BundleResource Include="Resources\checkin-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />

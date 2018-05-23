@@ -11,8 +11,8 @@
 					</Image>
 				</StackLayout>
 				<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-					<Image x:Name="CinnamonLogo" Source="cinnamon_logo.png" WidthRequest="230" HeightRequest="230" />
-					<Label x:Name="CheckinText" Text="Cinnamon Check-In" HorizontalTextAlignment="Center" TextColor="White" FontSize="30" Opacity="0">
+					<Image x:Name="CinnamonLogo" Source="checkin-logo.png" WidthRequest="400" HeightRequest="300" />
+					<!--<Label x:Name="CheckinText" Text="Cinnamon Check-In" HorizontalTextAlignment="Center" TextColor="White" FontSize="30" Opacity="0">
 						<Label.FontFamily>
 							<OnPlatform x:TypeArguments="x:String">
 								<OnPlatform.iOS>BodoniStd-BookItalic</OnPlatform.iOS>
@@ -21,11 +21,11 @@
 								</OnPlatform.WinPhone>
 							</OnPlatform>
 						</Label.FontFamily>
-					</Label>
+					</Label> -->
 				</StackLayout>
 				<StackLayout Padding="10, 20" VerticalOptions="CenterAndExpand">
-					<StackLayout Padding="80, 0 , 80, 0" VerticalOptions="CenterAndExpand">
-						<Entry x:Name="LoginEntryUsername" Text="" Placeholder="Username" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0" WidthRequest="20">
+					<StackLayout Padding="80, 0 , 80, 0" VerticalOptions="CenterAndExpand" WidthRequest="300">
+						<Entry x:Name="LoginEntryUsername" Text="" Placeholder="Username" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0" WidthRequest="20" HeightRequest="50">
 							<Entry.BackgroundColor>
 								<OnPlatform x:TypeArguments="Color" iOS="White" Android="#660099" />
 							</Entry.BackgroundColor>
@@ -33,7 +33,7 @@
 								<OnPlatform x:TypeArguments="Color" iOS="#A9A9A9" Android="#E0E0E0" />
 							</Entry.Placeholder>-->
 						</Entry>
-						<Entry x:Name="LoginEntryPassword" Text="" IsPassword="true" Placeholder="Password" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0">
+						<Entry x:Name="LoginEntryPassword" Text="" IsPassword="true" Placeholder="Password" TextColor="Black" HorizontalTextAlignment="Center" FontSize="28" Opacity="0" HeightRequest="50">
 							<Entry.BackgroundColor>
 								<OnPlatform x:TypeArguments="Color" iOS="White" Android="#660099" />
 							</Entry.BackgroundColor>

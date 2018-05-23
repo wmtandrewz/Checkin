@@ -15,7 +15,7 @@
 
 					</Label>
 				</StackLayout>
-				<StackLayout Padding="15,0,15,20" x:Name="guestListnformation">
+				<StackLayout Padding="20,0,15,20" x:Name="guestListnformation">
 					<ListView x:Name="GuestListView" RowHeight="600" SeparatorVisibility="Default" SeparatorColor="#660099" Refreshing="refreshingGuest" IsPullToRefreshEnabled="false" ItemTapped="SelectedGuest" CachingStrategy="RetainElement">
 						<ListView.ItemTemplate>
 							<DataTemplate>
@@ -32,40 +32,40 @@
 												<ColumnDefinition Width="4*" />
 												<ColumnDefinition Width="1*" />
 											</Grid.ColumnDefinitions>
-											<Label Grid.Row="0" Grid.Column="0" FontFamily="Verdana" Text="Passport No/ID No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
+											<Label Grid.Row="0" Grid.Column="0" FontFamily="Verdana" Text="Passport No/ID No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
 											<Label Grid.Row="1" Grid.Column="1" FontFamily="Verdana" Text="Edit Details" Font="Bold" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" TextColor="#443266" />
 											<Image Grid.Row="1" Grid.Column="2" Source="navigation_icon.png" IsVisible="true" HeightRequest="25" WidthRequest="25" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="2" Grid.Column="0" FontFamily="Verdana" Text="#" Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="3" Grid.Column="0" FontFamily="Verdana" Text="Guest Code : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="4" Grid.Column="0" FontFamily="Verdana" Text="Guest Name : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="5" Grid.Column="0" FontFamily="Verdana" Text="E-Mail : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="6" Grid.Column="0" FontFamily="Verdana" Text="Contact No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="7" Grid.Column="0" FontFamily="Verdana" Text="Passport No/ID No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="8" Grid.Column="0" FontFamily="Verdana" Text="Country : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
+											<Label Grid.Row="2" Grid.Column="0" FontFamily="Verdana" Text="#" Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="3" Grid.Column="0" FontFamily="Verdana" Text="Guest Code : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="4" Grid.Column="0" FontFamily="Verdana" Text="Guest Name : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="5" Grid.Column="0" FontFamily="Verdana" Text="E-Mail : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="6" Grid.Column="0" FontFamily="Verdana" Text="Contact No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="7" Grid.Column="0" FontFamily="Verdana" Text="Passport No/ID No : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="8" Grid.Column="0" FontFamily="Verdana" Text="Country : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
 											<!--<Label Grid.Row="8" Grid.Column="0" FontFamily="Verdana" Text="Place Of Issue : " Font="Bold" FontSize="Small" TextColor="Black" />
 										<Label Grid.Row="9" Grid.Column="0" FontFamily="Verdana" Text="Date Of Issue : " Font="Bold" FontSize="Small" TextColor="Black" />
 										<Label Grid.Row="10" Grid.Column="0" FontFamily="Verdana" Text="Date Of Expiry : " Font="Bold" FontSize="Small" TextColor="Black" />
 										<Label Grid.Row="11" Grid.Column="0" FontFamily="Verdana" Text="Date Of Birth : " Font="Bold" FontSize="Small" TextColor="Black" />-->
-											<Label Grid.Row="12" Grid.Column="0" FontFamily="Verdana" Text="No Of Visits : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="13" Grid.Column="0" FontFamily="Verdana" Text="Hotel : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="14" Grid.Column="0" FontFamily="Verdana" Text="Revenue(USD) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="15" Grid.Column="0" FontFamily="Verdana" Text="Revenue Room(USD) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="16" Grid.Column="0" FontFamily="Verdana" Text="Revenue (F n B) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="17" Grid.Column="0" FontFamily="Verdana" Text="Revenue Other: " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="{Binding passportIdNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="2" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="3" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestCode}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="4" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestName}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="5" Grid.Column="1" FontFamily="Verdana" Text="{Binding email}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="6" Grid.Column="1" FontFamily="Verdana" Text="{Binding contactNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="7" Grid.Column="1" FontFamily="Verdana" Text="{Binding passportIdNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="8" Grid.Column="1" FontFamily="Verdana" Text="{Binding countryKeyValue}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="12" Grid.Column="1" FontFamily="Verdana" Text="{Binding noOfVisits}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="13" Grid.Column="1" FontFamily="Verdana" Text="{Binding noOfVisitsHotel}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="14" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueTotal}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="15" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueRoom}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="16" Grid.Column="1" FontFamily="Verdana" Text="{Binding reveneuFB}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
-											<Label Grid.Row="17" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueOther}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+											<Label Grid.Row="12" Grid.Column="0" FontFamily="Verdana" Text="No Of Visits : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="13" Grid.Column="0" FontFamily="Verdana" Text="Hotel : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="14" Grid.Column="0" FontFamily="Verdana" Text="Revenue(USD) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="15" Grid.Column="0" FontFamily="Verdana" Text="Revenue Room(USD) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="16" Grid.Column="0" FontFamily="Verdana" Text="Revenue (F n B) : " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="17" Grid.Column="0" FontFamily="Verdana" Text="Revenue Other: " Font="Bold" FontSize="Small" TextColor="#660099" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="{Binding passportIdNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="2" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="3" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestCode}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="4" Grid.Column="1" FontFamily="Verdana" Text="{Binding guestName}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="5" Grid.Column="1" FontFamily="Verdana" Text="{Binding email}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="6" Grid.Column="1" FontFamily="Verdana" Text="{Binding contactNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="7" Grid.Column="1" FontFamily="Verdana" Text="{Binding passportIdNumber}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="8" Grid.Column="1" FontFamily="Verdana" Text="{Binding countryKeyValue}" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand" />
+											<Label Grid.Row="12" Grid.Column="1" FontFamily="Verdana" Text="{Binding noOfVisits}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
+											<Label Grid.Row="13" Grid.Column="1" FontFamily="Verdana" Text="{Binding noOfVisitsHotel}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
+											<Label Grid.Row="14" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueTotal}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
+											<Label Grid.Row="15" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueRoom}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
+											<Label Grid.Row="16" Grid.Column="1" FontFamily="Verdana" Text="{Binding reveneuFB}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
+											<Label Grid.Row="17" Grid.Column="1" FontFamily="Verdana" Text="{Binding revenueOther}" FontSize="Small" TextColor="Black" HorizontalOptions="EndAndExpand" />
 										</Grid>
 									</StackLayout>
 								</ViewCell>

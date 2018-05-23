@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg,Plugins.Popup"
+             x:Class="Checkin.Views.NewRemarkPopup">
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" Padding="20,20,20,20" WidthRequest="500">
+
+        <Label Text="Please select the area you want" FontSize="Large" TextColor="Navy" HorizontalTextAlignment="Center"/>
+
+        <StackLayout Orientation="Vertical" Padding="0,20,0,0">
+            <Button BackgroundColor="Purple" TextColor="White" Text="Front Office" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="FrontOfficeClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+
+            <Button BackgroundColor="Purple" TextColor="White" Text="Food and Beverage" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="FnBClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+
+            <Button BackgroundColor="Purple" TextColor="White" Text="House Keeping" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="HKclicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+
+            <Button BackgroundColor="Purple" TextColor="White" Text="Billing Info" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="BillingClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+           
+        </StackLayout>
+
+
+    </StackLayout>
+    
+</pages:PopupPage>

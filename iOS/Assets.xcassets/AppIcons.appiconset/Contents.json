@@ -1,49 +1,36 @@
 {
   "images": [
     {
-      "filename": "14_hotel_key_card-29.png",
-      "size": "29x29",
-      "scale": "1x",
+      "size": "20x20",
+      "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "14_hotel_key_card-58.png",
+      "size": "20x20",
+      "scale": "3x",
+      "idiom": "iphone"
+    },
+    {
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "14_hotel_key_card-87.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "14_hotel_key_card-80.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "14_hotel_key_card-120.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "14_hotel_key_card-57.png",
-      "size": "57x57",
-      "scale": "1x",
-      "idiom": "iphone"
-    },
-    {
-      "filename": "14_hotel_key_card-114.png",
-      "size": "57x57",
-      "scale": "2x",
-      "idiom": "iphone"
-    },
-    {
-      "filename": "14_hotel_key_card-120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
@@ -54,6 +41,16 @@
       "idiom": "iphone"
     },
     {
+      "size": "20x20",
+      "scale": "1x",
+      "idiom": "ipad"
+    },
+    {
+      "size": "20x20",
+      "scale": "2x",
+      "idiom": "ipad"
+    },
+    {
       "size": "29x29",
       "scale": "1x",
       "idiom": "ipad"
@@ -74,42 +71,27 @@
       "idiom": "ipad"
     },
     {
-      "size": "50x50",
-      "scale": "1x",
-      "idiom": "ipad"
-    },
-    {
-      "size": "50x50",
-      "scale": "2x",
-      "idiom": "ipad"
-    },
-    {
-      "filename": "14_hotel_key_card-167.png",
+      "filename": "checkin-logo 3.png",
       "size": "83.5x83.5",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "size": "72x72",
-      "scale": "1x",
-      "idiom": "ipad"
-    },
-    {
-      "size": "72x72",
-      "scale": "2x",
-      "idiom": "ipad"
-    },
-    {
-      "filename": "14_hotel_key_card-76.png",
+      "filename": "checkin-logo 1.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "14_hotel_key_card-152.png",
+      "filename": "checkin-logo 2.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
+    },
+    {
+      "size": "1024x1024",
+      "scale": "1x",
+      "idiom": "ios-marketing"
     },
     {
       "role": "notificationCenter",

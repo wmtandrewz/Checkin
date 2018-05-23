@@ -37,20 +37,30 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50">
                                         </ColumnDefinition>
-                                        <ColumnDefinition Width="200">
+                                        <ColumnDefinition Width="150">
                                         </ColumnDefinition>
                                         <ColumnDefinition Width="10*">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="50">
                                         </ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Image x:Name="image11" Grid.Row="0" Grid.Column="0" Source="Comment_black.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                                     </Image>
                                     <Label x:Name="remarkCatName" Grid.Row="0" Grid.Column="1" TextColor="#660099" FontSize="14" FontFamily="Verdana" Font="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="{Binding XtipoObserv}" HorizontalTextAlignment="Start"/>
                                     <Editor Grid.Row="0" Grid.Column="2" TextColor="Black" IsEnabled="false" WidthRequest="400" HeightRequest="100" BackgroundColor="#edf1ff" FontSize="14" FontFamily="Verdana" x:Name="remarkDesc" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Text="{Binding Xobservacion}"/>
+                                    <Label Text="Edit" Grid.Row="0" Grid.Column="3" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Medium"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <Button x:Name="AddNreRemark" Text="Add New Remark" BackgroundColor="Green" FontSize="Medium" TextColor="White" HorizontalOptions="End" WidthRequest="300" Clicked="NewRemarkClicked">
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                    </Button.BorderRadius>
+                </Button>
+                
           </StackLayout>
          </StackLayout>
 	</ContentPage.Content>

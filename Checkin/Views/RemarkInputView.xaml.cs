@@ -5,22 +5,25 @@ using Xamarin.Forms;
 
 namespace Checkin.Views
 {
-	public partial class PopupInputView : Rg.Plugins.Popup.Pages.PopupPage
+	public partial class RemarkInputView : Rg.Plugins.Popup.Pages.PopupPage
     {
+		private string remarkCatType = "";
 
-        public PopupInputView(string obseAction)
+		public RemarkInputView(string area, string type)
         {
             InitializeComponent();
 
-			popupEntry.Text = obseAction;
+			this.remarkCatType = type;
+ 
+			titleLabel.Text = $"Enter your remark for {area}";
+
         }
 
 		async void OKClicked(object sender, EventArgs e)
 		{
-			var text = popupEntry.Text;
+			string [] values = {popupEntry.Text,remarkCatType};
 			await PopupNavigation.PopAsync(true);
-			MessagingCenter.Send<PopupInputView,string>(this, "popup", text);
-
+			MessagingCenter.Send<RemarkInputView, string[]>(this, "remark", values);
 
 		}
 
@@ -33,7 +36,6 @@ namespace Checkin.Views
 		async void CancelClicked(object sender, EventArgs e)
 		{
 			await PopupNavigation.PopAsync(true);
-			MessagingCenter.Send<PopupInputView>(this, "cancel");
 		}
 
 		protected override bool OnBackgroundClicked()

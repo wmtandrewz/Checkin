@@ -176,7 +176,7 @@ namespace Checkin
 				//Startup setup
 				await CinnamonLogo.TranslateTo(0, 170, 500, Easing.Linear);
 
-				await CheckinText.TranslateTo(0, 100, 500, Easing.Linear);
+				//await CheckinText.TranslateTo(0, 100, 500, Easing.Linear);
 				await LoginEntryUsername.TranslateTo(0, 100, 500, Easing.Linear);
 				await LoginEntryPassword.TranslateTo(0, 100, 500, Easing.Linear);
 				await LoginButton.TranslateTo(0, 100, 500, Easing.Linear);
@@ -187,8 +187,8 @@ namespace Checkin
 
 				//Entry and Button Animation
 
-				CheckinText.FadeTo(1, 800, Easing.CubicOut);
-				CheckinText.TranslateTo(0, 0, 800, Easing.CubicOut);
+				//CheckinText.FadeTo(1, 800, Easing.CubicOut);
+				//CheckinText.TranslateTo(0, 0, 800, Easing.CubicOut);
 
 				LoginEntryUsername.FadeTo(1, 800, Easing.CubicOut);
 				LoginEntryUsername.TranslateTo(0, 0, 800, Easing.CubicOut);

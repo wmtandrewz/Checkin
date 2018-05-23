@@ -59,15 +59,22 @@ namespace Checkin
            
 			if (string.IsNullOrEmpty(remarkDetails.MainRemark))
 			{
-				remarksUnavailabilityIndicator.IsVisible = true;
+				//remarksUnavailabilityIndicator.IsVisible = true;
 			}
 			else
 			{
 				remarksList.Insert(0, new RemarksModel("", "", "", Constants._hotel_code, Constants._reservation_id, "Main", remarkDetails.MainRemark, ""));
 			}
 
-			RemarkDetailsListView.ItemsSource = remarksList;
+			if(resRemList.Count <= 0)
+			{
+				remarksUnavailabilityIndicator.IsVisible = true;
+				AddNreRemark.HorizontalOptions = LayoutOptions.Center;
+				AddNreRemark.VerticalOptions = LayoutOptions.Center;
+			}
 
+			RemarkDetailsListView.ItemsSource = remarksList;
+            
 			stopLoading();
 		}
 
@@ -83,7 +90,7 @@ namespace Checkin
                 
 				var res = Convert.ToString(output["d"]["results"][0]["reserRemarksSet"]["results"]);
 
-				res = res.Replace("FO", "Front Office").Replace("HK", "House Keeping");
+				res = res.Replace("FO", "Front Office").Replace("HK", "House Keeping").Replace("F&B","Food & Beverage").Replace("BILLING","Billing");
 
 				var resList = JsonConvert.DeserializeObject<List<RemarksModel>>(res);
 
@@ -124,28 +131,112 @@ namespace Checkin
 		{
 			RemarksModel remarksModel = (RemarksModel)e.SelectedItem;
 
-			await PopupNavigation.PushAsync(new PopupInputView());
+			if (remarksModel.XtipoObserv != "Main")
+			{
+				string XtipoObservType = "";
 
-            MessagingCenter.Subscribe<PopupInputView, string>(this, "popup", (sender, arg) => {
-                Debug.WriteLine(arg);
+				switch (remarksModel.XtipoObserv)
+				{
+					case "Front Office":
+						XtipoObservType = "FO";
+						break;
 
-				UpdateRemarks("FO",arg);
-            });
+					case "House Keeping":
+						XtipoObservType = "HK";
+						break;
+
+					case "Food & Beverage":
+						XtipoObservType = "F&B";
+						break;
+
+					case "Billing":
+						XtipoObservType = "BILLING";
+						break;
+				}
+
+				await PopupNavigation.PushAsync(new PopupInputView(remarksModel.Xobservacion));
+
+				MessagingCenter.Subscribe<PopupInputView, string>(this, "popup", (sender, arg) =>
+				{
+					Debug.WriteLine(arg);
+
+					RemarkDetailsLayout.IsVisible = false;
+					pageLoading();
+                    
+					UpdateRemarks(XtipoObservType, arg);
+				});
+
+				MessagingCenter.Subscribe<PopupInputView>(this,"cancel", (obj) => 
+				{
+					MessagingCenter.Unsubscribe<PopupInputView>(this, "cancel");
+
+					this.RemarkDetails();
+
+				});
+    
+			}
             
 		}
 
-        async void UpdateRemarks(string obserAc, string arg)
+		async void UpdateRemarks(string obserAc, string arg)
 		{
+			MessagingCenter.Unsubscribe<PopupInputView, string>(this, "popup");
+
 			RemarksPayload remarksPayload = new RemarksPayload(Settings.HotelCode, Constants._reservation_id, "", Settings.HotelCode, Constants._reservation_id, obserAc, arg);
 
             var res = await new PostServiceManager().SetReservationRemarks(remarksPayload);
 
 			if(res=="Success")
 			{
+				RemarkDetailsLayout.IsVisible = true;
 				this.RemarkDetails();
 			}
+			else
+			{
+				RemarkDetailsLayout.IsVisible = true;
+                stopLoading();
+			}
+
+
+        }
+
+		async void AddNewRemark(string [] values)
+        {
+			MessagingCenter.Unsubscribe<RemarkInputView, string[]>(this, "remark");
+
+			RemarksPayload remarksPayload = new RemarksPayload(Settings.HotelCode, Constants._reservation_id, "", Settings.HotelCode, Constants._reservation_id, values[1], values[0]);
+
+            var res = await new PostServiceManager().SetReservationRemarks(remarksPayload);
+
+            if (res == "Success")
+            {
+				RemarkDetailsLayout.IsVisible = true;
+                this.RemarkDetails();
+            }
+			else
+			{
+				RemarkDetailsLayout.IsVisible = true;
+                stopLoading();
+			}
+
+            
+        }
+
+		async void NewRemarkClicked(object sender, EventArgs e)
+		{
+			MessagingCenter.Subscribe<RemarkInputView, string []>(this, "remark", (senderRem, arg) =>
+            {
+                Debug.WriteLine(arg);
+
+                RemarkDetailsLayout.IsVisible = false;
+                pageLoading();
+
+				AddNewRemark(arg);
+            });
+
+			await PopupNavigation.PushAsync(new NewRemarkPopup());
 		}
-        
+
 		//Page Loading
 
 		void pageLoading()

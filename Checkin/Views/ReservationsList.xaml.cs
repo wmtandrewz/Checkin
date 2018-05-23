@@ -340,12 +340,12 @@ namespace Checkin
 			}
 			if (IsOdd(cellColourCount))
 			{
-				cellColour = Color.FromHex("EBE5D9");
+				cellColour = Color.FromHex("f1e8ff");
 				textColor = Color.FromHex("443266");
 			}
 			else
 			{
-				cellColour = Color.FromHex("F6F2E9");
+				cellColour = Color.FromHex("e3d6f9");
 				textColor = Color.FromHex("443266");
 			}
 
