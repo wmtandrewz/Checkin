@@ -122,6 +122,11 @@ namespace Checkin
 			headerImage.IsVisible = true;
 			guestListnformation.IsVisible = true;
 		}
+
+        void HomeClicked(object sender, EventArgs e)
+		{
+			new HomeNavigater().GoHome();
+		}
 	}
 
 	public class ItemList : INotifyPropertyChanged

@@ -186,6 +186,11 @@ namespace Checkin
 			return true;
 		}
 
+		void HomeClicked(object sender, EventArgs e)
+		{
+			new HomeNavigater().GoHome();
+		}
+
 		//on page load
 		protected override async void OnAppearing()
 		{

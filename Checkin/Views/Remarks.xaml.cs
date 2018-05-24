@@ -272,6 +272,11 @@ namespace Checkin
 			//Navigate to Login P
 
 		}
+
+		void HomeClicked(object sender, EventArgs e)
+        {
+            new HomeNavigater().GoHome();
+        }
 	}
 }
 

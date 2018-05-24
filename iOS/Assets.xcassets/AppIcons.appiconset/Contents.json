@@ -71,19 +71,19 @@
       "idiom": "ipad"
     },
     {
-      "filename": "checkin-logo 3.png",
+      "filename": "icon 3.png",
       "size": "83.5x83.5",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "checkin-logo 1.png",
+      "filename": "icon 1.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "checkin-logo 2.png",
+      "filename": "icon 2.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
@@ -183,19 +183,16 @@
       "idiom": "mac"
     },
     {
-      "filename": "iTunesArtwork.png",
       "size": "256x256",
       "scale": "2x",
       "idiom": "mac"
     },
     {
-      "filename": "iTunesArtwork.png",
       "size": "512x512",
       "scale": "1x",
       "idiom": "mac"
     },
     {
-      "filename": "iTunesArtwork@2x.png",
       "size": "512x512",
       "scale": "2x",
       "idiom": "mac"

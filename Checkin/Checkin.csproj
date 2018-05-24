@@ -198,6 +198,7 @@
     <Compile Include="Views\RemarkInputView.xaml.cs">
       <DependentUpon>RemarkInputView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HomeNavigater.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

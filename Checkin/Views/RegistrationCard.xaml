@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:m16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls.Checkbox"  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.RegistrationCard" BackgroundColor="White">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="3" Clicked="LogoutButtonClickedEvt">
+		<ToolbarItem Name="Logout" Order="Primary" Priority="2" Clicked="LogoutButtonClickedEvt">
 		</ToolbarItem>
-		<ToolbarItem Name="|" Order="Primary" Priority="2" />
-		<ToolbarItem Name="Guest Comments" Order="Primary" Priority="1" Clicked="guestCommentEvt" />
+
+        <ToolbarItem Icon="home.png" Order="Primary" Priority="1" Clicked="homeClicked">
+        </ToolbarItem>
+        
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<ScrollView x:Name="myscrollview" IsClippedToBounds="true">

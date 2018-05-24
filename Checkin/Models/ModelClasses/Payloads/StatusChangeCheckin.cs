@@ -15,13 +15,18 @@ namespace Checkin
 
 		public string XOMIT_CHECKIN { get; private set; }
 
-		public StatusChangeCheckin (string reservationId, string hotelID, string position, string Image, string checkinStatus)
+		public string CI_METHOD { get; private set; }
+
+
+
+		public StatusChangeCheckin (string reservationId, string hotelID, string position, string Image, string checkinStatus ,string checkinMethod)
 		{
 			XRESERVA_ID = reservationId;
 			XHOTEL_ID = hotelID;
 			XPOSITION = position;
 			XIMAGE = Image;
 			XOMIT_CHECKIN = checkinStatus;
+			CI_METHOD = checkinMethod;
 		}
 	}
 }

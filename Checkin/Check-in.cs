@@ -48,6 +48,13 @@ namespace Checkin
 				MainPage = new NavigationPage(new LoginPage()); ;
 			});
 
+			MessagingCenter.Subscribe<HomeNavigater>(this, "home", (sender) =>
+            {
+				MainPage = new NavigationPage(new GetMainPage());
+            });
+            
+
+
 
 		}
 

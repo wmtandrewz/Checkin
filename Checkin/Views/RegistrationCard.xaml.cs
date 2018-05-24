@@ -38,6 +38,8 @@ namespace Checkin
         public RegistrationCard()
         {
             initialPageLoading();
+
+
             //Signature Added
             MessagingCenter.Subscribe<Signature, List<guestSignature>>(this, Constants._signatureAddedMessage, (sender, arg) =>
             {
@@ -693,7 +695,7 @@ namespace Checkin
                         var postServiceManager = new PostServiceManager();
 
                         //Add details to Payload
-                        var statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, IntiailGuestDetail);
+						var statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, IntiailGuestDetail, "Checkin App");
 
                         result = await postServiceManager.StatusChangecheckinAsync(statusChangedCheckin);
                     }
@@ -739,7 +741,7 @@ namespace Checkin
                     var postServiceManager = new PostServiceManager();
 
                     //Add details to payload
-                    var statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, "T");
+                    var statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, "T", "Checkin App");
 
                     result = await postServiceManager.StatusChangecheckinAsync(statusChangedCheckin);
                 }
@@ -832,7 +834,7 @@ namespace Checkin
         protected override bool OnBackButtonPressed()
         {
             return true;
-        }
+		}
 
         //Logout button clicked
         async void LogoutButtonClickedEvt(object sender, EventArgs e)
@@ -841,7 +843,12 @@ namespace Checkin
             //Navigate to Login Page
         }
 
-        void guestCommentEvt(object sender, EventArgs e)
+		void homeClicked(object sender, EventArgs e)
+		{
+			new HomeNavigater().GoHome();
+		}
+
+		void guestCommentEvt(object sender, EventArgs e)
         {
             //var nameToURL = CountryDictionary.listOfURL();
             //string name = nameToURL.FirstOrDefault(x => x.Value == Constants._hotel_code).Key;
@@ -863,10 +870,26 @@ namespace Checkin
             if (e.Value == true)
             {
                 MessagingCenter.Send<RegistrationCard, string>(this, "agreed", "");
+
+				//Not Checked in but signature added
+
+				if (Constants._reservationStatus != Constants._reservationStatusCheckedIn)
+                {
+                    checkinAndSaveButton.IsVisible = true;
+					checkinButton.IsVisible = true;
+                }
+				else
+				{
+					checkinAndSaveButton.IsVisible = false;
+                    checkinButton.IsVisible = false;
+				}
+
             }
             else
             {
                 MessagingCenter.Send<RegistrationCard, string>(this, "notAgreed", "");
+				checkinAndSaveButton.IsVisible = false;
+                checkinButton.IsVisible = false;
             }
         }
     }

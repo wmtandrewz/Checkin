@@ -285,7 +285,7 @@ namespace Checkin
 		void ContactUsClickedEvent(object sender, EventArgs e)
 		{
 
-			Device.OpenUri(new Uri("https://sgit.keells.com/contact.php"));
+			Device.OpenUri(new Uri("https://cinnamonhotels.freshdesk.com/support/home"));
 		}
 
 		//Help button clicked

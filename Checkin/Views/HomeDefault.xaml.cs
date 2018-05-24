@@ -19,14 +19,18 @@ namespace Checkin
 		public HomeDefault()
 		{
 			InitializeComponent();
+
 			//Setting hotelcodeand hotel logo
-			if (Constants._hotel_code == "3015")
-			{
-				CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".jpg";
-			}
-			else {
-				CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".bmp";
-			}
+
+			CinnamonLogo.Source = "banners/"+ Constants._hotel_code + ".jpg";
+
+			//if (Constants._hotel_code == "3015")
+			//{
+			//	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".jpg";
+			//}
+			//else {
+			//	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".bmp";
+			//}
 
 			MessagingCenter.Subscribe<ReservationsList>(this, "chart", (sender) =>
     		{
