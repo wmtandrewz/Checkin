@@ -9,6 +9,8 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using Checkin.Data.Posting;
 using System.Diagnostics;
+using Rg.Plugins.Popup.Services;
+using Checkin.Views;
 
 namespace Checkin
 {
@@ -46,7 +48,7 @@ namespace Checkin
                 checkinAndSaveButton.IsVisible = true;
                 if (Constants._reservationStatus == Constants._reservationStatusCheckedIn)
                 {
-                    saveSignatureButton.IsVisible = false;//false
+                    saveSignatureButton.IsVisible = true;//false
                     checkinButton.IsVisible = false;
                     PerformaButton.IsVisible = true;
 
@@ -54,7 +56,7 @@ namespace Checkin
                 }
                 else
                 {
-                    saveSignatureButton.IsVisible = true;//false
+                    saveSignatureButton.IsVisible = false;//false
                     checkinButton.IsVisible = true;
                     PerformaButton.IsVisible = false;
                 }
@@ -590,87 +592,92 @@ namespace Checkin
         // Agrreement button Clicked
         async void AgreementButton(object sender, EventArgs e)
         {
-            agreementInformation();
+            await PopupNavigation.PushAsync(new PopupAgreement());
+            //agreementInformation();
         }
 
         //Agrremnt button clicked
-        async void agreementInformation()
-        {
-            //Agreement text
-            string text = Constants._agreementInformation;
-            text = text.Replace("@", " " + Environment.NewLine);
-            await DisplayAlert(Constants._agreement, text, Constants._buttonOkay);
-        }
+        //async void agreementInformation()
+        //{
+        //    //Agreement text
+        //    //string text = Constants._agreementInformation;
+        //    //text = text.Replace("@", " " + Environment.NewLine);
+        //    //await DisplayAlert(Constants._agreement, text, Constants._buttonOkay);
+
+
+        //}
 
         //Terms and Conditions Button clicked
         async void TermsandConditions(object sender, EventArgs e)
         {
-            string text;
+            //string text;
 
-            switch(Constants._hotel_code)
-            {
-                case "3000": text = Constants._termsAndConditionsCNG;
-                    break;
+            //switch(Constants._hotel_code)
+            //{
+            //    case "3000": text = Constants._termsAndConditionsCNG;
+            //        break;
 
-                case "3005":
-                    text = Constants._termsAndConditionsCNL;
-                    break;
+            //    case "3005":
+            //        text = Constants._termsAndConditionsCNL;
+            //        break;
 
-                case "3015":
-                    text = Constants._termsAndConditionsRED;
-                    break;
+            //    case "3015":
+            //        text = Constants._termsAndConditionsRED;
+            //        break;
 
-                case "3100":
-                    text = Constants._termsAndConditionsBBH;
-                    break;
+            //    case "3100":
+            //        text = Constants._termsAndConditionsBBH;
+            //        break;
 
-                case "3110":
-                    text = Constants._termsAndConditionsCIT;
-                    break;
+            //    case "3110":
+            //        text = Constants._termsAndConditionsCIT;
+            //        break;
 
-                case "3115":
-                    text = Constants._termsAndConditionsLOD;
-                    break;
+            //    case "3115":
+            //        text = Constants._termsAndConditionsLOD;
+            //        break;
 
-                case "3120":
-                    text = Constants._termsAndConditionsVIL;
-                    break;
+            //    case "3120":
+            //        text = Constants._termsAndConditionsVIL;
+            //        break;
 
-                case "3150":
-                    text = Constants._termsAndConditionsWLD;
-                    break;
+            //    case "3150":
+            //        text = Constants._termsAndConditionsWLD;
+            //        break;
 
-                case "3160":
-                    text = Constants._termsAndConditionsBEY;
-                    break;
+            //    case "3160":
+            //        text = Constants._termsAndConditionsBEY;
+            //        break;
 
-                case "3165":
-                    text = Constants._termsAndConditionsBLU;
-                    break;
+            //    case "3165":
+            //        text = Constants._termsAndConditionsBLU;
+            //        break;
 
-                case "3170":
-                    text = Constants._termsAndConditionsTRA;
-                    break;
+            //    case "3170":
+            //        text = Constants._termsAndConditionsTRA;
+            //        break;
 
-                case "3300":
-                    text = Constants._termsAndConditionsELL;
-                    break;
+            //    case "3300":
+            //        text = Constants._termsAndConditionsELL;
+            //        break;
 
-                case "3305":
-                    text = Constants._termsAndConditionsHAK;
-                    break;
+            //    case "3305":
+            //        text = Constants._termsAndConditionsHAK;
+            //        break;
 
-                case "3310":
-                    text = Constants._termsAndConditionsDHO;
-                    break;
+            //    case "3310":
+            //        text = Constants._termsAndConditionsDHO;
+            //        break;
 
-                default:
-                    text = Constants._termsAndConditionsDefaults;
-                    break;
-            }
+            //    default:
+            //        text = Constants._termsAndConditionsDefaults;
+            //        break;
+            //}
 
-            text = text.Replace("@", " " + Environment.NewLine);
-            await DisplayAlert(Constants._termsAndConditionsMessage, text, Constants._buttonOkay);
+            //text = text.Replace("@", " " + Environment.NewLine);
+            //await DisplayAlert(Constants._termsAndConditionsMessage, text, Constants._buttonOkay);
+
+            await PopupNavigation.PushAsync(new PopupTermsnConditions());
         }
 
 
@@ -870,26 +877,10 @@ namespace Checkin
             if (e.Value == true)
             {
                 MessagingCenter.Send<RegistrationCard, string>(this, "agreed", "");
-
-				//Not Checked in but signature added
-
-				if (Constants._reservationStatus != Constants._reservationStatusCheckedIn)
-                {
-                    checkinAndSaveButton.IsVisible = true;
-					checkinButton.IsVisible = true;
-                }
-				else
-				{
-					checkinAndSaveButton.IsVisible = false;
-                    checkinButton.IsVisible = false;
-				}
-
             }
             else
             {
                 MessagingCenter.Send<RegistrationCard, string>(this, "notAgreed", "");
-				checkinAndSaveButton.IsVisible = false;
-                checkinButton.IsVisible = false;
             }
         }
     }

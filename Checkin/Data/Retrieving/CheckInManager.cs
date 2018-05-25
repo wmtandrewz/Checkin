@@ -54,7 +54,7 @@ namespace Checkin
 			return await this.GetODataService(url);
 		}
 
-		public async Task<String> GetReservationDetailsDepartureDate(string roomNumber)
+		public async Task<String> GetReservationDetailsDepartureDate()
 		{
 			string url = "/sap/opu/odata/sap/ZTMS_GET_RESERVATION_N3_SRV_01/ReservationHeaderSet?$filter=HtlId eq '" + Constants._hotel_code + "' and XarrivalDt eq datetime'2014-10-10T00:00:00'";
 			return await this.GetODataService(url);

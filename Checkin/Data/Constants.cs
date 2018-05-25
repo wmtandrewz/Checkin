@@ -178,7 +178,7 @@ namespace Checkin
 		public static bool _guestEditedStatus;
 
 		//Terms and conditions
-		public static string _termsAndConditionsDefaults = "1. The guest signing this form and  @@accepting these terms" +
+		public static string _termsAndConditionsDefaults = "1. The guest signing this form and  @@accepting these terms " +
 												   "and conditions shall be deemed to have so signed and accepted the same " +
 												   "for and on behalf of those persons whose names are listed in this form.@@" +
 												   "2. If this form is signed by a guest of a tour group, the terms and conditions " +
@@ -265,23 +265,35 @@ namespace Checkin
 												   "Sri Lanka is twenty one (21) years and shall ensure that this is strictly adhered to by the guest " +
 												   "and any person whose names are listed in this form and agrees to indemnify and hold harmless the hotel " +
 												   "from any claims, damages resulting therefrom. Guests are advised to only smoke in specified smoking " +
-												   "rooms and designated smoking areas.";
+												   "rooms and designated smoking areas.@@ "+
+                                                   "25. The client is required to provide full and accurate details in the form required by us in order for " +
+                                                   "us to process the booking made by the client.We are not in a position to confirm or process any bookings made by the client in the event " +
+                                                   "that the client does not provide such personal data as required.Cinnamon Hotels & Resorts confirms that all personal information provided by the you " +
+                                                   "will be used for the purposes of facilitating the booking /s made by you and to promote the products and services of the Company and its brand.We may provide " +
+                                                   "and /or transfer such personal data to our service providers, agents and other parties as required for the purpose of facilitating the booking made by you.@@ " +
+                                                   " Such personal data will be stored for a period not exceeding 12 months.The client shall have the right to request from us, access to, any rectification or erasure " +
+                                                   "of personal data provided to us or to restrict the processing of such data.The client shall also have the right to withdraw his/her consent for us to use the personal " +
+                                                   "data at any time in writing, provided that any processing of data prior to the withdrawal of such consent shall not be rendered unlawful. Furthermore, if the client " +
+                                                   "is an EU data subject, the client shall have the right to lodge a complaint with a supervisory authority in the event that there is a breach of the relevant data protection regulations.@@ " +
+                                                   " Furthermore, the client confirms that any personal information or data he/she is sharing on behalf of another person for the purposes of the booking with Cinnamon Hotels & Resorts has " +
+                                                   "been obtained with the prior consent of such person who has apprised himself/herself of the booking terms and conditions and privacy policy of Cinnamon Hotels & Resorts and such person " +
+                                                   "is aware of their rights in respect of such data provided to us";
 
-        public static string _termsAndConditionsCNL = "1. The guest signing this form and  @@accepting these terms" +
+        public static string _termsAndConditionsCNL = "1. The guest signing this form and  @@accepting these terms " +
                                                    "and conditions shall be deemed to have so signed and accepted the same " +
                                                    "for and on behalf of those persons whose names are listed in this form.@@" +
                                                    "2. If this form is signed by a guest of a tour group, the terms and conditions " +
                                                    "herein shall apply for all facilities not provided under the tour package and in respect" +
                                                    "of all other facilities, insofar as these terms and conditions do not conflict with the " +
-                                                   "terms and conditions under which the tour is conducted.@@  ";
+                                                   "terms and conditions under which the tour is conducted.@@ ";
         
-        public static string _termsAndConditionsCNG = "1. The guest signing this form and  @@accepting these terms" +
+        public static string _termsAndConditionsCNG = "1. The guest signing this form and  @@accepting these terms " +
                                                    "and conditions shall be deemed to have so signed and accepted the same " +
                                                    "for and on behalf of those persons whose names are listed in this form.@@" +
                                                    "2. If this form is signed by a guest of a tour group, the terms and conditions " +
                                                    "herein shall apply for all facilities not provided under the tour package and in respect" +
                                                    "of all other facilities, insofar as these terms and conditions do not conflict with the " +
-                                                   "terms and conditions under which the tour is conducted.@@  ";
+                                                   "terms and conditions under which the tour is conducted.@@ ";
 
         public static string _termsAndConditionsRED = "1. The guest signing this form and  @@accepting these terms" +
                                                    "and conditions shall be deemed to have so signed and accepted the same " +
@@ -299,7 +311,15 @@ namespace Checkin
                                                    "of all other facilities, insofar as these terms and conditions do not conflict with the " +
                                                    "terms and conditions under which the tour is conducted.@@  ";
 
-        public static string _termsAndConditionsTRA = "1. The guest signing this form and  @@accepting these terms" +
+        public static string _termsAndConditionsVIL = "1. The guest signing this form and  @@accepting these terms" +
+                                                   "and conditions shall be deemed to have so signed and accepted the same " +
+                                                   "for and on behalf of those persons whose names are listed in this form.@@" +
+                                                   "2. If this form is signed by a guest of a tour group, the terms and conditions " +
+                                                   "herein shall apply for all facilities not provided under the tour package and in respect" +
+                                                   "of all other facilities, insofar as these terms and conditions do not conflict with the " +
+                                                   "terms and conditions under which the tour is conducted.@@  ";
+
+        public static string _termsAndConditionsBBH = "1. The guest signing this form and  @@accepting these terms" +
                                                    "and conditions shall be deemed to have so signed and accepted the same " +
                                                    "for and on behalf of those persons whose names are listed in this form.@@" +
                                                    "2. If this form is signed by a guest of a tour group, the terms and conditions " +
@@ -315,15 +335,7 @@ namespace Checkin
                                                    "of all other facilities, insofar as these terms and conditions do not conflict with the " +
                                                    "terms and conditions under which the tour is conducted.@@  ";
 
-        public static string _termsAndConditionsVIL = "1. The guest signing this form and  @@accepting these terms" +
-                                                   "and conditions shall be deemed to have so signed and accepted the same " +
-                                                   "for and on behalf of those persons whose names are listed in this form.@@" +
-                                                   "2. If this form is signed by a guest of a tour group, the terms and conditions " +
-                                                   "herein shall apply for all facilities not provided under the tour package and in respect" +
-                                                   "of all other facilities, insofar as these terms and conditions do not conflict with the " +
-                                                   "terms and conditions under which the tour is conducted.@@  ";
-
-        public static string _termsAndConditionsBBH = "1. The guest signing this form and  @@accepting these terms" +
+        public static string _termsAndConditionsTRA = "1. The guest signing this form and  @@accepting these terms" +
                                                    "and conditions shall be deemed to have so signed and accepted the same " +
                                                    "for and on behalf of those persons whose names are listed in this form.@@" +
                                                    "2. If this form is signed by a guest of a tour group, the terms and conditions " +

@@ -38,14 +38,15 @@ namespace Checkin
 			{
 				//LoadRemarks
 				this.RemarkDetails();
-				//MessagingCenter.Unsubscribe<ReservationInfo, string>(this, Constants._loadRemarksInformation);
-			});
+				MessagingCenter.Unsubscribe<ReservationInfo, string>(this, Constants._loadRemarksInformation);
+            });
+
+            //Display Notices at the begining
+            GetResNoticesList();
 
 		}
 		public async void RemarkDetails()
 		{
-			//Display Notices at the begining
-			GetResNoticesList();
 			
 			MainGuestInformation mainGuestInformation = new MainGuestInformation();
 
@@ -81,50 +82,67 @@ namespace Checkin
         
 		async Task<List<RemarksModel>> GetResRemarksList()
         {
-			var responce = await checkInManager.GetReservationRemarksAndNotices();
-
-            var output = JObject.Parse(responce);
-
-			if (Enumerable.Count(output["d"]["results"][0]["reserRemarksSet"]["results"]) > 0)
+			try
             {
-                
-				var res = Convert.ToString(output["d"]["results"][0]["reserRemarksSet"]["results"]);
+                var responce = await checkInManager.GetReservationRemarksAndNotices();
 
-				res = res.Replace("FO", "Front Office").Replace("HK", "House Keeping").Replace("F&B","Food & Beverage").Replace("BILLING","Billing");
+                var output = JObject.Parse(responce);
 
-				var resList = JsonConvert.DeserializeObject<List<RemarksModel>>(res);
+                if (Enumerable.Count(output["d"]["results"][0]["reserRemarksSet"]["results"]) > 0)
+                {
 
-				return resList;
+                    var res = Convert.ToString(output["d"]["results"][0]["reserRemarksSet"]["results"]);
+
+                    res = res.Replace("FO", "Front Office").Replace("HK", "House Keeping").Replace("F&B", "Food & Beverage").Replace("BILLING", "Billing");
+
+                    var resList = JsonConvert.DeserializeObject<List<RemarksModel>>(res);
+
+                    return resList;
+                }
+
+                return new List<RemarksModel>();
             }
-            
-			return new List<RemarksModel>();
+            catch(Exception)
+            {
+                Debug.WriteLine("Remarks GET error");
+                return new List<RemarksModel>();
+            }
             
         }
 
 		async void GetResNoticesList()
         {
-            var responce = await checkInManager.GetReservationRemarksAndNotices();
-
-            var output = JObject.Parse(responce);
-
-			if (Enumerable.Count(output["d"]["results"][0]["reserNoticesSet"]["results"]) > 0)
+            try
             {
+                var responce = await checkInManager.GetReservationRemarksAndNotices();
 
-				var res = Convert.ToString(output["d"]["results"][0]["reserNoticesSet"]["results"]);
-                
-				var resList = JsonConvert.DeserializeObject<List<ResNoticesModel>>(res).Where(x=>x.Xaccion=="3");
-                
-				if(resList.FirstOrDefault()!=null)
-				{
-					var checkinNotice = resList.FirstOrDefault().Xobservacion;
+                var output = JObject.Parse(responce);
 
-					if (!string.IsNullOrEmpty(checkinNotice))
-					{
-						await DisplayAlert("Notice!", $"{checkinNotice}", "OK");
-					}
-				}
+                if (Enumerable.Count(output["d"]["results"][0]["reserNoticesSet"]["results"]) > 0)
+                {
+
+                    var res = Convert.ToString(output["d"]["results"][0]["reserNoticesSet"]["results"]);
+
+                    var resList = JsonConvert.DeserializeObject<List<ResNoticesModel>>(res).Where(x => x.Xaccion == "3");
+
+                    if (resList.FirstOrDefault() != null)
+                    {
+                        var checkinNotice = resList.FirstOrDefault().Xobservacion;
+
+                        if (!string.IsNullOrEmpty(checkinNotice))
+                        {
+                            //await DisplayAlert("Notice!", $"{checkinNotice}", "OK");
+
+                            await PopupNavigation.PushAsync(new PopupAlert("Notice for Reception!", $"{checkinNotice}", "OK"));
+                        }
+                    }
+                }
             }
-            
+            catch(Exception)
+            {
+                Debug.WriteLine("Notices GET error");
+            }
+
         }
 
         async void RemarkItemSelected(object sen, SelectedItemChangedEventArgs e)

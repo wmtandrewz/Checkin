@@ -13,7 +13,7 @@
             <Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200"/>
 
             <StackLayout BackgroundColor="#f3f2f4" Padding="40,10,40,10" HeightRequest="300" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
-                <Label Text="Statistics" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
+                <Label Text="Overoll Status" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -27,11 +27,11 @@
 
                     <chart:ChartView Grid.Row="0" Grid.Column="0" x:Name="checkinChart" HeightRequest="200"/>
                     <Label Grid.Row="0" Grid.Column="0" x:Name="checkinTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Daily Checkins" x:Name="checkinLabel" IsVisible="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Checked-in" x:Name="checkinLabel" IsVisible="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
 
                     <chart:ChartView Grid.Row="0" Grid.Column="1" x:Name="pendingChart" HeightRequest="200"/>
                     <Label Grid.Row="0" Grid.Column="1" x:Name="pendingTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="Pending Checkins" IsVisible="false" x:Name="pendingLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Expected Arrivals" IsVisible="false" x:Name="pendingLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
 
                </Grid>
             </StackLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg,Plugins.Popup"
+             x:Class="Checkin.Views.PopupAlert">
+    
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" Padding="20,20,20,20" WidthRequest="400">
+        
+        <Label x:Name="TitleLabel" FontSize="Large" TextColor="Purple" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+        <BoxView Color="Navy" WidthRequest="300" HeightRequest="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+       
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+             <Label x:Name="MessegeLabel" FontSize="Medium" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        </Grid>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="okButton" BackgroundColor="Green" TextColor="White" WidthRequest="100" HeightRequest="50" Clicked="OKClicked" HorizontalOptions="Center">
+                <Button.BorderRadius>
+                    <OnPlatform x:TypeArguments="x:Int32"
+                                iOS     ="10"/>
+                </Button.BorderRadius>
+            </Button>
+        </Grid>
+        
+   </StackLayout>
+    
+</pages:PopupPage>

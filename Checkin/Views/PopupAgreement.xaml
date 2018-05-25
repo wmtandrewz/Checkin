@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg,Plugins.Popup"
+             x:Class="Checkin.Views.PopupAgreement">
+
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" Padding="20,20,20,20" WidthRequest="500">
+
+            <Label Text="Agreement" FontSize="Large" TextColor="Purple" HorizontalTextAlignment="Center"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                 <Label Grid.Row="0" Grid.Column="0" x:Name="label1">
+                    
+                </Label>
+                
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Text="OK" BackgroundColor="Green" TextColor="White" WidthRequest="100" HeightRequest="50" Clicked="OKClicked" HorizontalOptions="Center"/>
+            </Grid>
+
+        </StackLayout>
+    
+</pages:PopupPage>

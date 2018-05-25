@@ -51,30 +51,37 @@ namespace Checkin
         
 		async void GetDepFlightsList()
 		{
-			CheckInManager checkInManager = new CheckInManager();
-			var responce = await checkInManager.GetFlightDetails("DEP");
+			try
+            {
+                CheckInManager checkInManager = new CheckInManager();
+                var responce = await checkInManager.GetFlightDetails("DEP");
 
-			var output = JObject.Parse(responce);
+                var output = JObject.Parse(responce);
 
-			if (Enumerable.Count(output["d"]["results"]) > 0)
-			{
+                if (Enumerable.Count(output["d"]["results"]) > 0)
+                {
 
-				for (int i = 0; i < Enumerable.Count(output["d"]["results"]); i++)
-				{
-					flighList.Add(new FlightsModel(
-						Convert.ToString(output["d"]["results"][i]["ArrFlight"]),
-						Convert.ToString(output["d"]["results"][i]["DepFlight"]),
-						Convert.ToString(output["d"]["results"][i]["Airport"]),
-						Convert.ToString(output["d"]["results"][i]["AirpArrTime"]),
-						GenerateDate(Convert.ToString(output["d"]["results"][i]["HotelDepTime"])),
-						Convert.ToString(output["d"]["results"][i]["HotelArrTime"]),
-						GenerateDate(Convert.ToString(output["d"]["results"][i]["AirpDepTime"]))
-					                              
-                    ));
-				}
-			}
+                    for (int i = 0; i < Enumerable.Count(output["d"]["results"]); i++)
+                    {
+                        flighList.Add(new FlightsModel(
+                            Convert.ToString(output["d"]["results"][i]["ArrFlight"]),
+                            Convert.ToString(output["d"]["results"][i]["DepFlight"]),
+                            Convert.ToString(output["d"]["results"][i]["Airport"]),
+                            Convert.ToString(output["d"]["results"][i]["AirpArrTime"]),
+                            GenerateDate(Convert.ToString(output["d"]["results"][i]["HotelDepTime"])),
+                            Convert.ToString(output["d"]["results"][i]["HotelArrTime"]),
+                            GenerateDate(Convert.ToString(output["d"]["results"][i]["AirpDepTime"]))
 
-			FlightsListView.ItemsSource = flighList;
+                                 ));
+                    }
+                }
+
+                FlightsListView.ItemsSource = flighList;
+            }
+            catch(Exception)
+            {
+                Debug.WriteLine("GET Dep Flights Error");
+            }
 		}
 
         async void FlightListItemSelected(object sender,SelectedItemChangedEventArgs e)
