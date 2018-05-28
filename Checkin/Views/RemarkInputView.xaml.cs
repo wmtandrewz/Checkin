@@ -22,8 +22,8 @@ namespace Checkin.Views
 		async void OKClicked(object sender, EventArgs e)
 		{
 			string [] values = {popupEntry.Text,remarkCatType};
-			await PopupNavigation.PopAsync(true);
-			MessagingCenter.Send<RemarkInputView, string[]>(this, "remark", values);
+            await PopupNavigation.PopAsync(true);
+            MessagingCenter.Send<RemarkInputView, string[]>(this, "remark", values);
 
 		}
 

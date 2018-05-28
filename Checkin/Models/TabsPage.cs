@@ -13,7 +13,6 @@ namespace Checkin
 			this.Children.Add(new Remarks() { Title = "Remarks",Icon="TabComment.png" });
 			//this.Children.Add(new Attachments() { Title = "Attachments",Icon="attachments.png" });
 
-
 		}
 	}
 }

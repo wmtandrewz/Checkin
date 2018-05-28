@@ -18,7 +18,6 @@ namespace Checkin.Views
 		{
 			await PopupNavigation.PopAsync(true);
 			await PopupNavigation.PushAsync(new RemarkInputView("Front Office","FO"));
-
 		}
 
 		async void FnBClicked(object sender, EventArgs e)

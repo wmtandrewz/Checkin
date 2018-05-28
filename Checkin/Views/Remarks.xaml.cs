@@ -41,6 +41,7 @@ namespace Checkin
 				MessagingCenter.Unsubscribe<ReservationInfo, string>(this, Constants._loadRemarksInformation);
             });
 
+
             //Display Notices at the begining
             GetResNoticesList();
 
@@ -207,7 +208,7 @@ namespace Checkin
 			if(res=="Success")
 			{
 				RemarkDetailsLayout.IsVisible = true;
-				this.RemarkDetails();
+                this.RemarkDetails();
 			}
 			else
 			{
@@ -229,6 +230,7 @@ namespace Checkin
             if (res == "Success")
             {
 				RemarkDetailsLayout.IsVisible = true;
+                RemarkDetailsListView.HeightRequest = RemarkDetailsListView.Height + 80;
                 this.RemarkDetails();
             }
 			else
@@ -244,8 +246,6 @@ namespace Checkin
 		{
 			MessagingCenter.Subscribe<RemarkInputView, string []>(this, "remark", (senderRem, arg) =>
             {
-                Debug.WriteLine(arg);
-
                 RemarkDetailsLayout.IsVisible = false;
                 pageLoading();
 
