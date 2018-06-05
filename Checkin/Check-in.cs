@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using checkin;
 using Plugin.Connectivity;
 using Xamarin.Forms;
@@ -7,7 +8,8 @@ namespace Checkin
 {
 	public class App : Application
 	{
-		static NavigationPage _NavPage;
+        private int _seconds = 0;
+        private bool runTimer = true;
 
 		public App()
 		{
@@ -65,12 +67,29 @@ namespace Checkin
 
 		protected override void OnSleep()
 		{
-			// Handle when your app sleeps
+            Debug.WriteLine("OnSleep");
+
+            runTimer = true;
+
+            Device.StartTimer(TimeSpan.FromSeconds(900), () =>
+            {
+               
+                if(runTimer)
+                {
+                    new userLogout().logout();
+                    return false;
+                }
+
+                return false; // True = Repeat again, False = Stop the timer
+            });
 		}
 
 		protected override void OnResume()
 		{
-			// Handle when your app resumes
+            runTimer = false;
+
+            Debug.WriteLine("OnResume");
+
 		}
 	}
 }
