@@ -74,7 +74,7 @@ namespace Checkin
 
 		public async Task<String> GetGuestSignature(string guestNumber)
 		{
-			string url = "/sap/opu/odata/sap/ZTMS_IMAGE_SRV/Checkins(XRESERVA_ID='" + Constants._reservation_id + "',XHOTEL_ID='" + Constants._hotel_code + "',XPOSITION='" + guestNumber + "')?$format=json";
+			string url = "/sap/opu/odata/sap/ZTMS_IMG_SRV/Checkins(XRESERVA_ID='" + Constants._reservation_id + "',XHOTEL_ID='" + Constants._hotel_code + "',XPOSITION='" + guestNumber + "')?$format=json";
 			return await this.GetODataService(url);
 		}
 

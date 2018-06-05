@@ -253,26 +253,33 @@ namespace Checkin
 
 		async System.Threading.Tasks.Task GETPPExpiryFromDatabses(int identificationMethod, string indetificationMethodNumber)
         {
-            string result = await checkInManager.GetGuestDetailsThroughPassportNumber(identificationMethod.ToString(), indetificationMethodNumber);
-            if (result != null || result != "Error")
+            try
             {
-                var jObj = JObject.Parse(result);
-                
-                string doe = jObj["d"]["results"][0]["XfechaExpiry"].ToString();
-
-                Device.BeginInvokeOnMainThread(() =>
+                string result = await checkInManager.GetGuestDetailsThroughPassportNumber(identificationMethod.ToString(), indetificationMethodNumber);
+                if (result != null || result != "Error")
                 {
-                    if (!string.IsNullOrEmpty(doe))
-                    {
-                        PassportExpiry.Date = serviceDataValidation.dateOfExpiryValidation(doe);
-						Debug.WriteLine(PassportExpiry.Date); 
-                    }
+                    var jObj = JObject.Parse(result);
 
-                });
+                    string doe = jObj["d"]["results"][0]["XfechaExpiry"].ToString();
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (!string.IsNullOrEmpty(doe))
+                        {
+                            PassportExpiry.Date = serviceDataValidation.dateOfExpiryValidation(doe);
+                            Debug.WriteLine(PassportExpiry.Date);
+                        }
+
+                    });
+                }
+            }
+            catch(Exception)
+            {
+                Debug.WriteLine("Passport ex date service error");
             }
         }
 
-		 void guestdetailsOnloadAndSearch(string guestNumberCount, string identificationMethod, string passportIdNumber, string salutation, string guestFirstName, string guestLastName, string gender, string email, string contactNumber, string houseNumber, string street, string city, string country, string nationality, string language, string GuestCode, string dateOfBirth,string dateOfExp)
+        void guestdetailsOnloadAndSearch(string guestNumberCount, string identificationMethod, string passportIdNumber, string salutation, string guestFirstName, string guestLastName, string gender, string email, string contactNumber, string houseNumber, string street, string city, string country, string nationality, string language, string GuestCode, string dateOfBirth,string dateOfExp)
 		{
 			pageLoading();
             

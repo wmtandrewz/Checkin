@@ -65,31 +65,16 @@ namespace Checkin
 			{
 				new Microcharts.Entry(ChartModel.resCount - ChartModel.pendingCount)
 				{
-					Color = SKColor.Parse("#0000FF")
+                    Color = SKColor.Parse("#009109")
 				},
 
 				new Microcharts.Entry(ChartModel.resCount - ChartModel.checkedinCount)
                 {
-					Color = SKColor.Parse("#a5c7ff")
+					Color = SKColor.Parse("#FF0000")
                 }
 			};
 
 			checkinChart.Chart = new Microcharts.DonutChart { Entries = checkinEntries };
-
-			List<Microcharts.Entry> pendingEntries = new List<Microcharts.Entry>
-            {
-                new Microcharts.Entry(ChartModel.resCount - ChartModel.checkedinCount)
-                {
-					Color = SKColor.Parse("#008206")
-                },
-
-				new Microcharts.Entry(ChartModel.resCount - ChartModel.pendingCount)
-                {
-					Color = SKColor.Parse("#dbffdc")
-                }
-            };
-
-			pendingChart.Chart = new Microcharts.DonutChart { Entries = pendingEntries };
 
 			var resTot = ChartModel.resCount;
 			var checkinTot = ChartModel.checkedinCount;
@@ -101,11 +86,11 @@ namespace Checkin
 
 			double pendingPercentage = ((resTot - checkinTot) * 100 / resTot);
 
-			pendingTotLabel.Text = pendingPercentage.ToString()+"%";
+            checkedinCountLabel.Text = checkinTot.ToString();
+            expArrCountLabel.Text = pendingTot.ToString();
 
-			checkinLabel.IsVisible = true;
-			pendingLabel.IsVisible = true;
 			statLayout.IsVisible = true;
+
 		}
 
 

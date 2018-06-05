@@ -230,7 +230,7 @@ namespace Checkin
             if (res == "Success")
             {
 				RemarkDetailsLayout.IsVisible = true;
-                RemarkDetailsListView.HeightRequest = RemarkDetailsListView.Height + 80;
+                RemarkDetailsListView.HeightRequest = RemarkDetailsListView.Height + 100;
                 this.RemarkDetails();
             }
 			else

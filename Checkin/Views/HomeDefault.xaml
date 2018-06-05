@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart = "clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Checkin.HomeDefault" 
-             BackgroundColor="White">
+             BackgroundColor="#e5e5e5">
     
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
@@ -12,12 +12,11 @@
         <StackLayout>
             <Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200"/>
 
-            <StackLayout BackgroundColor="#f3f2f4" Padding="40,10,40,10" HeightRequest="300" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
+            <StackLayout BackgroundColor="White" Padding="40,10,40,10" HeightRequest="500" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                 <Label Text="Overoll Status" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -25,13 +24,29 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <chart:ChartView Grid.Row="0" Grid.Column="0" x:Name="checkinChart" HeightRequest="200"/>
+                    <chart:ChartView Grid.Row="0" Grid.Column="0" x:Name="checkinChart" HeightRequest="450" WidthRequest="450"/>
                     <Label Grid.Row="0" Grid.Column="0" x:Name="checkinTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Checked-in" x:Name="checkinLabel" IsVisible="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
 
-                    <chart:ChartView Grid.Row="0" Grid.Column="1" x:Name="pendingChart" HeightRequest="200"/>
-                    <Label Grid.Row="0" Grid.Column="1" x:Name="pendingTotLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="Expected Arrivals" IsVisible="false" x:Name="pendingLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Large"/>
+                    <Grid Grid.Column="1" Grid.Row="0" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Grid.Row="0" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="Green"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="Checked-in" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
+                        <Label Grid.Row="0" Grid.Column="2" x:Name="checkedinCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontSize="Medium"/>
+
+                        <BoxView Grid.Row="1" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="Red"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Expected arrivals" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
+                        <Label Grid.Row="1" Grid.Column="2" x:Name="expArrCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontSize="Medium"/>
+                    </Grid>
 
                </Grid>
             </StackLayout>

@@ -282,48 +282,30 @@
 							</ListView.ItemTemplate>
 						</ListView>
 					</StackLayout>
-					<!--<StackLayout Padding="10,10,10,10">
-						<StackLayout BackgroundColor="#F1F0FF">
-							<Grid Padding="15,15,15,15">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="1*">
-									</RowDefinition>
-									<RowDefinition Height="2*">
-									</RowDefinition>
-								</Grid.RowDefinitions>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*">
-									</ColumnDefinition>
-									<ColumnDefinition Width="*">
-									</ColumnDefinition>
-								</Grid.ColumnDefinitions>
-								<Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Source="Comment_black.png" IsVisible="true" HeightRequest="20" WidthRequest="20" />
-								<Label Grid.Row="1" Grid.Column="1" Text="Remarks" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-							</Grid>
-						</StackLayout>
-					</StackLayout>-->
-					<!--<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="remarksGrid">
-						<Grid.RowDefinitions Padding="0,0,50,0">
-							<RowDefinition Height="*">
-							</RowDefinition>
-							<RowDefinition Height="*">
-							</RowDefinition>
-						</Grid.RowDefinitions>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*">
-							</ColumnDefinition>
-							<ColumnDefinition Width="*">
-							</ColumnDefinition>
-						</Grid.ColumnDefinitions>
-						<Label x:Name="mainRemarkName" Grid.Row="0" Grid.Column="0" TextColor="#660099" FontSize="Small" FontFamily="Verdana" Font="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="Billing :" />
-						<Label Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Small" FontFamily="Verdana" x:Name="mainRemark" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-						<Label x:Name="generalRemarkName" Grid.Row="1" Grid.Column="0" TextColor="#660099" FontSize="Small" FontFamily="Verdana" Font="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Text="General :" />
-						<Label Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Small" FontFamily="Verdana" x:Name="generalRemark" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-					</Grid>
-					<StackLayout x:Name="remarksUnavailabilityIndicator" VerticalOptions="CenterAndExpand">
-						<Label TextColor="#660099" FontSize="Small" Text="Remarks Not Available!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-					</StackLayout>-->
-					<StackLayout Padding="100,0,100,20">
+
+                    <StackLayout Padding="10,10,10,10" x:Name="TnCSection">
+                        <StackLayout BackgroundColor="#F1F0FF">
+                            <Grid Padding="15,15,15,15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*">
+                                    </RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="tnc.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Privacy policy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+
+					<StackLayout Padding="50,0,50,20">
+
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium" x:Name="privacyLabel"/>
+                        
 						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 							<Grid.RowDefinitions Padding="0,10,10,0">
 								<RowDefinition Height="*">

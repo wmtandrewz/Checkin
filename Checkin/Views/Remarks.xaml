@@ -24,7 +24,7 @@
 
             <StackLayout Padding="20,20,20,20" x:Name="RemarkDetailsLayout" VerticalOptions="StartAndExpand">
                 
-               <ListView x:Name="RemarkDetailsListView" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="None" CachingStrategy="RetainElement" ItemSelected="RemarkItemSelected">
+               <ListView x:Name="RemarkDetailsListView" RowHeight="100" SeparatorColor="#660099" SeparatorVisibility="None" CachingStrategy="RetainElement" ItemSelected="RemarkItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell IsEnabled="true">

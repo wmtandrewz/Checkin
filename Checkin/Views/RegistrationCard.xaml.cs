@@ -41,6 +41,9 @@ namespace Checkin
         {
             initialPageLoading();
 
+            //Privacy statement
+
+            privacyLabel.Text = Constants._privacyStatement;
 
             //Signature Added
             MessagingCenter.Subscribe<Signature, List<guestSignature>>(this, Constants._signatureAddedMessage, (sender, arg) =>

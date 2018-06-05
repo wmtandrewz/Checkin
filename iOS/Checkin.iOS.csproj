@@ -31,7 +31,6 @@
     <PlatformTarget>x86</PlatformTarget>
     <CodesignProvision>Cinnamon Checkin</CodesignProvision>
     <MtouchFloat32>true</MtouchFloat32>
-    <MtouchSdkVersion>11.2</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -317,6 +316,7 @@
     <BundleResource Include="Resources\banners\3305.jpg" />
     <BundleResource Include="Resources\banners\3310.jpg" />
     <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\tnc.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />

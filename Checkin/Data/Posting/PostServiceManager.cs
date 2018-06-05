@@ -90,7 +90,7 @@ namespace Checkin
 
 		public async Task<String> StatusChangecheckinAsync(StatusChangeCheckin StatusChangeCheckin) 
 		{
-			string url = "/sap/opu/odata/sap/ZTMS_IMAGE_SRV/Checkins";
+			string url = "/sap/opu/odata/sap/ZTMS_IMG_SRV/Checkins";
 			String result = await this.GetODataService(url, JsonConvert.SerializeObject(StatusChangeCheckin));
 
 			//If result is success
