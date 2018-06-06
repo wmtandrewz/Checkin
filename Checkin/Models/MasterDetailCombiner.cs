@@ -14,7 +14,7 @@ namespace Checkin
 			masterPage.selectedItemPending = (categoryPage) =>
 			{
 				var detail1 = new NavigationPage(categoryPage);
-				detail1.BarBackgroundColor = Color.FromHex("#660099");
+                detail1.BarBackgroundColor = Color.FromHex("#6D2276");
 				detail1.BarTextColor = Color.White;
 
 				if (MasterBehavior == MasterBehavior.SplitOnLandscape)
@@ -29,7 +29,7 @@ namespace Checkin
 			masterPage.selectedItemCheckedIn = (categoryPage) =>
 			{
 				var detail2 = new NavigationPage(categoryPage);
-				detail2.BarBackgroundColor = Color.FromHex("#660099");
+                detail2.BarBackgroundColor = Color.FromHex("#6D2276");
 				detail2.BarTextColor = Color.White;
 				if (MasterBehavior == MasterBehavior.SplitOnLandscape)
 				{
@@ -46,7 +46,7 @@ namespace Checkin
 
 			//Detail Page Configuration
 			var detail = new NavigationPage(new HomeDefault());
-			detail.BarBackgroundColor = Color.FromHex("#660099");
+            detail.BarBackgroundColor = Color.FromHex("#6D2276");
 			detail.BarTextColor = Color.White;
 			this.Detail = detail;
 

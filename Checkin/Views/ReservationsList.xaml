@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.ReservationsList" Title="Reservations List" Icon="drawer_icon.png" NavigationPage.HasBackButton="False" BackgroundColor="#443266">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.ReservationsList" Title="Reservations List" Icon="drawer_icon.png" NavigationPage.HasBackButton="False" BackgroundColor="#6D2276">
 	<ContentPage.Content>
 		<StackLayout Padding="0,0,0,0" BackgroundColor="Transparent">
 			<StackLayout Padding="5,21,5,5">
 				<StackLayout>
-					<Label x:Name="ReservationsHotelName" Font="24" FontAttributes="Bold" HeightRequest="30" TextColor="White" HorizontalOptions="Center">
+					<!--<Label x:Name="ReservationsHotelName" Font="24" FontAttributes="Bold" HeightRequest="30" TextColor="White" HorizontalOptions="Center">
+					</Label>-->
+					<Label x:Name="ReservationsHotelDate" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Start" Margin="10,0,0,0">
 					</Label>
-					<Label x:Name="ReservationsHotelDate" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Center">
+					<Label x:Name="UserName" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Start" Margin="10,0,0,0">
 					</Label>
-					<Label x:Name="UserName" Font="18" FontAttributes="Italic" HeightRequest="20" TextColor="White" HorizontalOptions="Center">
-					</Label>
-					<Grid Padding="10,0,0,0">
+					<Grid Padding="10,13,0,0">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="AUTO" />
 						</Grid.RowDefinitions>
@@ -76,7 +76,7 @@
 											<ColumnDefinition Width="*" />
 											<ColumnDefinition Width="Auto" />
 										</Grid.ColumnDefinitions>
-										<Label Grid.Row="0" Grid.Column="0" Text="{Binding GuestName}" Font="Italic" TextColor="{Binding TextColor}" />
+										<Label Grid.Row="0" Grid.Column="0" Text="{Binding GuestName}" FontAttributes="Bold" TextColor="{Binding TextColor}" />
 										<Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="navigation_icon2.png" IsVisible="true" HeightRequest="20" WidthRequest="20" VerticalOptions="Start" />
 									</Grid>
 									<Grid Padding="10,0,0,0">
@@ -106,7 +106,8 @@
 										<Label Grid.Row="0" Grid.Column="4" Text="{Binding toatlNumberOfVisits}" TextColor="Teal" HorizontalOptions="StartAndExpand" />
 									</Grid>
 								</StackLayout>
-							</StackLayout>
+                                <BoxView WidthRequest="1" BackgroundColor="#6D2276" VerticalOptions="Center" HeightRequest="100"/>
+                            </StackLayout>
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

@@ -137,7 +137,7 @@ namespace Checkin
 						Constants._hotel_date = dt.ToString("dd-MM-yyyy");
 
 						//Set Hotel Name and Dat
-						ReservationsHotelName.Text = Constants._hotel_name + " (" + Constants._hotel_code + ")";
+						//ReservationsHotelName.Text = Constants._hotel_name + " (" + Constants._hotel_code + ")";
 						ReservationsHotelDate.Text = "Date : " + Constants._hotel_date;
 
 
@@ -270,8 +270,8 @@ namespace Checkin
 							ReservationsListView.IsVisible = true;
 
 							ChartModel.resCount = reservationHeader.Count;
-							ChartModel.checkedinCount = reservationHeader.Count(x => x.Status == "Checked-in");
-							ChartModel.pendingCount = reservationHeader.Count(x => x.Status == "Pending");
+                            ChartModel.checkedinCount = reservationHeader.Count(x => x.Status == Constants._reservationStatusCheckedIn);
+                            ChartModel.pendingCount = reservationHeader.Count(x => x.Status == Constants._reservationStatusPending);
 
 							MessagingCenter.Send<ReservationsList>(this, "chart");
 								
@@ -340,13 +340,13 @@ namespace Checkin
 			}
 			if (IsOdd(cellColourCount))
 			{
-				cellColour = Color.FromHex("f1e8ff");
-				textColor = Color.FromHex("443266");
+                cellColour = Color.FromHex("ffffff");//f1e8ff
+                textColor = Color.FromHex("443266");//443266
 			}
 			else
 			{
-				cellColour = Color.FromHex("e3d6f9");
-				textColor = Color.FromHex("443266");
+                cellColour = Color.FromHex("ffffff");//e3d6f9
+                textColor = Color.FromHex("443266");//443266
 			}
 
 			return reservationImage;

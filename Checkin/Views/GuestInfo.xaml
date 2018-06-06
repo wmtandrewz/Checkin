@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.GuestInfo" BackgroundColor="White">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" />
-        <ToolbarItem Icon="home.png" Order="Primary" Priority="0" Clicked="HomeClicked"/>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="2" Clicked="LogoutButtonClickedEvt" />
+        <ToolbarItem Name=" | " Order="Primary" Priority="1"/>
+        <ToolbarItem Name="Home" Order="Primary" Priority="0" Clicked="HomeClicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<StackLayout>
+		<StackLayout Padding="0,0,0,10" VerticalOptions="Start">
 			<ActivityIndicator x:Name="GuestListIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-			<StackLayout x:Name="guestDetails">
-				<StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
+            
+			<StackLayout x:Name="guestDetails" VerticalOptions="Start">
+                
+				<StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10">
 					<Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 						
 					</Label>
@@ -16,7 +19,8 @@
 
 					</Label>
 				</StackLayout>
-				<StackLayout Padding="20,0,15,20" x:Name="guestListnformation">
+                
+				<StackLayout Padding="20,0,15,20" x:Name="guestListnformation" VerticalOptions="Start">
 					<ListView x:Name="GuestListView" RowHeight="600" SeparatorVisibility="Default" SeparatorColor="#660099" Refreshing="refreshingGuest" IsPullToRefreshEnabled="false" ItemTapped="SelectedGuest" CachingStrategy="RetainElement">
 						<ListView.ItemTemplate>
 							<DataTemplate>

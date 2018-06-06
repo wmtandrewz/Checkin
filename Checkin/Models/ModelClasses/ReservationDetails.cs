@@ -26,7 +26,7 @@ namespace Checkin
 
 		private Color roomColor;
 
-		private string roomStatus;
+        private string roomStatus;
 
 		private Color roomStatusColor;
 

@@ -3,17 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart = "clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Checkin.HomeDefault" 
-             BackgroundColor="#e5e5e5">
+             BackgroundColor="White">
     
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout>
-            <Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200"/>
+        <StackLayout VerticalOptions="Start">
+            <!--<Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200"/>-->
+            <StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Horizontal">
+                <Image x:Name="CinnamonLogo" Source="Cinnamon -Logo.png" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="40"/>
+                <BoxView Color="Gray" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="70" WidthRequest="2"/>
+                <Label x:Name="hotelNameLAbel" Text="Welcome!" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                  
+            </StackLayout>
 
-            <StackLayout BackgroundColor="White" Padding="40,10,40,10" HeightRequest="500" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
-                <Label Text="Overoll Status" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
+            <StackLayout BackgroundColor="White" Padding="40,10,40,10" HeightRequest="500" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <Label Text="Overall Check-in Status" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -35,17 +41,18 @@
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
 
-                        <BoxView Grid.Row="0" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="Green"/>
+                        <BoxView Grid.Row="0" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="#211261"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="Checked-in" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
-                        <Label Grid.Row="0" Grid.Column="2" x:Name="checkedinCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontSize="Medium"/>
+                        <Label Grid.Row="0" Grid.Column="3" x:Name="checkedinCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
 
-                        <BoxView Grid.Row="1" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="Red"/>
+                        <BoxView Grid.Row="1" Grid.Column="0" WidthRequest="20" HeightRequest="20" BackgroundColor="#008FBE"/>
                         <Label Grid.Row="1" Grid.Column="1" Text="Expected arrivals" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
-                        <Label Grid.Row="1" Grid.Column="2" x:Name="expArrCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontSize="Medium"/>
+                        <Label Grid.Row="1" Grid.Column="3" x:Name="expArrCountLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium"/>
                     </Grid>
 
                </Grid>

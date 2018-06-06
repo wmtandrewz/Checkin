@@ -5,7 +5,7 @@
 			<StackLayout>
 				<ActivityIndicator x:Name="GuestLoadIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 				<StackLayout x:Name="GuestDetails">
-					<StackLayout BackgroundColor="#443266">
+					<StackLayout BackgroundColor="#211261">
 						<Grid Padding="8,8,8,8">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="*">
@@ -42,7 +42,7 @@
 								</SearchBar.BackgroundColor>
 							</SearchBar>
 							<StackLayout BackgroundColor="Transparent">
-								<Button Text="Scan Passport" Clicked="ScanPassport" BackgroundColor="#397D02" x:Name="scanButton" TextColor="White">
+								<Button Text="Scan Passport" Clicked="ScanPassport" BackgroundColor="#008FBE" x:Name="scanButton" TextColor="White">
 									<Button.BorderRadius>
 										<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
 									</Button.BorderRadius>
@@ -57,7 +57,7 @@
 								</Label>
 							</StackLayout>
 							<StackLayout x:Name="hideUntilSearched">
-								<StackLayout BackgroundColor="#443266">
+								<StackLayout BackgroundColor="#211261">
 									<Label FontAttributes="Bold" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Passport Information" />
 								</StackLayout>
 
@@ -78,7 +78,7 @@
 								<DatePicker x:Name="DateOfBirth" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" BackgroundColor="#E6E6FA" TextColor="Black">
 									<DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
 								</DatePicker>
-								<StackLayout BackgroundColor="#443266">
+								<StackLayout BackgroundColor="#211261">
 									<Label FontAttributes="Bold" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Other Information" />
 								</StackLayout>
 								<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Salutation :" />
@@ -102,7 +102,7 @@
 								<Picker x:Name="Language" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
 								</Picker>
 								<StackLayout BackgroundColor="Transparent">
-									<Button Text="Save" Clicked="saveButton" BackgroundColor="#397D02" x:Name="buttonSave" TextColor="White">
+									<Button Text="Save" Clicked="saveButton" BackgroundColor="#008FBE" x:Name="buttonSave" TextColor="White">
 										<Button.BorderRadius>
 											<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
 										</Button.BorderRadius>

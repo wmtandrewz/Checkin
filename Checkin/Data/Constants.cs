@@ -149,7 +149,7 @@ namespace Checkin
 		//reservation View Messages
 		public static string _reservationStatusCheckedIn = "Checked-in";
 		public static string _reservationStatusCancelled = "Cancelled";
-		public static string _reservationStatusPending = "Pending";
+		public static string _reservationStatusPending = "Expected";//Pending
 
 		//Additional MessageCeter Messages
 		public static string _signatureAddedMessage = "Pending";

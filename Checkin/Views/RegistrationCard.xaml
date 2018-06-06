@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:m16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls.Checkbox"  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.RegistrationCard" BackgroundColor="White">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="2" Clicked="LogoutButtonClickedEvt">
-		</ToolbarItem>
-
-        <ToolbarItem Icon="home.png" Order="Primary" Priority="1" Clicked="homeClicked">
-        </ToolbarItem>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="2" Clicked="LogoutButtonClickedEvt" />
+        <ToolbarItem Name=" | " Order="Primary" Priority="1"/>
+        <ToolbarItem Name="Home" Order="Primary" Priority="0" Clicked="homeClicked"/>
         
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
@@ -13,7 +11,7 @@
 			<StackLayout Padding="0,0,0,10">
 				<ActivityIndicator x:Name="ReservationsListIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 				<StackLayout x:Name="registrationCardDetailsIndicator">
-					<StackLayout BackgroundColor="#443266">
+					<StackLayout BackgroundColor="#211261">
 						<Grid Padding="8,8,8,8">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="*">
@@ -170,9 +168,9 @@
                                         </ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.Column="0" TextColor="{Binding ArrivalFlightColor}" FontSize="Small" x:Name="ArrivalFlightText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding ArrivalFlight}" LineBreakMode="TailTruncation" />
-                                    <Button Grid.Row="0" Grid.Column="1" x:Name="SetArrivalFlightButton" Text="Edit Flight" BackgroundColor="#ADD8E6" WidthRequest="100" Clicked="SetArrivalFlight" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand">
+                                    <Button Grid.Row="0" Grid.Column="1" x:Name="SetArrivalFlightButton" Text="Edit Flight" BackgroundColor="#008FBE" WidthRequest="100" Clicked="SetArrivalFlight" FontSize="Small" TextColor="White" HorizontalOptions="StartAndExpand">
                                         <Button.BorderRadius>
-                                            <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                                            <OnPlatform x:TypeArguments="x:Int32" iOS="10" Android="50" />
                                         </Button.BorderRadius>
                                         <Button.Style>
                                         </Button.Style>
@@ -196,9 +194,9 @@
                                         </ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.Column="0" TextColor="{Binding DepartureFlightColor}" FontSize="Small" x:Name="DepartureFlightText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding DepartureFlight}" LineBreakMode="TailTruncation"/>
-                                    <Button Grid.Row="0" Grid.Column="1" x:Name="SetDepartureFlightButton" Text="Edit Flight" BackgroundColor="#ADD8E6" WidthRequest="100" Clicked="SetDepartureFlight" FontSize="Small" TextColor="Black" HorizontalOptions="StartAndExpand">
+                                    <Button Grid.Row="0" Grid.Column="1" x:Name="SetDepartureFlightButton" Text="Edit Flight" BackgroundColor="#008FBE" WidthRequest="100" Clicked="SetDepartureFlight" FontSize="Small" TextColor="White" HorizontalOptions="StartAndExpand">
                                         <Button.BorderRadius>
-                                            <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                                            <OnPlatform x:TypeArguments="x:Int32" iOS="10" Android="50" />
                                         </Button.BorderRadius>
                                         <Button.Style>
                                         </Button.Style>
@@ -334,13 +332,7 @@
 								<ColumnDefinition Width="*">
 								</ColumnDefinition>
 							</Grid.ColumnDefinitions>
-							<Label Grid.Row="0" Grid.Column="0" x:Name="iAgreeText" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center">
-								<Label.FontFamily>
-									<OnPlatform x:TypeArguments="x:String">
-										<OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-									</OnPlatform>
-								</Label.FontFamily>
-							</Label>
+							<Label Grid.Row="0" Grid.Column="0" x:Name="iAgreeText" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
 							<Switch Grid.Row="0" Grid.Column="1" x:Name="agreeTermsAndConditions" Toggled="switcher_Toggled" VerticalOptions="Center">
 							</Switch>
 							<m16:Checkbox WidthRequest="55"></m16:Checkbox>
@@ -349,14 +341,8 @@
 					<StackLayout x:Name="GuestSignatureView">
 						<ListView x:Name="GuestSignatureList" RowHeight="155" SeparatorVisibility="Default" SeparatorColor="#443266" BackgroundColor="White" ItemTapped="SelectedGuestSignature" CachingStrategy="RetainElement">
 							<ListView.Header>
-								<StackLayout Padding="10,5,0,5" BackgroundColor="#660099">
-									<Label Text="Guest Signatures" HorizontalOptions="Center" TextColor="White">
-										<Label.FontFamily>
-											<OnPlatform x:TypeArguments="x:String">
-												<OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
-											</OnPlatform>
-										</Label.FontFamily>
-									</Label>
+								<StackLayout Padding="10,5,0,5" BackgroundColor="#6D2276">
+									<Label Text="Guest Signatures" HorizontalOptions="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
 								</StackLayout>
 							</ListView.Header>
 							<ListView.ItemTemplate>
@@ -398,7 +384,7 @@
 						</Button>
 					</StackLayout>
 					<StackLayout Padding="100,0,100,0">
-						<Button Text="View Performa" Clicked="viewPrforma" BackgroundColor="#ADD8E6" TextColor="Black" x:Name="PerformaButton">
+						<Button Text="View Performa" Clicked="viewPrforma" BackgroundColor="#211261" TextColor="White" x:Name="PerformaButton" WidthRequest="250" HorizontalOptions="Center">
 							<Button.BorderRadius>
 								<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
 							</Button.BorderRadius>

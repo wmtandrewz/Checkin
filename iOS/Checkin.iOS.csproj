@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.5.1.527436\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.527436\build\netstandard1.0\Xamarin.Forms.props')" />
   <Import Project="..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.444934\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -268,7 +267,6 @@
     <BundleResource Include="Resources\ReservationIOS.png" />
     <BundleResource Include="Resources\Reservation_Icon.png" />
     <BundleResource Include="Resources\RreservationsBackground.jpg" />
-    <BundleResource Include="Resources\SignatureImage.jpg" />
     <BundleResource Include="Resources\Unknown.png" />
     <BundleResource Include="Resources\drawer_icon.png" />
     <BundleResource Include="Resources\guest.png" />
@@ -300,7 +298,6 @@
     <BundleResource Include="Resources\attachments.png" />
     <BundleResource Include="Resources\camera.png" />
     <BundleResource Include="Resources\passport.png" />
-    <BundleResource Include="Resources\checkin-logo.png" />
     <BundleResource Include="Resources\banners\3000.jpg" />
     <BundleResource Include="Resources\banners\3005.jpg" />
     <BundleResource Include="Resources\banners\3015.jpg" />
@@ -317,6 +314,9 @@
     <BundleResource Include="Resources\banners\3310.jpg" />
     <BundleResource Include="Resources\home.png" />
     <BundleResource Include="Resources\tnc.png" />
+    <BundleResource Include="Resources\checkin-logos.png" />
+    <BundleResource Include="Resources\Cinnamon -Logo.png" />
+    <BundleResource Include="Resources\SignatureImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />

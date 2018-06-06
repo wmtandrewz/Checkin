@@ -20,22 +20,23 @@ namespace Checkin
 		{
 			InitializeComponent();
 
-			//Setting hotelcodeand hotel logo
+            //Setting hotelcodeand hotel logo
 
-			CinnamonLogo.Source = "banners/"+ Constants._hotel_code + ".jpg";
+            //CinnamonLogo.Source = "banners/"+ Constants._hotel_code + ".jpg";
 
-			//if (Constants._hotel_code == "3015")
-			//{
-			//	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".jpg";
-			//}
-			//else {
-			//	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".bmp";
-			//}
+            //if (Constants._hotel_code == "3015")
+            //{
+            //	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".jpg";
+            //}
+            //else {
+            //	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".bmp";
+            //}
 
 			MessagingCenter.Subscribe<ReservationsList>(this, "chart", (sender) =>
     		{
 				DisplayCharts();
-
+                hotelNameLAbel.Text = Constants._hotel_name;
+                //hotelNameLAbel.Text = "Cinnamon Hakuraa Huraa Maldives";
 			});
 		}
 
@@ -65,12 +66,12 @@ namespace Checkin
 			{
 				new Microcharts.Entry(ChartModel.resCount - ChartModel.pendingCount)
 				{
-                    Color = SKColor.Parse("#009109")
+                    Color = SKColor.Parse("#211261")
 				},
 
 				new Microcharts.Entry(ChartModel.resCount - ChartModel.checkedinCount)
                 {
-					Color = SKColor.Parse("#FF0000")
+                    Color = SKColor.Parse("#008FBE")
                 }
 			};
 
@@ -86,8 +87,8 @@ namespace Checkin
 
 			double pendingPercentage = ((resTot - checkinTot) * 100 / resTot);
 
-            checkedinCountLabel.Text = checkinTot.ToString();
-            expArrCountLabel.Text = pendingTot.ToString();
+            checkedinCountLabel.Text = " - " + checkinTot.ToString();
+            expArrCountLabel.Text = " - " + pendingTot.ToString();
 
 			statLayout.IsVisible = true;
 

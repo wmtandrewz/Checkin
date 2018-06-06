@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.LoginPage" BackgroundColor="#660099" NavigationPage.HasBackButton="False">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.LoginPage" BackgroundColor="#6D2276" NavigationPage.HasBackButton="False">
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout>
@@ -11,7 +11,7 @@
 					</Image>
 				</StackLayout>
 				<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-					<Image x:Name="CinnamonLogo" Source="checkin-logo.png" WidthRequest="400" HeightRequest="300" />
+					<Image x:Name="CinnamonLogo" Source="checkin-logos.png" WidthRequest="400" HeightRequest="300" />
 					<!--<Label x:Name="CheckinText" Text="Cinnamon Check-In" HorizontalTextAlignment="Center" TextColor="White" FontSize="30" Opacity="0">
 						<Label.FontFamily>
 							<OnPlatform x:TypeArguments="x:String">

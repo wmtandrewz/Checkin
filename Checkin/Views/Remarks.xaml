@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Remarks" BackgroundColor="White">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" />
-        <ToolbarItem Icon="home.png" Order="Primary" Priority="0" Clicked="HomeClicked"/>
+		<ToolbarItem Name="Logout" Order="Primary" Priority="2" Clicked="LogoutButtonClickedEvt" />
+        <ToolbarItem Name=" | " Order="Primary" Priority="1"/>
+        <ToolbarItem Name="Home" Order="Primary" Priority="0" Clicked="HomeClicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<StackLayout>
-			<ActivityIndicator x:Name="remarksIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-			<StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
+        
+		<StackLayout Padding="0,0,0,10" VerticalOptions="Start">
+			<ActivityIndicator x:Name="remarksIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" /> 
+            
+            <StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10" >
 				<Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 					
 				</Label>
-				<Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+				<Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
 
 				</Label>
 			</StackLayout>
             
-			<StackLayout BackgroundColor="Transparent" Padding="15,20,15,20">
+			<StackLayout BackgroundColor="Transparent" Padding="15,20,15,20" VerticalOptions="Start">
 				<StackLayout x:Name="remarksUnavailabilityIndicator" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
 					<Label TextColor="Red" FontSize="Medium" Text="Remarks Not Available!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
 				</StackLayout>
@@ -56,7 +59,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button x:Name="AddNreRemark" Text="Add New Remark" BackgroundColor="Green" FontSize="Medium" TextColor="White" HorizontalOptions="End" WidthRequest="300" Clicked="NewRemarkClicked">
+                <Button x:Name="AddNreRemark" Text="Add New Remark" BackgroundColor="#008FBE" FontSize="Medium" TextColor="White" HorizontalOptions="End" WidthRequest="300" Clicked="NewRemarkClicked">
                     <Button.BorderRadius>
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                     </Button.BorderRadius>
