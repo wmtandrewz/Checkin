@@ -82,7 +82,7 @@
 										</ColumnDefinition>
 									</Grid.ColumnDefinitions>
 									<Label Grid.Row="0" Grid.Column="0" TextColor="{Binding RoomColor}" FontSize="Medium" x:Name="RoomNoText" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding RoomNumber}" LineBreakMode="TailTruncation"/>
-									<Button Grid.Row="0" Grid.Column="1" x:Name="AssignRoomButton" Text="Edit" BackgroundColor="#008FBE" Clicked="AssignRooms" WidthRequest="100" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand">
+									<Button Grid.Row="0" Grid.Column="1" x:Name="AssignRoomButton" Text="Edit" BackgroundColor="#008FBE" Clicked="AssignRooms" WidthRequest="100" FontSize="26" TextColor="White" HorizontalOptions="StartAndExpand">
 										<Button.BorderRadius>
 											<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
 										</Button.BorderRadius>

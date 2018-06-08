@@ -25,22 +25,22 @@
 								<ColumnDefinition Width="*">
 								</ColumnDefinition>
 							</Grid.ColumnDefinitions>
-							<Label Grid.Row="0" Grid.Column="0" Text="Reservetion ID: " FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+							<Label Grid.Row="0" Grid.Column="0" Text="Reservetion ID    : " FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
 								
 							</Label>
-							<Label Grid.Row="0" Grid.Column="1" x:Name="ReservationIDText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding ReservationID}" LineBreakMode="TailTruncation">
+							<Label Grid.Row="0" Grid.Column="1" x:Name="ReservationIDText" FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding ReservationID}" LineBreakMode="TailTruncation">
 								
 							</Label>
-							<Label Grid.Row="1" Grid.Column="0" Text="Client Name    : " FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+							<Label Grid.Row="1" Grid.Column="0" Text="Client Name       : " FontAttributes="None" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
 								
 							</Label>
-							<Label Grid.Row="1" Grid.Column="1" x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation">
+							<Label Grid.Row="1" Grid.Column="1" x:Name="ClientNameText" FontAttributes="None" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation">
 								
 							</Label>
-							<Label Grid.Row="2" Grid.Column="0" Text="Hotel Name     : " FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+							<Label Grid.Row="2" Grid.Column="0" Text="Hotel Name        : " FontAttributes="None" FontSize="Medium" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
 								
 							</Label>
-							<Label Grid.Row="2" Grid.Column="1" x:Name="HotelNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation">
+							<Label Grid.Row="2" Grid.Column="1" x:Name="HotelNameText" FontAttributes="None" FontSize="Medium" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation">
 								
 							</Label>
 						</Grid>

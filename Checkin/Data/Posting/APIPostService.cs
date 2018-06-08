@@ -20,7 +20,7 @@ namespace Checkin.Data.Posting
                             "\"CheckinDate\":\""+ currDateTime + "\"," +
                             "\"StartTime\":\"" + Constants._checkinStartTime + "\"," +
                             "\"EndTime\":\"" + currDateTime.ToString() + "\"," +
-                            "\"CreatedBy\":\"iPad\"}";
+                            "\"CreatedBy\":\"" + Settings.Username + "\"}";
             try
             {
                 HttpClient client = new HttpClient

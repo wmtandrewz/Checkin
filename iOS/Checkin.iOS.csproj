@@ -216,9 +216,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-29.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-57.png" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\14_hotel_key_card-114.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\icon 1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\icon 2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\icon 3.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
