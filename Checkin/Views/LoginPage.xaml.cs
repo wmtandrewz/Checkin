@@ -202,15 +202,14 @@ namespace Checkin
 				ForgotPasswordButton.FadeTo(1, 800, Easing.CubicOut);
 				ForgotPasswordButton.TranslateTo(0, 0, 800, Easing.CubicOut);
 
-				NeedHelpButton.FadeTo(1, 800, Easing.CubicOut);
-				NeedHelpButton.TranslateTo(0, 0, 800, Easing.CubicOut);
+				//NeedHelpButton.FadeTo(1, 800, Easing.CubicOut);
+				//NeedHelpButton.TranslateTo(0, 0, 800, Easing.CubicOut);
 
-				ContactButton.FadeTo(1, 800, Easing.CubicOut);
-				ContactButton.TranslateTo(0, 0, 800, Easing.CubicOut);
+				//ContactButton.FadeTo(1, 800, Easing.CubicOut);
+				//ContactButton.TranslateTo(0, 0, 800, Easing.CubicOut);
 
 				TradeMark.IsVisible = true;
-				TradeMark1.IsVisible = true;
-				ContactSeperator.IsVisible = true;
+				//ContactSeperator.IsVisible = true;
 
 				Sleep(800);
 

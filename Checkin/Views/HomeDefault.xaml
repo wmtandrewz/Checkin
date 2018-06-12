@@ -9,16 +9,16 @@
 		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout VerticalOptions="Start">
+        <StackLayout VerticalOptions="FillAndExpand">
             <!--<Image x:Name="CinnamonLogo" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200"/>-->
-            <StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Horizontal">
+            <StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Horizontal" VerticalOptions="Start">
                 <Image x:Name="CinnamonLogo" Source="Cinnamon -Logo.png" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="40"/>
                 <BoxView Color="Gray" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="70" WidthRequest="2"/>
                 <Label x:Name="hotelNameLAbel" Text="Welcome!" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                   
             </StackLayout>
 
-            <StackLayout BackgroundColor="White" Padding="40,10,40,10" HeightRequest="500" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <StackLayout BackgroundColor="White" Padding="40,10,40,10" Margin="20" x:Name="statLayout" IsVisible="false" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                 <Label Text="Overall Check-in Status" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Navy" FontSize="Large" FontFamily="Verdana" FontAttributes="Bold"/>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -57,6 +57,13 @@
 
                </Grid>
             </StackLayout>
+
+
+            <StackLayout x:Name="messegeBarLayout" VerticalOptions="End" HeightRequest="40" IsVisible="false">
+                <BoxView VerticalOptions="Start" HeightRequest="2" HorizontalOptions="FillAndExpand" Color="Navy" Opacity="0.5"/>
+                <Label x:Name="messegeLabel" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Medium" Text="Designed and developed by Cinnamon IT  |  All rights reserved  |  Copyrights © 2018"/>
+            </StackLayout>
+            
         </StackLayout>
 		
 	</ContentPage.Content>

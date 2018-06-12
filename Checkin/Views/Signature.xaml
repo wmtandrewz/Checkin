@@ -6,23 +6,28 @@
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,0">
-				<Label x:Name="GuestNameText" HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="ImageSave" Clicked="ImageSaveButton" Text="Save Signature" BackgroundColor="Green" TextColor="White" WidthRequest="150" HorizontalOptions="Start">
+                        <Button.BorderRadius>
+                            <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                        </Button.BorderRadius>
+                        <Button.Style>
+                        </Button.Style>
+                    </Button>
+                    <Label x:Name="GuestNameText" HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+                    <Button x:Name="Close" Clicked="CloseButtonClickedEvt" Text="Close" BackgroundColor="Red" TextColor="White" WidthRequest="150" HorizontalOptions="End">
+                        <Button.BorderRadius>
+                            <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                        </Button.BorderRadius>
+                        <Button.Style>
+                        </Button.Style>
+                    </Button>
+                </StackLayout>
+                
+				
 				<acr:SignaturePadView x:Name="padView" HeightRequest="320" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
 				</acr:SignaturePadView>
-				<Button x:Name="ImageSave" Clicked="ImageSaveButton" Text="Save Signature" BackgroundColor="Green" TextColor="White">
-					<Button.BorderRadius>
-						<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
-					</Button.BorderRadius>
-					<Button.Style>
-					</Button.Style>
-				</Button>
-				<Button x:Name="Close" Clicked="CloseButtonClickedEvt" Text="Close" BackgroundColor="Red" TextColor="White">
-					<Button.BorderRadius>
-						<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
-					</Button.BorderRadius>
-					<Button.Style>
-					</Button.Style>
-				</Button>
+
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>

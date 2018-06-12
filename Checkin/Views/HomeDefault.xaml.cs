@@ -35,8 +35,19 @@ namespace Checkin
 			MessagingCenter.Subscribe<ReservationsList>(this, "chart", (sender) =>
     		{
 				DisplayCharts();
+                messegeBarLayout.IsVisible = true;
+
                 hotelNameLAbel.Text = Constants._hotel_name;
+                messegeLabel.Text = "You will be automatically logged-out in 15 min on idle state";
+                messegeLabel.TextColor = Color.Red;
                 //hotelNameLAbel.Text = "Cinnamon Hakuraa Huraa Maldives";
+
+                Device.StartTimer(TimeSpan.FromSeconds(10),  () =>
+                {
+                    messegeLabel.Text = "Designed and developed by Cinnamon IT  |  All rights reserved  |  Copyrights © 2018";
+                    messegeLabel.TextColor = Color.Gray;
+                    return false;
+                });
 			});
 		}
 

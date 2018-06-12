@@ -317,6 +317,7 @@
     <BundleResource Include="Resources\checkin-logos.png" />
     <BundleResource Include="Resources\Cinnamon -Logo.png" />
     <BundleResource Include="Resources\SignatureImage.jpg" />
+    <BundleResource Include="Resources\cinnamo-white.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />
