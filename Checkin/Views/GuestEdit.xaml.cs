@@ -584,7 +584,7 @@ namespace Checkin
 				PostServiceManager postServiceManager = new PostServiceManager();
 
 				String result = await postServiceManager.StatusChangeAsync(statusChange);
-				String result2 = await postServiceManager.SavePPExpiryAsync(expiryDateChange);
+				//String result2 = await postServiceManager.SavePPExpiryAsync(expiryDateChange);
 
 				if (result != "Reservation is locked" || result == "Guest Details Updated Successfully!")
 				{

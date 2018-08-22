@@ -106,7 +106,7 @@
         </StackLayout>
 
             <StackLayout Padding="20,0,20,20">
-                <Button x:Name="saveAttachmentsBtn" Text="Save Attachments" BackgroundColor="Green" TextColor="White">
+                <Button x:Name="saveAttachmentsBtn" Text="Save Attachments" BackgroundColor="Green" TextColor="White" Clicked="SaveAttachmentButton_Clicked">
                     <Button.BorderRadius>
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                     </Button.BorderRadius>

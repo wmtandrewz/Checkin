@@ -170,6 +170,47 @@ namespace Checkin
 
         }
 
+        public async Task<string> SetPerformaInvoice( )
+        {
+
+            string url = "/sap/opu/odata/sap/ZTMS_GEN_PROFORMA_INVOICE_SRV/proformaSet";
+            String result = await this.GetODataService(url, JsonConvert.SerializeObject(new Perfoma("3000", "0000027905","1",null)));
+
+            //If result is success
+            if (result == "success")
+            {
+                return "Success";
+            }
+
+            else
+            {
+                return "Sorry. Unable to update attachement!";
+            }
+
+
+        }
+
+        public async Task<String> SetAttachments(AttachmentsPayload attachmentsPayload)
+        {
+
+            string url = "/sap/opu/odata/sap/ZTMS_RESERVATION_ATTACHMENTS_SRV/setReservationAttachmentSet";
+
+            String result = await this.GetODataService(url, JsonConvert.SerializeObject(attachmentsPayload));
+
+            //If result is success
+            if (result == "success")
+            {
+                return "success";
+            }
+
+            else
+            {
+                return "Sorry. Unable to update attachement!";
+            }
+
+
+        }
+
 		public async Task<String> GetODataService(String url, String postBody)
 		{
 			string xcsrf_token = "";
@@ -235,6 +276,8 @@ namespace Checkin
 						if (response.IsSuccessStatusCode)
 						{
 							Debug.WriteLine(response);
+                            var perRes = response.Content.ReadAsStringAsync();
+                            Debug.WriteLine(perRes.Result);
 							return "success";
 						}
 						else {
@@ -252,5 +295,21 @@ namespace Checkin
 			}
 		}
 	}
+
+    public class Perfoma
+    {
+        public Perfoma(string imHotelId, string imReservationId, string imResponsible, string imFolio)
+        {
+            ImHotelId = imHotelId;
+            ImReservationId = imReservationId;
+            ImResponsible = imResponsible;
+            ImFolio = imFolio;
+        }
+
+        public string ImHotelId { get; set; }
+        public string ImReservationId { get; set; }
+        public string ImResponsible { get; set; }
+        public string ImFolio { get; set; }
+    }
 }
 

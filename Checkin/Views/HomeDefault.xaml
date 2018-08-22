@@ -61,7 +61,7 @@
 
             <StackLayout x:Name="messegeBarLayout" VerticalOptions="End" HeightRequest="40" IsVisible="false">
                 <BoxView VerticalOptions="Start" HeightRequest="2" HorizontalOptions="FillAndExpand" Color="Navy" Opacity="0.5"/>
-                <Label x:Name="messegeLabel" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Medium" Text="Designed and developed by Cinnamon IT  |  All rights reserved  |  Copyrights © 2018"/>
+                <Label x:Name="messegeLabel" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Small" Text="Designed and developed by Cinnamon IT  |  All rights reserved  |  Copyrights © 2018"/>
             </StackLayout>
             
         </StackLayout>

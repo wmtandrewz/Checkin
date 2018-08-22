@@ -9,6 +9,8 @@ using System.Linq;
 using Checkin.Models.ModelClasses;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Checkin.Models.ModelClasses.Payloads;
 
 namespace Checkin
 {
@@ -17,8 +19,8 @@ namespace Checkin
 		//Data Source
 
 		userLogout userLogout = new userLogout();
-
-
+        MediaFile _passportImage = null;
+        MediaFile _guestImage = null;
 
 		public Attachments()
 		{
@@ -49,6 +51,7 @@ namespace Checkin
 
             if (photo != null)
 			{
+                _guestImage = photo;
 				guestImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
 			}
                 
@@ -69,7 +72,12 @@ namespace Checkin
 
             if (photo != null)
             {
-				passportImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+                _passportImage = photo;
+
+				passportImage.Source = ImageSource.FromStream(() => 
+                { 
+                    return photo.GetStream();
+               });
             }
 		}              
                     
@@ -121,6 +129,77 @@ namespace Checkin
         {
             new HomeNavigater().GoHome();
         }
-	}
+
+        async void SaveAttachmentButton_Clicked(object sender, System.EventArgs e)
+        {
+            string ppResponce = null;
+            string guestResponce = null;
+
+            if (_passportImage != null)
+            {
+                AttachmentsPayload ppPayload = new AttachmentsPayload();
+                ppPayload.IXhotelId = Constants._hotel_code;
+                ppPayload.IXreservaId = Constants._reservation_id;
+                ppPayload.IXtype = "JPG";
+
+                var inputStream = _passportImage.GetStream();
+
+                ////Getting Stream as a Memorystream
+                var pptMemoryStream = inputStream as MemoryStream;
+
+                if (pptMemoryStream == null)
+                {
+                    pptMemoryStream = new MemoryStream();
+                    inputStream.CopyTo(pptMemoryStream);
+                }
+
+                //Adding memorystream into a byte array
+                var byteArray = pptMemoryStream.ToArray();
+
+                //Converting byte array into Base64 string
+                ppPayload.IXattach = Convert.ToBase64String(byteArray);
+
+                ppResponce = await new PostServiceManager().SetAttachments(ppPayload);
+
+
+            }
+
+            if (_guestImage != null)
+            {
+                AttachmentsPayload guestPayload = new AttachmentsPayload();
+                guestPayload.IXhotelId = Constants._hotel_code;
+                guestPayload.IXreservaId = Constants._reservation_id;
+                guestPayload.IXtype = "JPG";
+
+                var inputStream = _guestImage.GetStream();
+
+                ////Getting Stream as a Memorystream
+                var guestMemoryStream = inputStream as MemoryStream;
+
+                if (guestMemoryStream == null)
+                {
+                    guestMemoryStream = new MemoryStream();
+                    inputStream.CopyTo(guestMemoryStream);
+                }
+
+                //Adding memorystream into a byte array
+                var byteArray = guestMemoryStream.ToArray();
+
+                //Converting byte array into Base64 string
+                guestPayload.IXattach = Convert.ToBase64String(byteArray);
+
+                guestResponce = await new PostServiceManager().SetAttachments(guestPayload);
+            }
+
+            if(ppResponce == "success" && guestResponce=="success")
+            {
+                await Application.Current.MainPage.DisplayAlert("Success", "Attachements have been successfully uploaded to the system", "OK");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Failed", "Failed to upload attachments.", "OK");
+            }
+        }
+    }
 }
 

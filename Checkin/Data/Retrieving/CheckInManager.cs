@@ -121,6 +121,12 @@ namespace Checkin
 			}
 		}
 
+        public async Task<String> GetPerformaInvoiceNew()
+        {
+            string url = $"/sap/opu/odata/sap/ZTMS_GET_PROFORMA_INVOICE_SRV/proformaSet?$filter=(ImProf eq '0900002040' and ImSendPdf eq 'X' and ImEmailAddr eq 'thimira@cinnamonhotels.com')&$expand=NavHeader,NavLines,NavAdvance,NavOthers";
+            return await this.GetODataService(url);
+        }
+
 		public async Task<String> GetODataService(String url)
 		{
 			try

@@ -73,6 +73,10 @@ namespace Checkin
         
         void DisplayCharts()
 		{
+
+            //new PostServiceManager().SetPerformaInvoice();
+            //new CheckInManager().GetPerformaInvoiceNew();
+
 			List<Microcharts.Entry> checkinEntries = new List<Microcharts.Entry>
 			{
 				new Microcharts.Entry(ChartModel.resCount - ChartModel.pendingCount)
