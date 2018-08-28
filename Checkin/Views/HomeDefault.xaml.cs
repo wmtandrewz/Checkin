@@ -49,7 +49,12 @@ namespace Checkin
                     return false;
                 });
 			});
-		}
+
+            //new CheckInManager().GetAttachments();
+            //new PostServiceManager().SetPerformaInvoice();
+            //new CheckInManager().GetPerformaInvoiceNew();
+
+        }
 
 		//		Setting time befire elements load
 		public static async Task Sleep(int ms)

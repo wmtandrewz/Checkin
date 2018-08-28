@@ -47,7 +47,11 @@ namespace Checkin
                 return;
             }
             
-			var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() { });
+			var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() {
+             
+                Name = "guestImage.jpg"
+            
+            });
 
             if (photo != null)
 			{
@@ -68,7 +72,10 @@ namespace Checkin
                 return;
             }
 
-            var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() { });
+            var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() {
+
+               Name = "PPImage.jpg"
+            });
 
             if (photo != null)
             {
@@ -191,7 +198,7 @@ namespace Checkin
                 guestResponce = await new PostServiceManager().SetAttachments(guestPayload);
             }
 
-            if(ppResponce == "success" && guestResponce=="success")
+            if(ppResponce == "success" || guestResponce=="success")
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Attachements have been successfully uploaded to the system", "OK");
             }

@@ -123,11 +123,45 @@ namespace Checkin
 
         public async Task<String> GetPerformaInvoiceNew()
         {
-            string url = $"/sap/opu/odata/sap/ZTMS_GET_PROFORMA_INVOICE_SRV/proformaSet?$filter=(ImProf eq '0900002040' and ImSendPdf eq 'X' and ImEmailAddr eq 'thimira@cinnamonhotels.com')&$expand=NavHeader,NavLines,NavAdvance,NavOthers";
+            string url = $"/sap/opu/odata/sap/ZTMS_GET_PROFORMA_INVOICE_SRV/proformaSet?$filter=(ImProf eq '0900000008' and ImSendPdf eq 'X' and ImEmailAddr eq 'thimira@cinnamonhotels.com')&$expand=NavHeader,NavLines,NavAdvance,NavOthers";
             return await this.GetODataService(url);
         }
 
-		public async Task<String> GetODataService(String url)
+        public async Task<string> GetAttachments()
+        {
+
+            //Refresh Token if expires
+            if (Convert.ToDateTime(Settings.ExpiresTime) <= DateTime.Now)
+            {
+                //Authenticate against ADFS and NW Gateway
+                oAuthLogin oauthlogin = new oAuthLogin();
+                String access_token = await oauthlogin.LoginUserAsync(Constants._user);
+                if (access_token == "" && access_token == Constants._userNotExistInNWGateway)
+                {
+                    userLogout.logout();
+                }
+            }
+
+            //string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq 'jpg'";
+            string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '3000' and IXreservaId eq '27339' and IXtype eq 'pdf'";
+
+            var client = new HttpClient();
+
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
+
+            var response = await client.GetAsync(url);
+            using (HttpContent content = response.Content)
+            {
+                string result = await content.ReadAsStringAsync();
+                return result;
+            }
+
+        }
+
+        public async Task<String> GetODataService(String url)
 		{
 			try
 			{
