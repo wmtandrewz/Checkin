@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:acr="clr-namespace:Acr.XamForms.SignaturePad;assembly=Acr.XamForms.SignaturePad" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Signature">
-	<!--<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Close" Order="Primary" Priority="0" Clicked="CloseButtonClickedEvt" />
-	</ContentPage.ToolbarItems>-->
-	<ContentPage.Content>
-		<ScrollView>
-			<StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,0">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Name="CloseToolIcon" Order="Primary" Priority="0" Clicked="CloseButtonClickedEvt" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" Padding="30,10,30,0">
+            <StackLayout Padding="10,10,10,10" x:Name="TnCSection">
+                <StackLayout BackgroundColor="#F1F0FF">
+                    <Grid Padding="15,15,15,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="tnc.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Privacy policy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="10,0,10,20">
+                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium" x:Name="privacyLabel" />
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="End">
+                    <Grid.RowDefinitions Padding="0,10,10,0">
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="80">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" x:Name="iAgreeText" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
+                    <Switch Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Toggled="Agree_Toggled" />
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" HorizontalTextAlignment="End" Text="........................................" />
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="guestNameLbl" HorizontalOptions="End" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Medium" />
+                </Grid>
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#eff5ff">
+                    <Grid.RowDefinitions Padding="0,10,10,0">
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="200">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="100">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" Text="Also I completely read and agree to the " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Row="0" Grid.Column="1" Text="Agreement" Clicked="AgreementButton" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
+                    </Button>
+                    <Label Grid.Row="0" Grid.Column="2" FontSize="Medium" Text=" and " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Row="0" Grid.Column="3" Text="Terms and Conditions" Clicked="TermsandConditions" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
+                    </Button>
+                    <Switch Grid.Row="0" Grid.Column="4" VerticalOptions="Center" Toggled="AgreementTnC_Toggled" HorizontalOptions="End" />
+                </Grid>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,0" x:Name="SignatureLayout">
                 <StackLayout Orientation="Horizontal">
                     <Button x:Name="ImageSave" Clicked="ImageSaveButton" Text="Save Signature" BackgroundColor="Green" TextColor="White" WidthRequest="150" HorizontalOptions="Start">
                         <Button.BorderRadius>
@@ -14,7 +74,7 @@
                         <Button.Style>
                         </Button.Style>
                     </Button>
-                    <Label x:Name="GuestNameText" HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+                    <Label x:Name="GuestNameText" HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
                     <Button x:Name="Close" Clicked="CloseButtonClickedEvt" Text="Close" BackgroundColor="Red" TextColor="White" WidthRequest="150" HorizontalOptions="End">
                         <Button.BorderRadius>
                             <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
@@ -23,12 +83,16 @@
                         </Button.Style>
                     </Button>
                 </StackLayout>
-                
-				
-				<acr:SignaturePadView x:Name="padView" HeightRequest="320" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
-				</acr:SignaturePadView>
-
-			</StackLayout>
-		</ScrollView>
-	</ContentPage.Content>
+                <acr:SignaturePadView x:Name="padView" HeightRequest="300" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
+                </acr:SignaturePadView>
+            </StackLayout>
+            <Button Clicked="CloseWindow" x:Name="CloseWindowBtn" Text="Close" BackgroundColor="#211261" TextColor="White" WidthRequest="200" HorizontalOptions="Center">
+                <Button.BorderRadius>
+                    <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+                <Button.Style>
+                </Button.Style>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

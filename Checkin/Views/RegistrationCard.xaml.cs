@@ -43,8 +43,6 @@ namespace Checkin
 
             //Privacy statement
 
-            privacyLabel.Text = Constants._privacyStatement;
-
             //Signature Added
             MessagingCenter.Subscribe<Signature, List<guestSignature>>(this, Constants._signatureAddedMessage, (sender, arg) =>
             {
@@ -68,20 +66,6 @@ namespace Checkin
                 guestsignature = arg;
                 GuestSignatureList.ItemsSource = guestsignature;
                 //MessagingCenter.Unsubscribe<Signature, List<guestSignature>>(this, Constants._signatureAddedMessage);
-            });
-
-            MessagingCenter.Subscribe<RegistrationCard, string>(this, "agreed", (sender, arg) =>
-            {
-                GuestSignatureView.IsEnabled = true;
-                checkinButton.IsEnabled = true;
-                saveSignatureButton.IsEnabled = true;//true
-            });
-
-            MessagingCenter.Subscribe<RegistrationCard, string>(this, "notAgreed", (sender, arg) =>
-            {
-                GuestSignatureView.IsEnabled = false;
-                checkinButton.IsEnabled = false;
-                saveSignatureButton.IsEnabled = true;//true
             });
 
             //Guest Edited
@@ -167,9 +151,6 @@ namespace Checkin
             MessagingCenter.Subscribe<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn, (sender, arg) =>
             {
                 checkinAndSaveButton.IsVisible = false;//false
-                agreeTermsAndConditions.IsVisible = false;
-                iAgreeText.IsVisible = false;
-
                 stopPageLoading();
                 //MessagingCenter.Unsubscribe<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn);
             });
@@ -192,8 +173,6 @@ namespace Checkin
                 checkinButton.IsVisible = false;
 				saveSignatureButton.IsVisible = false;//false
                 PerformaButton.IsVisible = true;
-                agreeTermsAndConditions.IsVisible = false;
-                iAgreeText.IsVisible = false;
             }
             else
             {
@@ -202,9 +181,7 @@ namespace Checkin
                 saveSignatureButton.IsVisible = false; //false
                 PerformaButton.IsVisible = false;
 
-                GuestSignatureView.IsEnabled = false;
-                agreeTermsAndConditions.IsVisible = true;
-                iAgreeText.IsVisible = true;
+                //GuestSignatureView.IsEnabled = false;
             }
         }
 

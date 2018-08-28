@@ -281,7 +281,7 @@
 						</ListView>
 					</StackLayout>
 
-                    <StackLayout Padding="10,10,10,10" x:Name="TnCSection">
+                    <StackLayout Padding="10,10,10,10" x:Name="SignatureSection">
                         <StackLayout BackgroundColor="#F1F0FF">
                             <Grid Padding="15,15,15,15">
                                 <Grid.RowDefinitions>
@@ -295,49 +295,11 @@
                                     </ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="tnc.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                                <Label Grid.Row="0" Grid.Column="1" Text="Privacy policy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Sign &amp; Check-In" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
                             </Grid>
                         </StackLayout>
                     </StackLayout>
-
-					<StackLayout Padding="50,0,50,20">
-
-                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium" x:Name="privacyLabel"/>
-                        
-						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-							<Grid.RowDefinitions Padding="0,10,10,0">
-								<RowDefinition Height="*">
-								</RowDefinition>
-							</Grid.RowDefinitions>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*">
-								</ColumnDefinition>
-								<ColumnDefinition Width="*">
-								</ColumnDefinition>
-							</Grid.ColumnDefinitions>
-							<Button Grid.Row="0" Grid.Column="0" Text="View Agreement" Clicked="AgreementButton" BackgroundColor="Transparent" TextColor="Green">
-							</Button>
-							<Button Grid.Row="0" Grid.Column="1" Text="Terms and Conditions" Clicked="TermsandConditions" BackgroundColor="Transparent" TextColor="Green">
-							</Button>
-						</Grid>
-						
-						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-							<Grid.RowDefinitions Padding="0,10,10,0">
-								<RowDefinition Height="*">
-								</RowDefinition>
-							</Grid.RowDefinitions>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*">
-								</ColumnDefinition>
-								<ColumnDefinition Width="*">
-								</ColumnDefinition>
-							</Grid.ColumnDefinitions>
-							<Label Grid.Row="0" Grid.Column="0" x:Name="iAgreeText" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
-							<Switch Grid.Row="0" Grid.Column="1" x:Name="agreeTermsAndConditions" Toggled="switcher_Toggled" VerticalOptions="Center">
-							</Switch>
-							<m16:Checkbox WidthRequest="55"></m16:Checkbox>
-						</Grid>
-					</StackLayout>
+                    
 					<StackLayout x:Name="GuestSignatureView">
 						<ListView x:Name="GuestSignatureList" RowHeight="155" SeparatorVisibility="Default" SeparatorColor="#443266" BackgroundColor="White" ItemTapped="SelectedGuestSignature" CachingStrategy="RetainElement">
 							<ListView.Header>
