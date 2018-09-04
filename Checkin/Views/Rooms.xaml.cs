@@ -89,6 +89,11 @@ namespace Checkin
 			//Post Details
 			String result = await postServiceManager.StatusChangeRoomAsync(statusChangedRoom);
 
+            if(result == "No updatable data")
+            {
+                result = "The room is already selected.";
+            }
+
 			//SetRoomDetails
 			Constants.result.RoomNumber = roomDetailsObject.roomNumber;
 

@@ -49,7 +49,7 @@ namespace Checkin
                 checkinAndSaveButton.IsVisible = true;
                 if (Constants._reservationStatus == Constants._reservationStatusCheckedIn)
                 {
-                    saveSignatureButton.IsVisible = true;//false
+                    //saveSignatureButton.IsVisible = true;//false
                     checkinButton.IsVisible = false;
                     PerformaButton.IsVisible = true;
 
@@ -57,7 +57,7 @@ namespace Checkin
                 }
                 else
                 {
-                    saveSignatureButton.IsVisible = false;//false
+                    //saveSignatureButton.IsVisible = false;//false
                     checkinButton.IsVisible = true;
                     PerformaButton.IsVisible = false;
                 }
@@ -143,16 +143,23 @@ namespace Checkin
             //Signature Saved
             MessagingCenter.Subscribe<RegistrationCard, string>(this, Constants._signatureSuccessfullySaved, (sender, arg) =>
             {
-                checkinAndSaveButton.IsVisible = false;//false
+                //checkinAndSaveButton.IsVisible = false;//false
                 stopPageLoading();
-                //MessagingCenter.Unsubscribe<RegistrationCard, string>(this, Constants._signatureSuccessfullySaved);
+                MessagingCenter.Unsubscribe<RegistrationCard, string>(this, Constants._signatureSuccessfullySaved);
             });
             //Checked-In
             MessagingCenter.Subscribe<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn, (sender, arg) =>
             {
-                checkinAndSaveButton.IsVisible = false;//false
+                //checkinAndSaveButton.IsVisible = false;//false
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    checkinButton.IsVisible = false;
+                });
+
+                checkinButton.IsVisible = false;
                 stopPageLoading();
-                //MessagingCenter.Unsubscribe<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn);
+                MessagingCenter.Unsubscribe<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn);
             });
         }
 
@@ -171,18 +178,19 @@ namespace Checkin
             {
                 checkinAndSaveButton.IsVisible = false;//false
                 checkinButton.IsVisible = false;
-				saveSignatureButton.IsVisible = false;//false
+				saveSignatureButton.IsVisible = true;//false
                 PerformaButton.IsVisible = true;
             }
             else
             {
                 checkinAndSaveButton.IsVisible = false;//false
-                checkinButton.IsVisible = false;
-                saveSignatureButton.IsVisible = false; //false
+                checkinButton.IsVisible = true;
+                saveSignatureButton.IsVisible = true; //false
                 PerformaButton.IsVisible = false;
 
                 //GuestSignatureView.IsEnabled = false;
             }
+
         }
 
         async void getMainGuestDetails()
@@ -277,7 +285,7 @@ namespace Checkin
                 if (result != null)
                 {
                     string guestNameAvailabiliyty = "";
-                    string tem_resultMain = result; // + Vinoch 15122016
+                    string tem_resultMain = result; // 
 
                     //Removing ticks issue in date
                     result = result.Replace("Date(-", "Date(");
@@ -460,19 +468,24 @@ namespace Checkin
                                     else
                                     {
 
-                                        if (Constants._reservationStatus == Constants._reservationStatusCheckedIn && Constants._base64Code != "")
+                                        if (Constants._reservationStatus == Constants._reservationStatusCheckedIn)
                                         {
-                                            checkinAndSaveButton.IsVisible = true;
+                                            //checkinAndSaveButton.IsVisible = true;
                                             saveSignatureButton.IsVisible = true;//true
                                             checkinButton.IsVisible = false;
                                         }
-                                        else if (Constants._reservationStatus == Constants._reservationStatusPending && Constants._base64Code != "")
+                                        else if (Constants._reservationStatus == Constants._reservationStatusPending)
                                         {
-                                            checkinAndSaveButton.IsVisible = true;
+                                            //checkinAndSaveButton.IsVisible = true;
                                             saveSignatureButton.IsVisible = true;//false
                                             checkinButton.IsVisible = true;
                                         }
 
+                                    }
+
+                                    if(guestNumberCount == guestsignature.Count)
+                                    {
+                                        saveSignatureButton.IsVisible = false;
                                     }
                                 });
                 }

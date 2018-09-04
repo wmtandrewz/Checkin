@@ -41,28 +41,32 @@
                     <Switch Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Toggled="Agree_Toggled" />
                     <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" HorizontalTextAlignment="End" Text="........................................" />
                     <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="guestNameLbl" HorizontalOptions="End" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Medium" />
+                    
                 </Grid>
+                <Label FontSize="Medium" Text=" I confirm that, I have read and understood the " VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#eff5ff">
                     <Grid.RowDefinitions Padding="0,10,10,0">
                         <RowDefinition Height="*">
                         </RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                       <!-- <ColumnDefinition Width="*" />-->
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="80" />
-                        <ColumnDefinition Width="200">
-                        </ColumnDefinition>
-                        <ColumnDefinition Width="100">
-                        </ColumnDefinition>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="80"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" Text="Also I completely read and agree to the " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                    <Button Grid.Row="0" Grid.Column="1" Text="Agreement" Clicked="AgreementButton" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
+<!--                    <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" Text=" I confirm that, I have read and understood the " VerticalTextAlignment="Center" HorizontalTextAlignment="Start" /> -->                    
+                    <Button Grid.Row="0" Grid.Column="0" Text="Agreement" Clicked="AgreementButton" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
                     </Button>
-                    <Label Grid.Row="0" Grid.Column="2" FontSize="Medium" Text=" and " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                    <Button Grid.Row="0" Grid.Column="3" Text="Terms and Conditions" Clicked="TermsandConditions" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
+                    <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" Text=" and " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    <Button Grid.Row="0" Grid.Column="2" Text="Terms and Conditions" Clicked="TermsandConditions" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium">
                     </Button>
-                    <Switch Grid.Row="0" Grid.Column="4" VerticalOptions="Center" Toggled="AgreementTnC_Toggled" HorizontalOptions="End" />
+                    <BoxView Grid.Row="0" Grid.Column="3" Color="White" WidthRequest="4" HeightRequest="35" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Grid.Row="0" Grid.Column="4" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
+                    <Switch Grid.Row="0" Grid.Column="5" VerticalOptions="Center" Toggled="AgreementTnC_Toggled" HorizontalOptions="End" />
                 </Grid>
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,0" x:Name="SignatureLayout">

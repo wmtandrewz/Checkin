@@ -50,7 +50,7 @@ namespace Checkin
                 });
 			});
 
-            //new CheckInManager().GetAttachments();
+            new CheckInManager().GetAttachments();
             //new PostServiceManager().SetPerformaInvoice();
             //new CheckInManager().GetPerformaInvoiceNew();
 

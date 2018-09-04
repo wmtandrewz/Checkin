@@ -339,7 +339,7 @@
 								<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
 							</Button.BorderRadius>
 						</Button>
-						<Button Text="Save signature without checkin" Clicked="saveSignature" BackgroundColor="Green" TextColor="White" WidthRequest="250" x:Name="saveSignatureButton">
+						<Button Text="Save Without Check-In" Clicked="saveSignature" BackgroundColor="#008FBE" TextColor="White" WidthRequest="250" x:Name="saveSignatureButton">
 							<Button.BorderRadius>
 								<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
 							</Button.BorderRadius>

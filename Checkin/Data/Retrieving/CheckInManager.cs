@@ -123,7 +123,7 @@ namespace Checkin
 
         public async Task<String> GetPerformaInvoiceNew()
         {
-            string url = $"/sap/opu/odata/sap/ZTMS_GET_PROFORMA_INVOICE_SRV/proformaSet?$filter=(ImProf eq '0900000008' and ImSendPdf eq 'X' and ImEmailAddr eq 'thimira@cinnamonhotels.com')&$expand=NavHeader,NavLines,NavAdvance,NavOthers";
+            string url = $"/sap/opu/odata/sap/ZTMS_GET_PROFORMA_INVOICE_SRV/proformaSet?$filter=(ImProf eq '0900000550')&$expand=NavHeader,NavLines,NavAdvance,NavOthers";
             return await this.GetODataService(url);
         }
 
@@ -143,7 +143,7 @@ namespace Checkin
             }
 
             //string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq 'jpg'";
-            string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '3000' and IXreservaId eq '27339' and IXtype eq 'pdf'";
+            string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?filter=IXhotelId eq '3000' and IXreservaId eq '27335' and IXtype eq 'pdf'";
 
             var client = new HttpClient();
 

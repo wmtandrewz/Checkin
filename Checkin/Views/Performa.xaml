@@ -6,7 +6,7 @@
 				<ActivityIndicator x:Name="PerformaIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 				<StackLayout x:Name="PerformaLayout">
 					<StackLayout BackgroundColor="Navy" Padding="10,10,10,10">
-						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Invoice" />
+						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Performa Invoice" />
 					</StackLayout>
 					<StackLayout x:Name="headerImage" BackgroundColor="#F1F0FF" Padding="10,10,10,10">
 						<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -116,7 +116,7 @@
                         </StackLayout>
 					</StackLayout>
 					<StackLayout BackgroundColor="Navy" Padding="10,10,10,10">
-						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Line Items" />
+						<Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Performa Line Items" />
 					</StackLayout>
 					<StackLayout BackgroundColor="#F1F0FF" Padding="10,10,10,10" HeightRequest="60" x:Name="performaItemListView">
 						<ListView x:Name="performaItemDetails" RowHeight="30" SeparatorColor="#660099" ItemTapped="performatListItemSelected" SeparatorVisibility="Default" IsPullToRefreshEnabled="false" CachingStrategy="RetainElement">
