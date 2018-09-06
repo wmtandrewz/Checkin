@@ -32,8 +32,6 @@ namespace Checkin
 
             string name = Regex.Replace(guestSignatureNumber.guestName.ToString(), @"(?<=(^|[.;:])\s*)[a-z]", (match) => { return match.Value.ToUpper(); });
             GuestNameText.Text = "Dear " + name + " ! Please add your signature below.";
-            guestNameLbl.Text = name;
-            privacyLabel.Text = Constants._privacyStatement;
 
             SignatureLayout.IsVisible = false;
         }
@@ -245,34 +243,12 @@ namespace Checkin
             await Navigation.PopModalAsync();
         }
 
-        bool isAgreedGDPR = false;
-        bool isAgreedTnC = false;
-
-        void Agree_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
-        {
-            isAgreedGDPR = e.Value == true ? true : false;
-
-            ToggleSignatureLayout();
-            ToggleCloseButton();
-        }
-
         void AgreementTnC_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
         {
-            isAgreedTnC = e.Value == true ? true : false;
-
-            ToggleSignatureLayout();
-            ToggleCloseButton();
+            SignatureLayout.IsVisible = e.Value == true ? true : false;
+            CloseWindowBtn.IsVisible = e.Value == true ? false : true;
         }
 
-        void ToggleSignatureLayout()
-        {
-            SignatureLayout.IsVisible = isAgreedTnC && isAgreedGDPR ? true : false;
-        }
-
-        void ToggleCloseButton()
-        {
-            CloseWindowBtn.IsVisible = isAgreedTnC && isAgreedGDPR ? false : true;
-        }
     }
 }
 

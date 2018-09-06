@@ -27,7 +27,7 @@ namespace Checkin
         MainGuestInformation mainGuestInformation = new MainGuestInformation();
 
         //Setting stackLoyout Heights for signatures and guest details
-        int layoutHeightGuestDetails, layoutHeightSignatures, lasyoutHeighSignatureInitial;
+        int layoutHeightGuestDetails, layoutHeightSignatures, lasyoutHeighSignatureInitial, savedSignatureCount;
 
         //Setting global variables
         int guestNumberCount;
@@ -293,7 +293,7 @@ namespace Checkin
 
                     if (Enumerable.Count(output["d"]["results"][0]["ReservationNaviGuest"]["results"]) > 0)
                     {
-
+                        savedSignatureCount = 0;
                         for (int i = 0; i < Enumerable.Count(output["d"]["results"][0]["ReservationNaviGuest"]["results"]); i++)
                         {
                             string guestCountryKeyValue = string.Empty;
@@ -333,6 +333,7 @@ namespace Checkin
                                             byte[] data = Convert.FromBase64String(Convert.ToString(output1["d"]["XIMAGE"]));
 
                                             guestsignature.Add(new guestSignature(ImageSource.FromStream(() => new MemoryStream(data)), guestNameAvailabiliyty, "White", guestNumber, Constants._available, "Purple", ""));
+                                            savedSignatureCount++;
                                         }
                                     }
                                     catch (Exception)
@@ -483,7 +484,16 @@ namespace Checkin
 
                                     }
 
-                                    if(guestNumberCount == guestsignature.Count)
+                                    if (Constants._reservationStatus != Constants._reservationStatusCheckedIn && savedSignatureCount > 0)
+                                    {
+                                        checkinAndSaveButton.IsVisible = true;
+                                    }
+                                    else
+                                    {
+                                        checkinAndSaveButton.IsVisible = false;
+                                    }
+
+                                    if (savedSignatureCount == guestsignature.Count)
                                     {
                                         saveSignatureButton.IsVisible = false;
                                     }
@@ -695,14 +705,37 @@ namespace Checkin
                         var postServiceManager = new PostServiceManager();
 
                         //Add details to Payload
-						var statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, IntiailGuestDetail, "Checkin App");
+                        StatusChangeCheckin statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, sigAddedGuestDetails.guestNumber.ToString(), sigAddedGuestDetails.base64String, IntiailGuestDetail, "Checkin App");
 
                         result = await postServiceManager.StatusChangecheckinAsync(statusChangedCheckin);
                     }
+
                     Constants._base64Code = "";
                     IntiailGuestDetail = "T";
                 }
+
+                //save signature if already saved signature
+                if (signatureAddedGuests.Count < 1)
+                {
+                    var postServiceManager = new PostServiceManager();
+
+                    string resSigns = await checkInManager.GetGuestSignature("1");
+                    var outputSign = JObject.Parse(resSigns);
+                    var retrivedSignBase64 = Convert.ToString(outputSign["d"]["XIMAGE"]);
+
+                    if(retrivedSignBase64 != null)
+                    {
+                        IntiailGuestDetail = "F";
+                        StatusChangeCheckin statusChangedCheckin = new StatusChangeCheckin(Constants._reservation_id, Constants._hotel_code, "1", retrivedSignBase64, IntiailGuestDetail, "Checkin App");
+                        result = await postServiceManager.StatusChangecheckinAsync(statusChangedCheckin);
+                    }
+                    IntiailGuestDetail = "T";
+
+                }
+
+
                 await DisplayAlert(Constants._headerMessage, result, Constants._buttonOkay);
+
                 if (result == "Checked-In Successfully!")
                 {
                     Constants._reservationStatus = Constants._reservationStatusCheckedIn;

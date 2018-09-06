@@ -19,30 +19,12 @@
                             </ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="tnc.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Privacy policy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Signature" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
                     </Grid>
                 </StackLayout>
             </StackLayout>
             <StackLayout Padding="10,0,10,20">
-                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Medium" x:Name="privacyLabel" />
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="End">
-                    <Grid.RowDefinitions Padding="0,10,10,0">
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*">
-                        </ColumnDefinition>
-                        <ColumnDefinition Width="80">
-                        </ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" x:Name="iAgreeText" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
-                    <Switch Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Toggled="Agree_Toggled" />
-                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" HorizontalTextAlignment="End" Text="........................................" />
-                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="guestNameLbl" HorizontalOptions="End" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Medium" />
-                    
-                </Grid>
+               
                 <Label FontSize="Medium" Text=" I confirm that, I have read and understood the " VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#eff5ff">
                     <Grid.RowDefinitions Padding="0,10,10,0">
@@ -87,7 +69,7 @@
                         </Button.Style>
                     </Button>
                 </StackLayout>
-                <acr:SignaturePadView x:Name="padView" HeightRequest="300" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
+                <acr:SignaturePadView x:Name="padView" HeightRequest="400" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
                 </acr:SignaturePadView>
             </StackLayout>
             <Button Clicked="CloseWindow" x:Name="CloseWindowBtn" Text="Close" BackgroundColor="#211261" TextColor="White" WidthRequest="200" HorizontalOptions="Center">
