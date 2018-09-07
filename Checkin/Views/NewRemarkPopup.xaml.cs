@@ -26,11 +26,6 @@ namespace Checkin.Views
             await Navigation.PopPopupAsync(true);
             await Navigation.PushPopupAsync(new RemarkInputView("Food & Beverage (POS)","POS"));
 		}
-        async void AllergiesClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopPopupAsync(true);
-            await Navigation.PushPopupAsync(new RemarkInputView("Allergies", "ALG"));
-        }
 
         async void HKclicked(object sender, EventArgs e)
 		{

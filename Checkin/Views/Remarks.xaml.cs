@@ -100,7 +100,6 @@ namespace Checkin
                              .Replace("POS", "Food & Beverage")
                              .Replace("BILLING", "Billing")
                              .Replace("CONC","Concierge")
-                             .Replace("ALG","Allergies")
                              .Replace("C/O","Care of");
 
                     var resList = JsonConvert.DeserializeObject<List<RemarksModel>>(res);

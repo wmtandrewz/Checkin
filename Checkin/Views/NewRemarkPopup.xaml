@@ -21,12 +21,6 @@
                 </Button.BorderRadius>
             </Button>
             
-            <Button BackgroundColor="Purple" TextColor="White" Text="Allergies" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="AllergiesClicked">
-                <Button.BorderRadius>
-                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
-                </Button.BorderRadius>
-            </Button>
-
             <Button BackgroundColor="Purple" TextColor="White" Text="House Keeping" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="HKclicked">
                 <Button.BorderRadius>
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
