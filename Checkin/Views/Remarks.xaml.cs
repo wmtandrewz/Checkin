@@ -12,6 +12,7 @@ using System.Diagnostics;
 using Rg.Plugins.Popup.Services;
 using Checkin.Views;
 using Checkin.Models.ModelClasses.Payloads;
+using Rg.Plugins.Popup.Extensions;
 
 namespace Checkin
 {
@@ -94,7 +95,13 @@ namespace Checkin
 
                     var res = Convert.ToString(output["d"]["results"][0]["reserRemarksSet"]["results"]);
 
-                    res = res.Replace("FO", "Front Office").Replace("HK", "House Keeping").Replace("F&B", "Food & Beverage").Replace("BILLING", "Billing");
+                    res = res.Replace("FO", "Front Office")
+                             .Replace("HK", "House Keeping")
+                             .Replace("POS", "Food & Beverage")
+                             .Replace("BILLING", "Billing")
+                             .Replace("CONC","Concierge")
+                             .Replace("ALG","Allergies")
+                             .Replace("C/O","Care of");
 
                     var resList = JsonConvert.DeserializeObject<List<RemarksModel>>(res);
 
@@ -134,7 +141,7 @@ namespace Checkin
                         {
                             //await DisplayAlert("Notice!", $"{checkinNotice}", "OK");
 
-                            await PopupNavigation.PushAsync(new PopupAlert("Notice for Reception!", $"{checkinNotice}", "OK"));
+                            await Navigation.PushPopupAsync(new PopupAlert("Notice for Reception!", $"{checkinNotice}", "OK"));
                         }
                     }
                 }
@@ -165,15 +172,23 @@ namespace Checkin
 						break;
 
 					case "Food & Beverage":
-						XtipoObservType = "F&B";
+						XtipoObservType = "POS";
 						break;
 
 					case "Billing":
 						XtipoObservType = "BILLING";
 						break;
-				}
 
-				await PopupNavigation.PushAsync(new PopupInputView(remarksModel.Xobservacion));
+                    case "Concierge":
+                        XtipoObservType = "CONC";
+                        break;
+
+                    case "Care of":
+                        XtipoObservType = "C/O";
+                        break;
+                }
+
+				await Navigation.PushPopupAsync(new PopupInputView(remarksModel.Xobservacion));
 
 				MessagingCenter.Subscribe<PopupInputView, string>(this, "popup", (sender, arg) =>
 				{
@@ -199,22 +214,31 @@ namespace Checkin
 
 		async void UpdateRemarks(string obserAc, string arg)
 		{
-			MessagingCenter.Unsubscribe<PopupInputView, string>(this, "popup");
+            if (!string.IsNullOrEmpty(obserAc))
+            {
+                MessagingCenter.Unsubscribe<PopupInputView, string>(this, "popup");
 
-			RemarksPayload remarksPayload = new RemarksPayload(Settings.HotelCode, Constants._reservation_id, "", Settings.HotelCode, Constants._reservation_id, obserAc, arg);
+                RemarksPayload remarksPayload = new RemarksPayload(Settings.HotelCode, Constants._reservation_id, "", Settings.HotelCode, Constants._reservation_id, obserAc, arg);
 
-            var res = await new PostServiceManager().SetReservationRemarks(remarksPayload);
+                var res = await new PostServiceManager().SetReservationRemarks(remarksPayload);
 
-			if(res=="Success")
-			{
-				RemarkDetailsLayout.IsVisible = true;
-                this.RemarkDetails();
+                if (res == "Success")
+                {
+                    RemarkDetailsLayout.IsVisible = true;
+                    this.RemarkDetails();
+                }
+                else
+                {
+                    RemarkDetailsLayout.IsVisible = true;
+                    stopLoading();
+                }
 			}
-			else
-			{
-				RemarkDetailsLayout.IsVisible = true;
+            else
+            {
+                await DisplayAlert("Unauthorized!", "Unable to update the selected remark via Application", "OK");
+                RemarkDetailsLayout.IsVisible = true;
                 stopLoading();
-			}
+            }
 
 
         }
@@ -252,7 +276,7 @@ namespace Checkin
 				AddNewRemark(arg);
             });
 
-			await PopupNavigation.PushAsync(new NewRemarkPopup());
+			await Navigation.PushPopupAsync(new NewRemarkPopup());
 		}
 
 		//Page Loading
@@ -275,7 +299,9 @@ namespace Checkin
 			remarksIndicator.IsVisible = false;
 			remarksIndicator.IsRunning = false;
 			headerImage.IsVisible = true;
-		}
+            RemarksBaseLayout.VerticalOptions = LayoutOptions.Start;
+
+        }
 
 		protected override bool OnBackButtonPressed()
 		{

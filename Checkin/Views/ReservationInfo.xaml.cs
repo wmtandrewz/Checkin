@@ -127,6 +127,18 @@ namespace Checkin
 					RoomNoText.IsVisible = true;
 					//AssignRoomButton.IsVisible = false;
 				}
+
+                if(Constants._reservationStatus == Constants._reservationStatusCheckedIn)
+                {
+                    RegistrationButton.IsVisible = false;
+                    AssignRoomButton.IsVisible = false;
+                }
+                else
+                {
+                    RegistrationButton.IsVisible = true;
+                    AssignRoomButton.IsVisible = true;
+                }
+
 				ReservationIDText.Text = Constants._reservation_id;
 			});
 
@@ -177,9 +189,10 @@ namespace Checkin
 							ReservationsListIndicator.IsVisible = false;
 							ReservationsListIndicator.IsRunning = false;
 							guestInforDetails.IsVisible = true;
-							//reservationInfoDetails.IsVisible = true;
-							//headerImage.IsVisible = true;
-						});
+                            ResInfoBseLayout.VerticalOptions = LayoutOptions.Start;
+                            //reservationInfoDetails.IsVisible = true;
+                            //headerImage.IsVisible = true;
+                        });
 		}
 		protected override bool OnBackButtonPressed()
 		{

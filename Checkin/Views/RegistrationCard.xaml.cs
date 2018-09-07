@@ -909,6 +909,18 @@ namespace Checkin
                 MessagingCenter.Send<RegistrationCard, string>(this, "notAgreed", "");
             }
         }
+
+        async void ResDetailToolClicked(object sender, System.EventArgs e)
+        {
+            if (Constants._reservationStatus == Constants._reservationStatusCheckedIn)
+            {
+                await Navigation.PushAsync(new TabsPage());
+            }
+            else
+            {
+                await Navigation.PopAsync();
+            }
+        }
     }
 }
 

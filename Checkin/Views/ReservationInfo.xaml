@@ -8,7 +8,7 @@
     
 	<ContentPage.Content>
         
-		<StackLayout Padding="0,0,0,10" VerticalOptions="Start">
+		<StackLayout x:Name="ResInfoBseLayout" Padding="0,0,0,10" VerticalOptions="Center">
 			<ActivityIndicator x:Name="ReservationsListIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
             
 			<StackLayout x:Name="guestInforDetails" VerticalOptions="Start">

@@ -7,7 +7,7 @@
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
         
-		<StackLayout Padding="0,0,0,10" VerticalOptions="Start">
+		<StackLayout x:Name="RemarksBaseLayout" Padding="0,0,0,10" VerticalOptions="Center">
 			<ActivityIndicator x:Name="remarksIndicator" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" /> 
             
             <StackLayout x:Name="headerImage" BackgroundColor="#211261" Padding="10,10,10,10" >

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -22,7 +23,7 @@ namespace Checkin.Views
 		async void OKClicked(object sender, EventArgs e)
 		{
 			string [] values = {popupEntry.Text,remarkCatType};
-            await PopupNavigation.PopAsync(true);
+            await Navigation.PopPopupAsync(true);
             MessagingCenter.Send<RemarkInputView, string[]>(this, "remark", values);
 
 		}
@@ -35,8 +36,8 @@ namespace Checkin.Views
 
 		async void CancelClicked(object sender, EventArgs e)
 		{
-			await PopupNavigation.PopAsync(true);
-		}
+            await Navigation.PopPopupAsync(true);
+        }
 
 		protected override bool OnBackgroundClicked()
 		{

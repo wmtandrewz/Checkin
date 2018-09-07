@@ -20,6 +20,12 @@
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                 </Button.BorderRadius>
             </Button>
+            
+            <Button BackgroundColor="Purple" TextColor="White" Text="Allergies" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="AllergiesClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
 
             <Button BackgroundColor="Purple" TextColor="White" Text="House Keeping" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="HKclicked">
                 <Button.BorderRadius>
@@ -28,6 +34,17 @@
             </Button>
 
             <Button BackgroundColor="Purple" TextColor="White" Text="Billing Info" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="BillingClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+            
+            <Button BackgroundColor="Purple" TextColor="White" Text="Care of" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="CareOfClicked">
+                <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                </Button.BorderRadius>
+            </Button>
+            <Button BackgroundColor="Purple" TextColor="White" Text="Concierge" FontSize="Large" WidthRequest="100" HeightRequest="50" Clicked="ConcClicked">
                 <Button.BorderRadius>
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                 </Button.BorderRadius>
