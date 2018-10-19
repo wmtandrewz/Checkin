@@ -98,6 +98,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProformaInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,6 +225,11 @@
       <DependentUpon>PopupAlert.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelClasses\Payloads\AttachmentsPayload.cs" />
+    <Compile Include="Models\ModelClasses\ReservationAttachment.cs" />
+    <Compile Include="Models\ModelClasses\ProformaModel.cs" />
+    <Compile Include="Views\ProformaInvoice.xaml.cs">
+      <DependentUpon>ProformaInvoice.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

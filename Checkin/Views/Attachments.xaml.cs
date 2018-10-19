@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Checkin.Models.ModelClasses.Payloads;
+using System.Diagnostics;
 
 namespace Checkin
 {
@@ -49,8 +50,9 @@ namespace Checkin
             
 			var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() {
              
-                Name = "guestImage.jpg"
-            
+                Name = "guestImage.jpg",
+                PhotoSize = PhotoSize.Medium
+
             });
 
             if (photo != null)
@@ -74,7 +76,8 @@ namespace Checkin
 
             var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions() {
 
-               Name = "PPImage.jpg"
+               Name = "PPImage.jpg",
+                PhotoSize = PhotoSize.Medium
             });
 
             if (photo != null)
@@ -94,11 +97,59 @@ namespace Checkin
 		{
 			Device.BeginInvokeOnMainThread(() =>
 						{
-							//attachmentsIndicator.IsVisible = true;
-							//attachmentsIndicator.IsRunning = true;
-							headerImage.IsVisible = true;
+							indicator.IsVisible = true;
+							indicator.IsRunning = true;
+							headerImage.IsVisible = false;
+                            attachementBaseLayout.IsVisible = false;
+                            DisplayAttachments();
 						});
 		}
+
+        async void DisplayAttachments()
+        {
+            try
+            {
+                var responce = await new CheckInManager().GetAttachments("JPG");
+                var output = JObject.Parse(responce);
+
+                List<ReservationAttachment> AttachmentList = new List<ReservationAttachment>();
+
+                if (Enumerable.Any(output["d"]["results"]))
+                {
+                    var result = Convert.ToString(output["d"]["results"]);
+
+                    AttachmentList = JsonConvert.DeserializeObject<List<ReservationAttachment>>(result);
+                }
+
+                foreach (var item in AttachmentList)
+                {
+                    if (item.AttachmentName.Contains("Passport"))
+                    {
+                        byte[] data = Convert.FromBase64String(item.AttachmentString);
+                        passportImage.Source = ImageSource.FromStream(() => new MemoryStream(data));
+                    }
+                    else if (item.AttachmentName.Contains("Guest"))
+                    {
+                        byte[] data = Convert.FromBase64String(item.AttachmentString);
+                        guestImage.Source = ImageSource.FromStream(() => new MemoryStream(data));
+                    }
+                }
+
+                indicator.IsVisible = false;
+                indicator.IsRunning = false;
+                headerImage.IsVisible = true;
+                attachementBaseLayout.IsVisible = true;
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                indicator.IsVisible = true;
+                indicator.IsRunning = true;
+                headerImage.IsVisible = true;
+                attachementBaseLayout.IsVisible = false;
+            }
+
+        }
 
         void ClearPPClicked(object sender, System.EventArgs e)
 		{
@@ -139,6 +190,11 @@ namespace Checkin
 
         async void SaveAttachmentButton_Clicked(object sender, System.EventArgs e)
         {
+            indicator.IsVisible = true;
+            indicator.IsRunning = true;
+            headerImage.IsVisible = false;
+            attachementBaseLayout.IsVisible = false;
+
             string ppResponce = null;
             string guestResponce = null;
 
@@ -148,6 +204,7 @@ namespace Checkin
                 ppPayload.IXhotelId = Constants._hotel_code;
                 ppPayload.IXreservaId = Constants._reservation_id;
                 ppPayload.IXtype = "JPG";
+                ppPayload.IXfileName = "Passport Copy";
 
                 var inputStream = _passportImage.GetStream();
 
@@ -177,6 +234,7 @@ namespace Checkin
                 guestPayload.IXhotelId = Constants._hotel_code;
                 guestPayload.IXreservaId = Constants._reservation_id;
                 guestPayload.IXtype = "JPG";
+                guestPayload.IXfileName = "Guest Image";
 
                 var inputStream = _guestImage.GetStream();
 
@@ -201,10 +259,18 @@ namespace Checkin
             if(ppResponce == "success" || guestResponce=="success")
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Attachements have been successfully uploaded to the system", "OK");
+                indicator.IsVisible = false;
+                indicator.IsRunning = false;
+                headerImage.IsVisible = true;
+                attachementBaseLayout.IsVisible = true;
             }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Failed", "Failed to upload attachments.", "OK");
+                indicator.IsVisible = false;
+                indicator.IsRunning = false;
+                headerImage.IsVisible = true;
+                attachementBaseLayout.IsVisible = true;
             }
         }
     }

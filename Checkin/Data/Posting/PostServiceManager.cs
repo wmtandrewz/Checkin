@@ -173,21 +173,21 @@ namespace Checkin
 
         }
 
-        public async Task<string> SetPerformaInvoice()
+        public async Task<string> SetPerformaInvoice(string responsible,string folio)
         {
 
             string url = "/sap/opu/odata/sap/ZTMS_GEN_PROFORMA_INVOICE_SRV/proformaSet";
-            String result = await this.GetODataService(url, JsonConvert.SerializeObject(new Perfoma("3000", "0000027692", "1", null)));
+            string result = await this.GetProformaInvoiceNumber(url, JsonConvert.SerializeObject(new Perfoma(Constants._hotel_code, Constants._reservation_id, responsible, folio)));
 
             //If result is success
-            if (result == "success")
+            if (result != null)
             {
-                return "Success";
+                return result;
             }
 
             else
             {
-                return "Sorry. Unable to update attachement!";
+                return "error";
             }
 
 
@@ -404,8 +404,93 @@ namespace Checkin
                 return "Error";
             }
         }
+
+        public async Task<string> GetProformaInvoiceNumber(String url, String postBody)
+        {
+            string xcsrf_token = "";
+            string cookie_value = "";
+
+            try
+            {
+                //Refresh Token if expires
+                if (Convert.ToDateTime(Settings.ExpiresTime) <= DateTime.Now)
+                {
+                    //Authenticate against ADFS and NW Gateway
+                    oAuthLogin oauthlogin = new oAuthLogin();
+                    String access_token = await oauthlogin.LoginUserAsync(Constants._user);
+                    if (access_token == "" && access_token == Constants._userNotExistInNWGateway)
+                    {
+                        userLogout.logout();
+                    }
+                }
+
+                CookieContainer cookies = new CookieContainer();
+                HttpClientHandler handler = new HttpClientHandler();
+                handler.CookieContainer = cookies;
+
+                using (var client = new HttpClient(handler))
+                {
+                    //Get X-CSRF-TOKEN
+                    client.BaseAddress = new Uri(Constants._gatewayURL + url);
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
+                    client.DefaultRequestHeaders.Add("x-csrf-token", "fetch");
+
+                    //GET data
+                    HttpResponseMessage response = await client.GetAsync(Constants._gatewayURL + url);
+                    xcsrf_token = response.Headers.GetValues("X-CSRF-Token").FirstOrDefault();
+
+                    Uri uri = new Uri(Constants._gatewayURL + url);
+                    IEnumerable<Cookie> responseCookies = cookies.GetCookies(uri).Cast<Cookie>();
+                    foreach (Cookie cookie in responseCookies)
+                    {
+                        if (Constants._cookie == cookie.Name)
+                            cookie_value = cookie.Value;
+                    }
+                }
+
+                if (xcsrf_token != "" && cookie_value != "")
+                {
+                    //Post Method
+                    Uri baseUri = new Uri(Constants._gatewayURL + url);
+                    HttpClientHandler clientHandler = new HttpClientHandler();
+                    //Set Cookie in Post
+                    clientHandler.CookieContainer.Add(baseUri, new Cookie(Constants._cookie, cookie_value));
+
+                    using (var client_post = new HttpClient(clientHandler))
+                    {
+                        client_post.BaseAddress = new Uri(Constants._gatewayURL + url);
+                        client_post.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
+                        client_post.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        //Set Token in Post
+                        client_post.DefaultRequestHeaders.Add("X-CSRF-Token", xcsrf_token);
+
+                        //Post json content
+                        var response = client_post.PostAsync(Constants._gatewayURL + url, new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            Debug.WriteLine(response);
+                            var perRes = response.Content.ReadAsStringAsync();
+                            Debug.WriteLine(perRes.Result);
+                            return perRes.Result;
+                        }
+                        else
+                        {
+                            return await response.Content.ReadAsStringAsync();
+                        }
+                    }
+                }
+                else
+                {
+                    return "Token or cookie is not available";
+                }
+            }
+            catch (Exception e)
+            {
+                return "Error";
+            }
+        }
     }
-    
 
 
     public class Perfoma

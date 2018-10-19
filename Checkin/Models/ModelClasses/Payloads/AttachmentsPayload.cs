@@ -26,5 +26,11 @@ namespace Checkin.Models.ModelClasses.Payloads
             get;
             set;
         }
+
+        public string IXfileName
+        {
+            get;
+            set;
+        }
     }
 }

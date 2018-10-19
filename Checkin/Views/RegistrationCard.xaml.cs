@@ -798,7 +798,7 @@ namespace Checkin
         //View Performa Button
         async void viewPrforma(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Performa(Constants._reservation_id, emailaddress.Text));
+            await Navigation.PushAsync(new ProformaInvoice());
         }
 
 

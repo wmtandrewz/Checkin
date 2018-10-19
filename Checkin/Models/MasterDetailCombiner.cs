@@ -1,4 +1,5 @@
 ﻿using System;
+using Checkin.Views;
 using Xamarin.Forms;
 
 namespace Checkin
@@ -44,8 +45,8 @@ namespace Checkin
             
 			this.Master = masterPage;
 
-			//Detail Page Configuration
-			var detail = new NavigationPage(new HomeDefault());
+            //Detail Page Configuration
+            var detail = new NavigationPage(new HomeDefault());
             detail.BarBackgroundColor = Color.FromHex("#6D2276");
 			detail.BarTextColor = Color.White;
 			this.Detail = detail;

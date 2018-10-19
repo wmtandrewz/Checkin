@@ -9,7 +9,8 @@ namespace Checkin
 {
 	public partial class Performa : ContentPage
 	{
-		CheckInManager checkinManager = new CheckInManager();
+
+        CheckInManager checkinManager = new CheckInManager();
 
 		PerformaInformation performaInformaion = new PerformaInformation();
 		string emailAddress = "";

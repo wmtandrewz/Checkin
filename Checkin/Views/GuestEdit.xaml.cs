@@ -72,7 +72,7 @@ namespace Checkin
 					//Values from passport
 					foreach (var result in sender.Results)
 					{
-						//Seperating values from array
+                    	//Seperating values from array
 						result.TryGetValue("SecondaryId", out fname);
 						result.TryGetValue("PrimaryId", out lname);
 						result.TryGetValue("Nationality", out nationality);

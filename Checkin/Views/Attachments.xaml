@@ -1,120 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Attachments" BackgroundColor="White">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" />
-        <ToolbarItem Icon="home.png" Order="Primary" Priority="0" Clicked="HomeClicked"/>
-	</ContentPage.ToolbarItems>
-	<ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" />
+        <ToolbarItem Icon="home.png" Order="Primary" Priority="0" Clicked="HomeClicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
         <ScrollView>
-		    <StackLayout>
-       
-			<StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
-				<Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-					
-				</Label>
-				<Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-				</Label>
-			</StackLayout>
-            
-			<StackLayout Padding="10,10,10,10">
-                <StackLayout BackgroundColor="#F1F0FF">
-                    <Grid Padding="15,15,15,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*">
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="passport.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Attach Passport Copy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                    </Grid>
+            <StackLayout>
+                <ActivityIndicator x:Name="indicator" Color="Navy" HeightRequest="50" IsVisible="false" IsRunning="false" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <StackLayout  x:Name="attachementBaseLayout">
+                    <StackLayout x:Name="headerImage" BackgroundColor="#443266" Padding="10,10,10,10">
+                        <Label x:Name="ReservationIDText" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        </Label>
+                        <Label x:Name="ClientNameText" FontAttributes="Italic" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Padding="10,10,10,10">
+                        <StackLayout BackgroundColor="#F1F0FF">
+                            <Grid Padding="15,15,15,15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*">
+                                    </RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="passport.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Attach Passport Copy" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid Padding="15,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*">
+                                </RowDefinition>
+                                <RowDefinition Height="1*">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" x:Name="passportImage" Source="camera.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PassportTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Button x:Name="clearPPImage" Grid.Row="1" Grid.Column="0" Text="Clear Image" Clicked="ClearPPClicked" VerticalOptions="StartAndExpand" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Padding="10,10,10,10">
+                        <StackLayout BackgroundColor="#F1F0FF">
+                            <Grid Padding="15,15,15,15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*">
+                                    </RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                    <ColumnDefinition Width="*">
+                                    </ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="guest.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Attach Guest Image" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid Padding="15,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*">
+                                </RowDefinition>
+                                <RowDefinition Height="1*">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" x:Name="guestImage" Source="camera.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GuestTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Button x:Name="clearGuestImage" Grid.Row="1" Grid.Column="0" Text="Clear Image" Clicked="ClearGuestClicked" VerticalOptions="StartAndExpand" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Padding="20,0,20,20">
+                        <Button x:Name="saveAttachmentsBtn" Text="Save Attachments" WidthRequest="200" BackgroundColor="Green" TextColor="White" Clicked="SaveAttachmentButton_Clicked" HorizontalOptions="Center">
+                            <Button.BorderRadius>
+                                <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                            </Button.BorderRadius>
+                        </Button>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-
-            <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand">
-
-                <Grid Padding="15,15,15,15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5*">
-                        </RowDefinition>
-                        <RowDefinition Height="1*">
-                        </RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*">
-                        </ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Row = "0" Grid.Column = "0" x:Name="passportImage" HeightRequest="300"  Source="camera.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="PassportTapGestureRecognizerTapped"
-                                NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Button x:Name="clearPPImage" Grid.Row = "1" Grid.Column = "0" Text="Clear Image" Clicked="ClearPPClicked" VerticalOptions="StartAndExpand"/>                
-               </Grid>
-
-            </StackLayout>
-
-            <StackLayout Padding="10,10,10,10">
-            <StackLayout BackgroundColor="#F1F0FF">
-                <Grid Padding="15,15,15,15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*">
-                        </RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*">
-                        </ColumnDefinition>
-                        <ColumnDefinition Width="*">
-                        </ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="guest.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                    <Label Grid.Row="0" Grid.Column="1" Text="Attach Guest Image" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                </Grid>
-            </StackLayout>
-        </StackLayout>
-
-        <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand">
-
-            <Grid Padding="15,15,15,15">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*">
-                    </RowDefinition>
-                    <RowDefinition Height="1*">
-                    </RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*">
-                    </ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row = "0" Grid.Column = "0" x:Name="guestImage" HeightRequest="300"  Source="camera.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Tapped="GuestTapGestureRecognizerTapped"
-                            NumberOfTapsRequired="1" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Button x:Name="clearGuestImage" Grid.Row = "1" Grid.Column = "0" Text="Clear Image" Clicked="ClearGuestClicked" VerticalOptions="StartAndExpand" />
-                </Grid>
-
-        </StackLayout>
-
-            <StackLayout Padding="20,0,20,20">
-                <Button x:Name="saveAttachmentsBtn" Text="Save Attachments" BackgroundColor="Green" TextColor="White" Clicked="SaveAttachmentButton_Clicked">
-                    <Button.BorderRadius>
-                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
-                    </Button.BorderRadius>
-                </Button>
-            </StackLayout>
-                
-		</StackLayout>
-
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

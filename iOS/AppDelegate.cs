@@ -14,8 +14,8 @@ namespace Checkin.iOS
 		{
 			Rg.Plugins.Popup.Popup.Init();
 			global::Xamarin.Forms.Forms.Init();
-
-			LoadApplication(new App());
+            Syncfusion.SfDataGrid.XForms.iOS.SfDataGridRenderer.Init();
+            LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
 		}

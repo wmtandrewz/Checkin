@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Views.ProformaInvoice">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="tableHeaderStyle" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView Orientation="Horizontal" WidthRequest="1000">
+            <ScrollView Orientation="Vertical">
+                <StackLayout>
+                    <ActivityIndicator x:Name="PerformaIndicator" HeightRequest="50" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding IsRunningIndicator}" IsVisible="{Binding IsVisibleIndicator}" />
+                    <StackLayout Padding="0,0,0,10" BackgroundColor="White" VerticalOptions="Start" IsVisible="{Binding IsVisibleData}">
+                        <StackLayout VerticalOptions="Start">
+                            <StackLayout BackgroundColor="Navy" Padding="10,10,10,10" VerticalOptions="Start">
+                                <Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Invoice" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Padding="10,10,10,10" Orientation="Horizontal">
+                            <Grid Padding="10" HorizontalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="Customer Code" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="1" Text="Customer" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="6" Text="TIN" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="8" Text="Guest Name" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="9" Text="Booking Party" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="0" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="1" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="6" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="8" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="9" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding ProformaHeader.CustomerId}" />
+                                <Label Grid.Column="2" Grid.Row="1" Text="{Binding ProformaHeader.CustomerName}" />
+                                <Label Grid.Column="2" Grid.Row="6" Text="{Binding ProformaHeader.TinCodeM}" />
+                                <Label Grid.Column="2" Grid.Row="8" Text="{Binding ProformaHeader.GuestName}" />
+                                <Label Grid.Column="2" Grid.Row="9" Text="{Binding ProformaHeader.BookingParty}" />
+                            </Grid>
+                            <Grid Padding="10" HorizontalOptions="EndAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="Invoice Number" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="1" Text="Arrival" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="2" Text="Departure" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="3" Text="Reservation No" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="4" Text="Reservation" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="0" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="1" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="2" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="3" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="4" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding ProformaHeader.BillNo}" />
+                                <Label Grid.Column="2" Grid.Row="1" Text="{Binding ProformaHeader.ArrivalDate}" />
+                                <Label Grid.Column="2" Grid.Row="2" Text="{Binding ProformaHeader.DepartureDate}" />
+                                <Label Grid.Column="2" Grid.Row="3" Text="{Binding ProformaHeader.ReservationId}" />
+                                <Label Grid.Column="2" Grid.Row="4" Text="{Binding ProformaHeader.ResvStatus}" />
+                                <Label Grid.Column="3" Grid.Row="0" Text="Date" FontAttributes="Bold" />
+                                <Label Grid.Column="3" Grid.Row="1" Text="Time" FontAttributes="Bold" />
+                                <Label Grid.Column="3" Grid.Row="2" Text="Time" FontAttributes="Bold" />
+                                <Label Grid.Column="4" Grid.Row="0" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="4" Grid.Row="1" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="4" Grid.Row="2" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="5" Grid.Row="0" Text="{Binding ProformaHeader.BillDate}" />
+                                <Label Grid.Column="5" Grid.Row="1" Text="{Binding ProformaHeader.ArrivalTime}" />
+                                <Label Grid.Column="5" Grid.Row="2" Text="{Binding ProformaHeader.DepartureTime}" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Padding="10">
+                            <Grid x:Name="mainProformaTable">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="2" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="2" />
+                                </Grid.RowDefinitions>
+                                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="23" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="23" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv1" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv2" Grid.Column="2" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv3" Grid.Column="4" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv4" Grid.Column="6" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv5" Grid.Column="8" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv6" Grid.Column="10" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv7" Grid.Column="12" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv8" Grid.Column="14" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv9" Grid.Column="16" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv10" Grid.Column="18" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv11" Grid.Column="20" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="vbv12" Grid.Column="22" Grid.Row="0" Grid.RowSpan="5" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <Label Grid.Column="1" Grid.Row="1" Text="Start Date" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="3" Grid.Row="1" Text="End Date" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="5" Grid.Row="1" Text="Description" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="7" Grid.Row="1" Text="Voucher No" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="9" Grid.Row="1" Text="Room Type" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="11" Grid.Row="1" Text="Meal Plan" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="13" Grid.Row="1" Text="Pax" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="15" Grid.Row="1" Text="Room Nights" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="17" Grid.Row="1" Text="Rate" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="19" Grid.Row="1" Text="Cur." Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="21" Grid.Row="1" Text="Amount" Style="{StaticResource tableHeaderStyle}" />
+                            </Grid>
+                            <StackLayout Padding="150,0,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="2" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="2" />
+                                    </Grid.RowDefinitions>
+                                    <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                    <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                    <BoxView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                    <BoxView Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                    <BoxView Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text="Grand Total" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                                    <Label x:Name="grandTotalLabel" Grid.Column="3" Grid.Row="1" Text="0.00" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Padding="160,10,10,10">
+                            <Grid x:Name="advanceTable">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="2" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="2" />
+                                </Grid.RowDefinitions>
+                                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="adVerBoxV1" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="adVerBoxV2" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView x:Name="adVerBoxV3" Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <Label Grid.Column="1" Grid.Row="1" Text="Total Due" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                                <Label x:Name="totalDueLabel" Grid.Column="3" Grid.Row="1" Text="0.00" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Padding="160,10,10,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="2" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="2" />
+                                </Grid.RowDefinitions>
+                                <BoxView Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="0" Grid.Row="2" Grid.RowSpan="7" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="2" Grid.Row="0" Grid.RowSpan="9" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <BoxView Grid.Column="4" Grid.Row="0" Grid.RowSpan="9" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
+                                <Label Grid.Column="3" Grid.Row="1" Text="Amount" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="1" Grid.Row="3" Text="Total Excluding VAT" />
+                                <Label x:Name="totalExVal" Grid.Column="3" Grid.Row="3" Text="0.00" HorizontalTextAlignment="End" />
+                                <Label x:Name="vatLabel" Grid.Column="1" Grid.Row="5" Text="VAT 15%" />
+                                <Label x:Name="vatVal" Grid.Column="3" Grid.Row="5" Text="0.00" HorizontalTextAlignment="End" />
+                                <Label Grid.Column="1" Grid.Row="7" Text="Grand Total" FontSize="16" FontAttributes="Bold" />
+                                <Label x:Name="totalVal" Grid.Column="3" Grid.Row="7" Text="0.00" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="Rooms" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="1" Text="Generated By" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="2" Text="Exchange Rate" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="4" Text="Any discrepancies to be notified within 7 days." FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="6" Text="Remmitance to be sent to the account given below " FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="8" Text="Account Holder " FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="9" Text="Bank" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="10" Text="Account Number" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="11" Text="Swift Code" FontAttributes="Bold" />
+                                <Label Grid.Column="0" Grid.Row="15" Text="Thank you!" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="0" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="1" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="2" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="6" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="8" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="9" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="10" Text=":" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="11" Text=":" FontAttributes="Bold" />
+                                <Label x:Name="roomNumberVal" Grid.Column="2" Grid.Row="0" Text="301" />
+                                <Label x:Name="exchangeRateVal" Grid.Column="2" Grid.Row="2" Text="USD 135.4000" />
+                                <Label x:Name="createdByVal" Grid.Column="2" Grid.Row="1" Text="kasunu" />
+                                <Label x:Name="accountHolderNAme" Grid.Column="2" Grid.Row="8" Text="TRANS ASIA HOTELS PLC" />
+                                <Label x:Name="bankName" Grid.Column="2" Grid.Row="9" Text="CITI BANK A.A" />
+                                <Label x:Name="accountNumberVal" Grid.Column="2" Grid.Row="10" Text="65456465/56456465" />
+                                <Label x:Name="swiftCodeVal" Grid.Column="2" Grid.Row="11" Text="CITLKLX" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

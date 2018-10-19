@@ -194,7 +194,7 @@ namespace Checkin
 
 			//Adding values and keys to dictionary
 			Dictionary<string, string> alphaTo32 = new Dictionary<string, string> {
-				{ "AFG", "AF" },    // Afghanistan
+			   { "AFG", "AF" },    // Afghanistan
                { "ALB", "AL" },    // Albania
                { "ARE", "AE" },    // U.A.E.
                { "ARG", "AR" },    // Argentina
@@ -204,7 +204,7 @@ namespace Checkin
                { "AZE", "AZ" },    // Azerbaijan
                { "BEL", "BE" },    // Belgium
                { "BGD", "BD" },    // Bangladesh
-               { "BGR", "BG" },    // Bulgaria
+               { "BGR", "BG" },    // Bulgaria`
                { "BHR", "BH" },    // Bahrain
                { "BIH", "BA" },    // Bosnia and Herzegovina
                { "BLR", "BY" },    // Belarus
@@ -220,6 +220,7 @@ namespace Checkin
                { "CRI", "CR" },    // Costa Rica
                { "CZE", "CZ" },    // Czech Republic
                { "DEU", "DE" },    // Germany
+               { "D<<", "DE" },    // Germany
                { "DNK", "DK" },    // Denmark
                { "DOM", "DO" },    // Dominican Republic
                { "DZA", "DZ" },    // Algeria
@@ -506,7 +507,8 @@ namespace Checkin
 				{ "Cuban", "CU" },
 				{ "Cypriot", "CY" },
 				{ "Czech", "CZ" },
-				{ "Danish", "DK" },
+                { "Danish", "DK" },
+                { "Germany", "DE" },
 				{ "Djiboutian", "DJ" },
 				{ "Dominican", "DM" },
 				{ "Dutch", "AN" },
