@@ -143,10 +143,10 @@ namespace Checkin
             catch(Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                indicator.IsVisible = true;
-                indicator.IsRunning = true;
+                indicator.IsVisible = false;
+                indicator.IsRunning = false;
                 headerImage.IsVisible = true;
-                attachementBaseLayout.IsVisible = false;
+                attachementBaseLayout.IsVisible = true;
             }
 
         }

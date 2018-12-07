@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Checkin.Models.ModelClasses;
 
 namespace Checkin
 {
 	public class CountryDictionary
 	{
-		//Disctionaty List Of Nationalities
-		public static Dictionary<string, string> listofIdentificationMethod()
+
+              //Disctionaty List Of Nationalities
+        public static Dictionary<string, string> listofIdentificationMethod()
 		{
 			var nameToIdentification = CountryDictionary.listofIdentificationMethods();
 			return nameToIdentification;
@@ -485,7 +487,7 @@ namespace Checkin
 				{ "Bouvet Islands", "BV" },
 				{ "Brazilian", "BR" },
 				{ "Brit.Ind.Oc.Ter", "IO" },
-				{ "British", "FK" },
+				{ "British", "GB" },
 				{ "Brunei", "BN" },
 				{ "Bulgarian", "BG" },
 				{ "Burkina-Faso", "BF" },
@@ -511,7 +513,7 @@ namespace Checkin
                 { "Germany", "DE" },
 				{ "Djiboutian", "DJ" },
 				{ "Dominican", "DM" },
-				{ "Dutch", "AN" },
+				{ "Dutch", "NL" },
 				{ "East Timor", "TP" },
 				{ "Ecuadorian", "EC" },
 				{ "Egyptian", "EG" },
@@ -524,7 +526,7 @@ namespace Checkin
 				{ "Fijian", "FJ" },
 				{ "Filipino", "PH" },
 				{ "Finnish", "FI" },
-				{ "French", "EH" },
+				{ "French", "FR" },
 				{ "Gabonese", "GA" },
 				{ "Gambian", "GM" },
 				{ "Georgian", "GE" },
@@ -895,7 +897,7 @@ namespace Checkin
 				{ "Tuvalu", "TV" },
 				{ "Uganda", "UG" },
 				{ "Ukraine", "UA" },
-				{ "United", "GB" },
+				{ "United Kingdom", "GB" },
 				{ "Uruguay", "UY" },
 				{ "USA", "US" },
 				{ "Utd.Arab", "AE" },

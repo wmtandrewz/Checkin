@@ -39,8 +39,8 @@ namespace Checkin.Data.Posting
             {
                 return null;
             }
-
            
         }
+
     }
 }

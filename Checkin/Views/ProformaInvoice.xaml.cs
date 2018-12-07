@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Checkin.Models.ModelClasses;
@@ -15,9 +16,9 @@ namespace Checkin.Views
     public partial class ProformaInvoice : ContentPage
     {
         private NavLinesResult[] navLinesResults;
-        private NavAdvanceResult [] proformaAdvanceList;
+        private NavAdvanceResult[] proformaAdvanceList;
         private NavOthersResult[] proformaOthersList;
-
+        private NavHeaderResult[] navHeaderResult;
 
         public ProformaInvoice()
         {
@@ -33,14 +34,30 @@ namespace Checkin.Views
                     navLinesResults = arg.D.Results[0].NavLines.Results;
                     proformaAdvanceList = arg.D.Results[0].NavAdvance.NavAdvResults;
                     proformaOthersList = arg.D.Results[0].NavOthers.Results;
+                    navHeaderResult = arg.D.Results[0].NavHeader.Results;
 
                     CreateMainProformaTable();
+
+                    if (Constants._hotel_code == "3300" || Constants._hotel_code == "3305" || Constants._hotel_code == "3310")
+                    {
+                        taxAreaLayout.IsVisible = true;
+                    }
+                    else
+                    {
+                        taxAreaLayout.IsVisible = false;
+                    }
                 });
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Data Reciever error");
             }
+
+            MessagingCenter.Subscribe<ProformaViewModel>(this, "NoCharges", (obj) =>
+              {
+                  MessagingCenter.Unsubscribe<ProformaViewModel>(this, "NoCharges");
+                  Navigation.PopAsync();
+              });
 
         }
 
@@ -49,6 +66,8 @@ namespace Checkin.Views
             try
             {
                 int loopCount = navLinesResults.Length;
+
+                amountText.Text = $"Amount ({navLinesResults[0].AmountCurr})";
 
                 for (int i = 0; i < loopCount; i++)
                 {
@@ -98,7 +117,7 @@ namespace Checkin.Views
                     var startDateLabel = new Label { Text = ConvertToDateTime(navLinesResults[j].StartDate), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var endDateLabel = new Label { Text = ConvertToDateTime(navLinesResults[j].EndDate), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var descriptionLabel = new Label { Text = navLinesResults[j].Description, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-                    var voucherNoLabel = new Label { Text = navLinesResults[j].BillNo, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+                    var voucherNoLabel = new Label { Text = navHeaderResult[0].Voucher, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var roomTypeLabel = new Label { Text = navLinesResults[j].RoomType, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var mealPlanLabel = new Label { Text = navLinesResults[j].MealPlan, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var paxLabel = new Label { Text = navLinesResults[j].Occupancy.ToString(), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
@@ -212,13 +231,21 @@ namespace Checkin.Views
                 var otherDetails = proformaOthersList[0];
 
                 totalExVal.Text = otherDetails.TotalExclVat == "0.000" ? otherDetails.TotalExclSvat : otherDetails.TotalExclVat;
-                vatLabel.Text = otherDetails.SvatPerc == "" ? $"VAT {otherDetails.VatPerc}%" : $"SVAT {otherDetails.SvatPerc}%";
-                vatVal.Text = otherDetails.Svat == "0.000" ? otherDetails.Vat : otherDetails.Svat;
+                //vatLabel.Text = otherDetails.SvatPerc == "" ? $"VAT {otherDetails.VatPerc}%" : $"SVAT {otherDetails.SvatPerc}%";
+                //vatVal.Text = otherDetails.Svat == "0.000" ? otherDetails.Vat : otherDetails.Svat;
+
+                serviceChargeLabel.Text = $"Service Charge {otherDetails.ScPercM}%";
+                serviceChargeVal.Text = otherDetails.ScAmtM;
+
+                gstLabel.Text = $"T -  GST at {otherDetails.GstPercM}%";
+                gstVal.Text = otherDetails.GstAmtM;
+
+                greenTaxVal.Text = otherDetails.GreenTaxM;
+
                 totalVal.Text = otherDetails.GrandTotal;
 
                 roomNumberVal.Text = otherDetails.RoomingList;
                 createdByVal.Text = otherDetails.GeneratedBy;
-                exchangeRateVal.Text = otherDetails.ExCurr + " " + otherDetails.ExRate;
             }
             catch (Exception ex)
             {
@@ -237,7 +264,7 @@ namespace Checkin.Views
             string sa = @"""" + ticks + @"""";
             DateTime date = JsonConvert.DeserializeObject<DateTime>(sa);
 
-            return date.ToString("yyyy-MMM-dd");
+            return date.ToString("dd.MM.yyyy");
         }
 
         private string ConvertToTime(string time)
@@ -256,7 +283,8 @@ namespace Checkin.Views
         public bool _isVisibleData = false;
 
         public NavHeaderResult _proformaHeader { get; set; }
-        public ObservableCollection <NavLinesResult> _navLinesResult { get; set; }
+        public AccountDetailsModel _accountDetailsModel { get; set; }
+        public ObservableCollection<NavLinesResult> _navLinesResult { get; set; }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -274,6 +302,20 @@ namespace Checkin.Views
             {
                 _proformaHeader = value;
                 OnPropertyChanged("ProformaHeader");
+            }
+        }
+
+        public AccountDetailsModel AccountDetails
+        {
+            get
+            {
+                return _accountDetailsModel;
+            }
+
+            set
+            {
+                _accountDetailsModel = value;
+                OnPropertyChanged("AccountDetails");
             }
         }
 
@@ -334,7 +376,7 @@ namespace Checkin.Views
 
                 string MessageV1 = string.Empty, MessageV2 = string.Empty, MessageV3 = string.Empty, MessageV4 = string.Empty;
 
-                var res = await new PostServiceManager().SetPerformaInvoice("1",null);
+                var res = await new PostServiceManager().SetPerformaInvoice("2", null);
 
                 if (res != null || res.Contains("Invoice successfuly created"))
                 {
@@ -358,6 +400,7 @@ namespace Checkin.Views
                 preProHeader.ResvStatus = preProHeader.ResvStatus == "00" ? "Confirmed" : "";
 
                 ProformaHeader = preProHeader;
+                AccountDetails = Constants.BankAccountsDetails.FirstOrDefault(x => x.HotelCode == Constants._hotel_code);
 
                 var navLinesResults = result.D.Results[0].NavLines.Results;
                 var proformaAdvanceList = result.D.Results[0].NavAdvance.NavAdvResults;
@@ -370,12 +413,15 @@ namespace Checkin.Views
                 IsVisibleData = true;
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Debug.WriteLine("Binding Headers error");
                 IsRunningIndicator = true;
                 IsVisibleIndicator = true;
                 IsVisibleData = false;
+
+                await Application.Current.MainPage.DisplayAlert("No Charges", "There are no charges for the Folio 2", "OK");
+                MessagingCenter.Send<ProformaViewModel>(this, "NoCharges");
             }
         }
 
@@ -395,7 +441,7 @@ namespace Checkin.Views
 
         private string ConvertToTime(string time)
         {
-            return time.Replace("PT", "").Replace("H", ":").Replace("M", ":").Replace("S","  Hrs");
+            return time.Replace("PT", "").Replace("H", ":").Replace("M", ":").Replace("S", "  Hrs");
         }
     }
 }

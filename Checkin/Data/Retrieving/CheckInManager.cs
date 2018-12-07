@@ -142,22 +142,26 @@ namespace Checkin
                 }
             }
 
-            string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'";
+            //string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'"; //Dev
+            string url = $"https://cheetah.azure-api.net/api/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'";
 
-            var client = new HttpClient();
-
-            // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
-
-            var response = await client.GetAsync(url);
-            using (HttpContent content = response.Content)
+            using (var client = new HttpClient())
             {
-                string result = await content.ReadAsStringAsync();
-                return result;
-            }
+                client.BaseAddress = new Uri(url);
+                // Request headers
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
+                //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");//DEV
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dbaee796a5fe47bf8f4c467cd7cf9d4d");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+
+                var response = await client.GetAsync(url);
+                using (HttpContent content = response.Content)
+                {
+                    string result = await content.ReadAsStringAsync();
+                    return result;
+                }
+            }
         }
 
         public async Task<String> GetODataService(String url)

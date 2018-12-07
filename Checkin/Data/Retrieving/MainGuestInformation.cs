@@ -277,7 +277,7 @@ namespace Checkin
         }
 
 		//public async Task<ItemList> guestInformation()
-		public async Task<List<guestDetails>> guestInformation()
+		public async Task<List<guestDetails>>guestInformation()
 		{
 			int guestNumber = 1;
 

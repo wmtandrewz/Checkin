@@ -89,7 +89,7 @@
 								<Label Text="Mobile/Tel :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
 								<Entry BackgroundColor="#E6E6FA" x:Name="GuestContact" Placeholder="Enter Mobile/Phone Number" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
 								<Label Text="House No :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-								<Entry x:Name="HouseNumber" Placeholder="Enter House Number" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+								<Entry x:Name="HouseNumber" Placeholder="Enter House Number" BackgroundColor="#E6E6FA" TextChanged="HouseNumberTextChanged"  TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
 								<Label Text="Street :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
 								<Entry x:Name="Street" Placeholder="Enter Street" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
 								<Label Text="City :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />

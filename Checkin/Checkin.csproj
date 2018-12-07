@@ -230,6 +230,9 @@
     <Compile Include="Views\ProformaInvoice.xaml.cs">
       <DependentUpon>ProformaInvoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Posting\APILogger.cs" />
+    <Compile Include="Data\Posting\GuestPostManager.cs" />
+    <Compile Include="Models\ModelClasses\AccountDetailsModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

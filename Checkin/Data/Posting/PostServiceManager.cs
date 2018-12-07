@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Checkin.Models.ModelClasses.Payloads;
 using Checkin.Models.ModelClasses;
+using Checkin.Data.Posting;
 
 namespace Checkin
 {
@@ -20,8 +21,15 @@ namespace Checkin
         userLogout userLogout = new userLogout();
         public async Task<String> StatusChangeAsync(StatusChange statusChange)
         {
+            var startTime = DateTime.Now;
+
             string url = "/sap/opu/odata/sap/ZTMS_GUEST_UPDATE_SRV/UpdateGuestSet";
             String result = await this.GetODataService(url, JsonConvert.SerializeObject(statusChange));
+
+            var endTime = DateTime.Now;
+
+            //Logger
+            new APILogger().Logger($"Guest POST start :{startTime} end : {endTime}");
 
             //If result is success
             if (result == "success")
@@ -292,6 +300,8 @@ namespace Checkin
                         //Set Token in Post
                         client_post.DefaultRequestHeaders.Add("X-CSRF-Token", xcsrf_token);
 
+                        new APILogger().Logger($"Access Token :{Constants._access_token} ***** X-CSRF-Token :{xcsrf_token}");
+
                         //Post json content
                         var response = client_post.PostAsync(Constants._gatewayURL + url, new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
                         if (response.IsSuccessStatusCode)
@@ -299,11 +309,14 @@ namespace Checkin
                             Debug.WriteLine(response);
                             var perRes = response.Content.ReadAsStringAsync();
                             Debug.WriteLine(perRes.Result);
+                            new APILogger().Logger($"Post Responce Success :{perRes.Result}");
                             return "success";
                         }
                         else
                         {
-                            return await response.Content.ReadAsStringAsync();
+                            var perRes2 = await response.Content.ReadAsStringAsync();
+                            new APILogger().Logger($"Post Responce Error :{perRes2}");
+                            return perRes2;
                         }
                     }
                 }
@@ -314,6 +327,7 @@ namespace Checkin
             }
             catch (Exception e)
             {
+                new APILogger().Logger($"Post Method Exception :{e.StackTrace} ***** Post Method Exception Msg :{e.Message}");
                 return "Error";
             }
         }
@@ -345,17 +359,21 @@ namespace Checkin
                 using (var client = new HttpClient(handler))
                 {
                     //Get X-CSRF-TOKEN
-                    client.BaseAddress = new Uri(Constants._azureAPIMDEVBase + url);
+                    //client.BaseAddress = new Uri(Constants._azureAPIMDEVBase + url);//DEV
+                    client.BaseAddress = new Uri(Constants._azureAPIMPRDBase + url);
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
                     client.DefaultRequestHeaders.Add("X-CSRF-Token", "fetch");
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");
+                    //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");//DEV
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dbaee796a5fe47bf8f4c467cd7cf9d4d");
 
                     //GET data
-                    HttpResponseMessage response = await client.GetAsync(Constants._azureAPIMDEVBase + url);
+                    //HttpResponseMessage response = await client.GetAsync(Constants._azureAPIMDEVBase + url);//DEV
+                    HttpResponseMessage response = await client.GetAsync(Constants._azureAPIMPRDBase + url);
                     xcsrf_token = response.Headers.GetValues("X-CSRF-Token").FirstOrDefault();
 
-                    Uri uri = new Uri(Constants._azureAPIMDEVBase + url);
+                    //Uri uri = new Uri(Constants._azureAPIMDEVBase + url);//DEV
+                    Uri uri = new Uri(Constants._azureAPIMPRDBase + url);
                     IEnumerable<Cookie> responseCookies = cookies.GetCookies(uri).Cast<Cookie>();
                     foreach (Cookie cookie in responseCookies)
                     {
@@ -367,22 +385,26 @@ namespace Checkin
                 if (xcsrf_token != "" && cookie_value != "")
                 {
                     //Post Method
-                    Uri baseUri = new Uri(Constants._azureAPIMDEVBase + url);
+                    //Uri baseUri = new Uri(Constants._azureAPIMDEVBase + url);//DEV
+                    Uri baseUri = new Uri(Constants._azureAPIMPRDBase + url);
                     HttpClientHandler clientHandler = new HttpClientHandler();
                     //Set Cookie in Post
                     clientHandler.CookieContainer.Add(baseUri, new Cookie(Constants._cookie, cookie_value));
 
                     using (var client_post = new HttpClient(clientHandler))
                     {
-                        client_post.BaseAddress = new Uri(Constants._azureAPIMDEVBase + url);
+                        //client_post.BaseAddress = new Uri(Constants._azureAPIMDEVBase + url);//DEV
+                        client_post.BaseAddress = new Uri(Constants._azureAPIMPRDBase + url);
                         client_post.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
                         client_post.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         //Set Token in Post
                         client_post.DefaultRequestHeaders.Add("X-CSRF-Token", xcsrf_token);
-                        client_post.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");
+                        //client_post.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");//DEv
+                        client_post.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dbaee796a5fe47bf8f4c467cd7cf9d4d");
 
                         //Post json content
-                        var response = client_post.PostAsync(Constants._azureAPIMDEVBase + url, new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
+                        //var response = client_post.PostAsync(Constants._azureAPIMDEVBase + url, new StringContent(postBody, Encoding.UTF8, "application/json")).Result;//DEV
+                        var response = client_post.PostAsync(Constants._azureAPIMPRDBase + url, new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
                         if (response.IsSuccessStatusCode)
                         {
                             Debug.WriteLine(response);
