@@ -19,7 +19,8 @@
                     <StackLayout Padding="0,0,0,10" BackgroundColor="White" VerticalOptions="Start" IsVisible="{Binding IsVisibleData}">
                         <StackLayout VerticalOptions="Start">
                             <StackLayout BackgroundColor="Navy" Padding="10,10,10,10" VerticalOptions="Start">
-                                <Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Invoice" />
+                                <Label FontAttributes="Bold" FontSize="Large" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Proforma Invoice" />
+                                <Label FontAttributes="Bold" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="(This is not a tax invoice)" />
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Padding="10,10,10,10" Orientation="Horizontal">
@@ -265,7 +266,7 @@
                                 <BoxView Grid.Column="0" Grid.Row="2" Grid.RowSpan="11" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
                                 <BoxView Grid.Column="2" Grid.Row="0" Grid.RowSpan="13" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
                                 <BoxView Grid.Column="4" Grid.Row="0" Grid.RowSpan="13" VerticalOptions="FillAndExpand" HorizontalOptions="Center" WidthRequest="2" BackgroundColor="Black" />
-                                <Label Grid.Column="3" Grid.Row="1" Text="Amount" Style="{StaticResource tableHeaderStyle}" />
+                                <Label Grid.Column="3" Grid.Row="1" x:Name="OtherAmountText" Text="Amount" Style="{StaticResource tableHeaderStyle}" />
                                 
                                 <Label Grid.Column="1" Grid.Row="3" Text="Total value excluding taxes, service charge and advances paid" />
                                 <Label x:Name="totalExVal" Grid.Column="3" Grid.Row="3" Text="0.000" HorizontalTextAlignment="End" />
@@ -279,7 +280,7 @@
                                 <Label x:Name="greenTaxLabel" Grid.Column="1" Grid.Row="9" Text="Green Tax" />
                                 <Label x:Name="greenTaxVal" Grid.Column="3" Grid.Row="9" Text="0.000" HorizontalTextAlignment="End" />
                                 
-                                <Label Grid.Column="1" Grid.Row="11" Text="Total" FontSize="16" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="11" x:Name="TotalText" Text="Total" FontSize="16" FontAttributes="Bold" />
                                 <Label x:Name="totalVal" Grid.Column="3" Grid.Row="11" Text="0.000" FontAttributes="Bold" HorizontalTextAlignment="End" />
                                 
                             </Grid>

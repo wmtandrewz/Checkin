@@ -348,7 +348,7 @@
 						</Button>
 					</StackLayout>
 					<StackLayout Padding="100,0,100,0">
-						<Button Text="View Performa" Clicked="viewPrforma" BackgroundColor="#211261" TextColor="White" x:Name="PerformaButton" WidthRequest="250" HorizontalOptions="Center">
+						<Button Text="Proforma Invoice" Clicked="viewPrforma" BackgroundColor="#211261" TextColor="White" x:Name="PerformaButton" WidthRequest="250" HorizontalOptions="Center">
 							<Button.BorderRadius>
 								<OnPlatform x:TypeArguments="x:Int32" iOS="18" Android="50" />
 							</Button.BorderRadius>

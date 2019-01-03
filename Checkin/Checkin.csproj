@@ -102,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProformaSelectorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -233,6 +237,9 @@
     <Compile Include="Data\Posting\APILogger.cs" />
     <Compile Include="Data\Posting\GuestPostManager.cs" />
     <Compile Include="Models\ModelClasses\AccountDetailsModel.cs" />
+    <Compile Include="Views\ProformaSelectorView.xaml.cs">
+      <DependentUpon>ProformaSelectorView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

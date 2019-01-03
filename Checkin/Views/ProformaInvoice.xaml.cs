@@ -20,10 +20,10 @@ namespace Checkin.Views
         private NavOthersResult[] proformaOthersList;
         private NavHeaderResult[] navHeaderResult;
 
-        public ProformaInvoice()
+        public ProformaInvoice(string folio, string responsible)
         {
             InitializeComponent();
-            BindingContext = new ProformaViewModel();
+            BindingContext = new ProformaViewModel(folio,responsible,Navigation);
 
 
 
@@ -52,12 +52,6 @@ namespace Checkin.Views
             {
                 Debug.WriteLine("Data Reciever error");
             }
-
-            MessagingCenter.Subscribe<ProformaViewModel>(this, "NoCharges", (obj) =>
-              {
-                  MessagingCenter.Unsubscribe<ProformaViewModel>(this, "NoCharges");
-                  Navigation.PopAsync();
-              });
 
         }
 
@@ -124,7 +118,7 @@ namespace Checkin.Views
                     var roomNightsLabel = new Label { Text = navLinesResults[j].RoomNight.ToString(), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var rateLabel = new Label { Text = navLinesResults[j].Rate, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var curLabel = new Label { Text = navLinesResults[j].RateCurr, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-                    var amountLabel = new Label { Text = navLinesResults[j].Amount, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
+                    var amountLabel = new Label { Text = Convert.ToDouble(navLinesResults[j].Amount).ToString("#0.00"), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
 
                     grandTotal += Convert.ToDouble(navLinesResults[j].Amount);
 
@@ -145,7 +139,7 @@ namespace Checkin.Views
                     dataRowInitIndex++;
                 }
 
-                grandTotalLabel.Text = grandTotal.ToString("##.000");
+                grandTotalLabel.Text = grandTotal.ToString("#0.00");
 
                 CreateAdvancePaymentTable(grandTotal);
             }
@@ -160,6 +154,8 @@ namespace Checkin.Views
         {
             try
             {
+                advanceTable.IsVisible = proformaAdvanceList.Length > 0;
+
                 int loopCount = proformaAdvanceList.Length + 1;
 
                 for (int i = 0; i < loopCount; i++)
@@ -198,7 +194,7 @@ namespace Checkin.Views
                 for (int j = 0; j <= loopCount - 2; j++)
                 {
                     var itemLabel = new Label { Text = proformaAdvanceList[j].AdvText, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.StartAndExpand, HorizontalTextAlignment = TextAlignment.Start };
-                    var valueLabel = new Label { Text = proformaAdvanceList[j].AdvValue, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
+                    var valueLabel = new Label { Text = Convert.ToDouble(proformaAdvanceList[j].AdvValue).ToString("#0.00"), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
                     advanceTable.Children.Add(itemLabel, 1, dataRawIndex);
                     advanceTable.Children.Add(valueLabel, 3, dataRawIndex);
 
@@ -210,11 +206,11 @@ namespace Checkin.Views
                 double balanceDue = due - totalAdvance;
 
                 var balanceDueLabel = new Label { Text = "Balance Due", VerticalOptions = LayoutOptions.Center, FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.StartAndExpand, HorizontalTextAlignment = TextAlignment.Start };
-                var balanceDueValLabel = new Label { Text = balanceDue.ToString("##.000"), VerticalOptions = LayoutOptions.Center, FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
+                var balanceDueValLabel = new Label { Text = balanceDue.ToString("#0.00"), VerticalOptions = LayoutOptions.Center, FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
                 advanceTable.Children.Add(balanceDueLabel, 1, (loopCount * 2) + 1);
                 advanceTable.Children.Add(balanceDueValLabel, 3, (loopCount * 2) + 1);
 
-                totalDueLabel.Text = due.ToString("##.000");
+                totalDueLabel.Text = due.ToString("#0.00");
 
                 CreateOtherDetailsTable();
             }
@@ -230,22 +226,28 @@ namespace Checkin.Views
             {
                 var otherDetails = proformaOthersList[0];
 
-                totalExVal.Text = otherDetails.TotalExclVat == "0.000" ? otherDetails.TotalExclSvat : otherDetails.TotalExclVat;
+                OtherAmountText.Text = $"Amount ({otherDetails.TotalCurrM})";
+
+                //totalExVal.Text = otherDetails.TotalExclVat == "0.000" ? Convert.ToDouble(otherDetails.TotalExclSvat).ToString("#0.00") : Convert.ToDouble(otherDetails.TotalExclVat).ToString("#0.00");
+                totalExVal.Text = (Convert.ToDouble(otherDetails.GrandTotal) - (Convert.ToDouble(otherDetails.ScAmtM) + Convert.ToDouble(otherDetails.GstAmtM) + Convert.ToDouble(otherDetails.GreenTaxM))).ToString("#0.00");
+
                 //vatLabel.Text = otherDetails.SvatPerc == "" ? $"VAT {otherDetails.VatPerc}%" : $"SVAT {otherDetails.SvatPerc}%";
                 //vatVal.Text = otherDetails.Svat == "0.000" ? otherDetails.Vat : otherDetails.Svat;
 
                 serviceChargeLabel.Text = $"Service Charge {otherDetails.ScPercM}%";
-                serviceChargeVal.Text = otherDetails.ScAmtM;
+                serviceChargeVal.Text = Convert.ToDouble(otherDetails.ScAmtM).ToString("#0.00");
 
                 gstLabel.Text = $"T -  GST at {otherDetails.GstPercM}%";
-                gstVal.Text = otherDetails.GstAmtM;
+                gstVal.Text = Convert.ToDouble(otherDetails.GstAmtM).ToString("#0.00");
 
-                greenTaxVal.Text = otherDetails.GreenTaxM;
+                greenTaxVal.Text = Convert.ToDouble(otherDetails.GreenTaxM).ToString("#0.00");
 
-                totalVal.Text = otherDetails.GrandTotal;
+                TotalText.Text = $"Total in {otherDetails.TotalCurrM}";
+                totalVal.Text = Convert.ToDouble(otherDetails.GrandTotal).ToString("#0.00");
 
                 roomNumberVal.Text = otherDetails.RoomingList;
                 createdByVal.Text = otherDetails.GeneratedBy;
+
             }
             catch (Exception ex)
             {
@@ -285,6 +287,8 @@ namespace Checkin.Views
         public NavHeaderResult _proformaHeader { get; set; }
         public AccountDetailsModel _accountDetailsModel { get; set; }
         public ObservableCollection<NavLinesResult> _navLinesResult { get; set; }
+
+        private INavigation _navigation;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -363,12 +367,13 @@ namespace Checkin.Views
 
 
 
-        public ProformaViewModel()
+        public ProformaViewModel(string folio,string responsible,INavigation navigation)
         {
-            GetProforma();
+            _navigation = navigation;
+            GetProforma(folio,responsible);
         }
 
-        private async void GetProforma()
+        private async void GetProforma(string folio, string responsible)
         {
             try
             {
@@ -376,7 +381,7 @@ namespace Checkin.Views
 
                 string MessageV1 = string.Empty, MessageV2 = string.Empty, MessageV3 = string.Empty, MessageV4 = string.Empty;
 
-                var res = await new PostServiceManager().SetPerformaInvoice("2", null);
+                var res = await new PostServiceManager().SetPerformaInvoice(responsible, folio);
 
                 if (res != null || res.Contains("Invoice successfuly created"))
                 {
@@ -413,15 +418,17 @@ namespace Checkin.Views
                 IsVisibleData = true;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Debug.WriteLine("Binding Headers error");
                 IsRunningIndicator = true;
                 IsVisibleIndicator = true;
                 IsVisibleData = false;
 
-                await Application.Current.MainPage.DisplayAlert("No Charges", "There are no charges for the Folio 2", "OK");
-                MessagingCenter.Send<ProformaViewModel>(this, "NoCharges");
+                await Application.Current.MainPage.DisplayAlert("No Charges", "There are no charges for the selected Folio", "OK");
+
+                await _navigation.PopAsync();
+
             }
         }
 
@@ -436,7 +443,7 @@ namespace Checkin.Views
             string sa = @"""" + ticks + @"""";
             DateTime date = JsonConvert.DeserializeObject<DateTime>(sa);
 
-            return date.ToString("yyyy-MMM-dd");
+            return date.ToString("dd.MM.yyyy");
         }
 
         private string ConvertToTime(string time)
