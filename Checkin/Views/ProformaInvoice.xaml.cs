@@ -114,9 +114,28 @@ namespace Checkin.Views
                     var voucherNoLabel = new Label { Text = navHeaderResult[0].Voucher, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var roomTypeLabel = new Label { Text = navLinesResults[j].RoomType, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var mealPlanLabel = new Label { Text = navLinesResults[j].MealPlan, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-                    var paxLabel = new Label { Text = navLinesResults[j].Occupancy.ToString(), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-                    var roomNightsLabel = new Label { Text = navLinesResults[j].RoomNight.ToString(), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
-                    var rateLabel = new Label { Text = navLinesResults[j].Rate, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+
+
+                    var roomNights = "";
+                    var pax = "";
+                    var roomRate = "";
+
+                    if (navLinesResults[j].Description.Contains("Accommodation"))
+                    {
+                        roomNights = navLinesResults[j].RoomNight.ToString();
+                        pax = navLinesResults[j].Occupancy.ToString();
+                        roomRate = navLinesResults[j].Rate;
+                    }
+                    else
+                    {
+                        roomNights = "";
+                        pax = "";
+                        roomRate = "";
+                    }
+
+                   var paxLabel = new Label { Text = pax, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center }; 
+                   var roomNightsLabel = new Label { Text = roomNights, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+                    var rateLabel = new Label { Text = roomRate, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var curLabel = new Label { Text = navLinesResults[j].RateCurr, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
                     var amountLabel = new Label { Text = Convert.ToDouble(navLinesResults[j].Amount).ToString("#0.00"), VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.EndAndExpand, HorizontalTextAlignment = TextAlignment.End };
 
