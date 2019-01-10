@@ -140,7 +140,7 @@ namespace Checkin.Views
                 {
                     if ((mainGuestSwitch.IsToggled || mainClientSwitch.IsToggled) && (IsToggledF1 || IsToggledF2 || IsToggledF3 || IsToggledF4))
                     {
-                        await Navigation.PushAsync(new ProformaInvoice(Folio,Responsible));
+                        await Navigation.PushAsync(new ProformaInvoice(Folio,Responsible,sendEmailSwitch.IsToggled ? "X" : "N", guestEmailText.Text));
                     }
                 }
             };

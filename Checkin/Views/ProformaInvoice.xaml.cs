@@ -20,10 +20,10 @@ namespace Checkin.Views
         private NavOthersResult[] proformaOthersList;
         private NavHeaderResult[] navHeaderResult;
 
-        public ProformaInvoice(string folio, string responsible)
+        public ProformaInvoice(string folio, string responsible, string sendInvoice, string guestEmail)
         {
             InitializeComponent();
-            BindingContext = new ProformaViewModel(folio,responsible,Navigation);
+            BindingContext = new ProformaViewModel(folio,responsible,sendInvoice, guestEmail,Navigation);
 
 
 
@@ -386,13 +386,13 @@ namespace Checkin.Views
 
 
 
-        public ProformaViewModel(string folio,string responsible,INavigation navigation)
+        public ProformaViewModel(string folio,string responsible,string sendInvoice,string guestEmail,INavigation navigation)
         {
             _navigation = navigation;
-            GetProforma(folio,responsible);
+            GetProforma(folio,responsible, sendInvoice, guestEmail);
         }
 
-        private async void GetProforma(string folio, string responsible)
+        private async void GetProforma(string folio, string responsible, string sendInvoice, string guestEmail)
         {
             try
             {
@@ -411,7 +411,7 @@ namespace Checkin.Views
                     MessageV4 = jObj["d"]["MessageV4"].ToString();
                 }
 
-                var data = await new CheckInManager().GetPerformaInvoiceNew(MessageV1);
+                var data = await new CheckInManager().GetPerformaInvoiceNew(MessageV1, sendInvoice, guestEmail);
 
                 var result = JsonConvert.DeserializeObject<ProformaModel>(data);
 
