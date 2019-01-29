@@ -50,6 +50,6 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used to scan Barcodes</string>
 	<key>CFBundleVersion</key>
-	<string>20190109</string>
+	<string>20190114</string>
 </dict>
 </plist>
