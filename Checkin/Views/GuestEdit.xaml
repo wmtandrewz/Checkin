@@ -46,8 +46,7 @@
 									<Button.BorderRadius>
 										<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
 									</Button.BorderRadius>
-									<Button.Style>
-									</Button.Style>
+									
 								</Button>
 							</StackLayout>
 							<StackLayout x:Name="viewUntilSearched" Padding="20,30,20,0">
@@ -106,8 +105,6 @@
 										<Button.BorderRadius>
 											<OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
 										</Button.BorderRadius>
-										<Button.Style>
-										</Button.Style>
 									</Button>
 								</StackLayout>
 							</StackLayout>

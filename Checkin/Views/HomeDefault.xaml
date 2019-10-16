@@ -6,7 +6,7 @@
              BackgroundColor="White">
     
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
+		<ToolbarItem Text="Logout" Order="Primary" Priority="1" Clicked="LogoutButtonClickedEvt" x:Name="Icon" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">

@@ -102,14 +102,18 @@ namespace Checkin
         {
             string url = "/sap/opu/odata/sap/ZTMS_IMG_SRV/Checkins";
             String result = await this.GetODataService(url, JsonConvert.SerializeObject(StatusChangeCheckin));
-
+            //String result = "success";
             //If result is success
             if (result == "success")
             {
                 if (StatusChangeCheckin.XHOTEL_ID == Constants._hotel_code)
+                {
                     return "Checked-In Successfully!";
+                }
                 else
+                {
                     return "Sorry. Unable to Checkin!";
+                }
             }
             else if (result == "Error")
             {
@@ -204,24 +208,9 @@ namespace Checkin
         public async Task<String> SetAttachments(AttachmentsPayload attachmentsPayload)
         {
 
-            //string url = "/sap/opu/odata/sap/ZTMS_RESERVATION_ATTACHMENTS_SRV/setReservationAttachmentSet";
+            string url = "/sap/opu/odata/sap/ZTMS_RESERVATION_ATTACHMENTS_SRV/setReservationAttachmentSet";
 
-            //String result = await this.GetODataService(url, JsonConvert.SerializeObject(attachmentsPayload));
-
-            ////If result is success
-            //if (result == "success")
-            //{
-            //    return "success";
-            //}
-
-            //else
-            //{
-            //    return "Sorry. Unable to update attachement!";
-            //}
-
-            string url = "getattachments/setReservationAttachmentSet";
-
-            string result = await this.GetODataAzureService(url, JsonConvert.SerializeObject(attachmentsPayload));
+            String result = await this.GetODataService(url, JsonConvert.SerializeObject(attachmentsPayload));
 
             //If result is success
             if (result == "success")
@@ -233,6 +222,21 @@ namespace Checkin
             {
                 return "Sorry. Unable to update attachement!";
             }
+
+            //string url = "getattachments/setReservationAttachmentSet";
+
+            //string result = await this.GetODataAzureService(url, JsonConvert.SerializeObject(attachmentsPayload));
+
+            ////If result is success
+            //if (result == "success")
+            //{
+            //    return "success";
+            //}
+
+            //else
+            //{
+            //    return "Sorry. Unable to update attachement!";
+            //}
 
 
 

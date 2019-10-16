@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkin", "Checkin\Checkin.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkin.iOS", "iOS\Checkin.iOS.csproj", "{85515FB2-B9E2-416F-968A-68ACF5B6F7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlinkIDiOSBinding", "Binding\iOS\BlinkIDiOSBinding.csproj", "{20BFD052-E54F-4504-A860-E6A18C8A15D8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,17 +39,5 @@ Global
 		{85515FB2-B9E2-416F-968A-68ACF5B6F7F1}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{85515FB2-B9E2-416F-968A-68ACF5B6F7F1}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{85515FB2-B9E2-416F-968A-68ACF5B6F7F1}.Debug|iPhone.Build.0 = Debug|iPhone
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|iPhone.Build.0 = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{20BFD052-E54F-4504-A860-E6A18C8A15D8}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

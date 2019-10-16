@@ -49,10 +49,10 @@ namespace Checkin
 		//Display Guest Details
 		public async void DisplayGuestDetails()
 		{
-			MainGuestInformation mainGuestInformation = new MainGuestInformation();
+            MainGuestInformation mainGuestInformation = new MainGuestInformation();
 			List<guestDetails> guesInformation = await mainGuestInformation.guestInformation();
 
-			Device.BeginInvokeOnMainThread(() =>
+            Device.BeginInvokeOnMainThread(() =>
 			{
 				ReservationIDText.Text = Constants._reservation_id;
 				ClientNameText.Text = Constants._clientName;

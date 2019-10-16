@@ -12,12 +12,12 @@ namespace Checkin.iOS
 	{
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			Rg.Plugins.Popup.Popup.Init();
-			global::Xamarin.Forms.Forms.Init();
-            Syncfusion.SfDataGrid.XForms.iOS.SfDataGridRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init();
+            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.DependencyService.Register<Microblink.Forms.iOS.MicroblinkScannerFactoryImplementation>();
             LoadApplication(new App());
 
-			return base.FinishedLaunching(app, options);
+            return base.FinishedLaunching(app, options);
 		}
 	}
 }

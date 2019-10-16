@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>Checkin</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.chml.it.checkin</string>
+	<string>com.chml.it.ccfs</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.68</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -50,6 +50,6 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used to scan Barcodes</string>
 	<key>CFBundleVersion</key>
-	<string>20190114</string>
+	<string>20190915</string>
 </dict>
 </plist>

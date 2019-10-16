@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:acr="clr-namespace:Acr.XamForms.SignaturePad;assembly=Acr.XamForms.SignaturePad" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Signature">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Checkin.Signature">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Name="CloseToolIcon" Order="Primary" Priority="0" Clicked="CloseButtonClickedEvt" />
     </ContentPage.ToolbarItems>-->
@@ -57,27 +57,23 @@
                         <Button.BorderRadius>
                             <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                         </Button.BorderRadius>
-                        <Button.Style>
-                        </Button.Style>
+                        
                     </Button>
                     <Label x:Name="GuestNameText" HorizontalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
                     <Button x:Name="Close" Clicked="CloseButtonClickedEvt" Text="Close" BackgroundColor="Red" TextColor="White" WidthRequest="150" HorizontalOptions="End">
                         <Button.BorderRadius>
                             <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                         </Button.BorderRadius>
-                        <Button.Style>
-                        </Button.Style>
+                        
                     </Button>
                 </StackLayout>
-                <acr:SignaturePadView x:Name="padView" HeightRequest="400" WidthRequest="320" BackgroundColor="Purple" ClearText="Clear" ClearTextColor="White" SignatureLineColor="Black" StrokeColor="White" StrokeWidth="4">
-                </acr:SignaturePadView>
+                <controls:SignaturePadView x:Name="padView" StrokeWidth="3" StrokeColor="White" BackgroundColor="#6D2276" HeightRequest="250" ClearFontSize="20" ClearTextColor="Yellow" CaptionFontSize="14" CaptionTextColor="Silver" CaptionText="Sign here." />
             </StackLayout>
             <Button Clicked="CloseWindow" x:Name="CloseWindowBtn" Text="Close" BackgroundColor="#211261" TextColor="White" WidthRequest="200" HorizontalOptions="Center">
                 <Button.BorderRadius>
                     <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                 </Button.BorderRadius>
-                <Button.Style>
-                </Button.Style>
+                
             </Button>
         </StackLayout>
     </ContentPage.Content>

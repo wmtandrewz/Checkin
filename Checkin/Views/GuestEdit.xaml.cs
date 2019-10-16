@@ -10,12 +10,36 @@ using Checkin.Models.ModelClasses.Payloads;
 using System.Diagnostics;
 using Checkin.Data.Posting;
 using Newtonsoft.Json;
+using Microblink.Forms.Core;
+using Microblink.Forms.Core.Recognizers;
+using Microblink.Forms.Core.Overlays;
+using static Microblink.Forms.Core.Messages;
+using Plugin.Media.Abstractions;
+using System.Threading.Tasks;
+using System.IO;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Checkin
 {
     public partial class GuestEdit : ContentPage
     {
+
+        /// <summary>
+        /// Microblink scanner is used for scanning the identity documents.
+        /// </summary>
+        IMicroblinkScanner blinkID;
+
+        /// <summary>
+        /// MRTD recognizer will be used for scanning Machine Readable Travel Documents (MRTDs), such as IDs and passports.
+        /// </summary>
+        IMrtdRecognizer mrtdRecognizer;
+
+        /// <summary>
+        /// This success frame grabber recognizer will wrap mrtdRecognizer and will contain camera frame of the moment
+        /// when wrapped recognizer finished its recognition.
+        /// </summary>
+        ISuccessFrameGrabberRecognizer mrtdSuccessFrameGrabberRecognizer;
+
         //Data Source
         CheckInManager checkInManager = new CheckInManager();
 
@@ -33,6 +57,9 @@ namespace Checkin
         {
             //Passing values value on page load to fields and pickers
             InitializeComponent();
+
+            //Initialize Blink ID
+            InitBlinkID();
 
             //Setting limits for datetime.
             DateTime date = new DateTime(1900, 1, 1);
@@ -163,8 +190,7 @@ namespace Checkin
             //Detail Page Configuration
             try
             {
-                var blinkId = DependencyService.Get<IPassScan>();
-                blinkId.Scan();
+                StartScan();
                 hideUntilSearched.IsVisible = true;
                 viewUntilSearched.IsVisible = false;
             }
@@ -577,7 +603,7 @@ namespace Checkin
                 }
             };
         }
-
+        /*
         //Update Guest Details
         async void saveButton(object sender, EventArgs e)
         {
@@ -606,9 +632,11 @@ namespace Checkin
                 GuestPostManager guestPostManager = new GuestPostManager();
 
                 string result = await guestPostManager.CreateUpdateGuest(statusChange);
+
                 //String result = await postServiceManager.StatusChangeAsync(statusChange);
                 //String result2 = await postServiceManager.SavePPExpiryAsync(expiryDateChange);
 
+                
                 if (result != "Reservation is locked" || result.Contains("Updated Successfully"))
                 {
                     //Updateing guest details object
@@ -651,13 +679,19 @@ namespace Checkin
                     Constants._guestNumber = guestNumber.Text;
                     stopPageLoading();
 
+
+                    if (Constants.PassportCopy != null)
+                    {
+                        await FTPService.UploadPassportCopy(Constants.PassportCopy);
+                    }
+
                     //Guest details updateindicator, Reload content page
                     MessagingCenter.Send<GuestEdit, List<guestDetails>>(this, Constants._guestEdited, guestdetails);
                     await DisplayAlert("Message", result, "OK");
 
-                    //Logger
-                    new APILogger().Logger("Guest Payload :" + JsonConvert.SerializeObject(statusChange));
-                    new APILogger().Logger("Guest Save Status :" + result);
+                    ////Logger
+                    //new APILogger().Logger("Guest Payload :" + JsonConvert.SerializeObject(statusChange));
+                    //new APILogger().Logger("Guest Save Status :" + result);
 
                     //Close this content page
                     this.Navigation.RemovePage(this);
@@ -670,8 +704,23 @@ namespace Checkin
             }
         }
 
-        //On page loading
-        void pageLoading()
+        */
+
+        //for testing
+        async void saveButton(object sender, EventArgs e)
+        {
+
+            if (Constants.PassportCopy != null)
+            {
+                await FTPService.UploadPassportCopy(Constants.PassportCopy, GuestFisrtName.Text);
+            }
+
+            //Close this content page
+            this.Navigation.RemovePage(this);
+        }
+
+            //On page loading
+            void pageLoading()
         {
             Device.BeginInvokeOnMainThread(() =>
                 {
@@ -716,7 +765,164 @@ namespace Checkin
             base.OnAppearing();
         }
 
+        private void InitBlinkID()
+        {
+            // before obtaining any of the recognizer's implementations from DependencyService, it is required
+            // to obtain instance of IMicroblinkScanner and set the license key.
+            // Failure to do so will crash your app.
+            var microblinkFactory = DependencyService.Get<IMicroblinkScannerFactory>();
 
+            // license keys are different for iOS and Android and depend on iOS bundleID/Android application ID
+            // in your app, you may obtain the correct license key for your platform via DependencyService from
+            // your Droid/iOS projects
+            string licenseKey;
+
+            // both these license keys are demo license keys for bundleID/applicationID com.microblink.xamarin.blinkid
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                licenseKey = @"sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+            }
+            else
+            {
+                licenseKey = "sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+            }
+
+            // since DependencyService requires implementations to have default constructor, a factory is needed
+            // to construct implementation of IMicroblinkScanner with given license key
+            blinkID = microblinkFactory.CreateMicroblinkScanner(licenseKey);
+
+            // subscribe to scanning done message
+            MessagingCenter.Subscribe<ScanningDoneMessage>(this, ScanningDoneMessageId, async (sender) => {
+
+                pageLoading();
+
+                try
+                {
+
+
+                    ImageSource fullDocumentImageSource = null;
+                    ImageSource successFrameImageSource = null;
+
+                    string stringResult = "No valid results.";
+
+                    // if user cancelled scanning, sender.ScanningCancelled will be true
+                    if (sender.ScanningCancelled)
+                    {
+                        stringResult = "Scanning cancelled";
+                    }
+                    else
+                    {
+                        // otherwise, one or more recognizers used in RecognizerCollection (see StartScan method below)
+                        // will contain result
+
+                        // if specific recognizer's result's state is Valid, then it contains data recognized from image
+                        if (mrtdRecognizer.Result.ResultState == RecognizerResultState.Valid)
+                        {
+                            var result = mrtdRecognizer.Result;
+
+
+                            fname = result.MrzResult.PrimaryId;
+                            lname = result.MrzResult.SecondaryId;
+                            nationality = result.MrzResult.Nationality;
+                            gender = result.MrzResult.Gender;
+                            PassportNumber = Regex.Replace(result.MrzResult.DocumentNumber, "[^A-Za-z0-9 _]", "");
+                            dateOfExpiry = $"{result.MrzResult.DateOfExpiry.Day}-{result.MrzResult.DateOfExpiry.Month}-{result.MrzResult.DateOfExpiry.Year}";
+                            dateOfBirthPass = $"{result.MrzResult.DateOfBirth.Day}-{result.MrzResult.DateOfBirth.Month}-{result.MrzResult.DateOfBirth.Year}";
+
+
+                            //List of identification methods from dictionary
+                            var nameToAlpha2FromAlpha3 = CountryDictionary.listAlpha3To();
+                            //Getting Key Value from Dictoinary by passing the THREE Letter code
+                            nationality = nameToAlpha2FromAlpha3.FirstOrDefault(x => x.Key == nationality).Value;
+
+                            //Extracting document Images
+                            fullDocumentImageSource = result.FullDocumentImage;
+                            successFrameImageSource = mrtdSuccessFrameGrabberRecognizer.Result.SuccessFrame;
+                            //Set Image to Globals
+                            Constants.PassportCopy = fullDocumentImageSource;
+                            
+
+                            await existingGuestDetailsFromDatabses(2, PassportNumber);
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                GuestFisrtName.Text = fname;
+                                GuestLastName.Text = lname;
+                                guestIdentificationDetailsPicker("2");
+                                guestNationalityDetailsPicker(nationality);
+                                guestContryDetailsPicker(nationality);
+                                guestLanguageDetailsPicker("E");
+                                PassportExpiry.Date = DateTime.ParseExact(dateOfExpiry, "d-M-yyyy", CultureInfo.CurrentCulture);
+                                guestGenderDetailsPicker(serviceDataValidation.guestEditGenderValidation(gender));
+                                DateOfBirth.Date = DateTime.ParseExact(dateOfBirthPass, "d-M-yyyy", CultureInfo.CurrentCulture);
+                                stopPageLoading();
+                                
+                                
+                            });
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        stopPageLoading();
+                        guestEntryDetails(guestNumber.Text, PassportNumber, fname, lname, "", "", "", "", "");
+                        guestIdentificationDetailsPicker("2");
+                        guestNationalityDetailsPicker(nationality);
+                        guestContryDetailsPicker(nationality);
+                        guestLanguageDetailsPicker("E");
+                        guestSalutationPicker("");
+                        guestGenderDetailsPicker(serviceDataValidation.guestEditGenderValidation(gender));
+                        PassportExpiry.Date = DateTime.ParseExact(dateOfExpiry, "d-M-yyyy", CultureInfo.CurrentCulture);
+                        DateOfBirth.Date = DateTime.ParseExact(dateOfBirthPass, "d-M-yyyy", CultureInfo.CurrentCulture);
+                        Visitperhotel = "00";
+                        Totalvisit = "00";
+                        RevenueTotal = "0.00";
+                        RevenueRoom = "0.00";
+                        RevenueFnb = "0.00";
+                        RevenueOther = "0.00";
+                        stopPageLoading();
+                        
+                        
+                        DisplayAlert(Constants._headerMessage, Constants._noDetails, Constants._buttonOkay);
+
+                    });
+                }
+
+            });
+        }
+
+        /// <summary>
+        /// Button click event handler that will start the scanning procedure.
+        /// </summary>
+        private void StartScan()
+        {
+            // license keys must be set before creating Recognizer, othervise InvalidLicenseKeyException will be thrown
+            // the following code creates and sets up implementation of MrtdRecognizer
+            mrtdRecognizer = DependencyService.Get<IMrtdRecognizer>(DependencyFetchTarget.NewInstance);
+            mrtdRecognizer.ReturnFullDocumentImage = true;
+
+            // success frame grabber recognizer must be constructed with reference to its slave recognizer,
+            // so we need to use factory to avoid DependencyService's limitations
+            mrtdSuccessFrameGrabberRecognizer = DependencyService.Get<ISuccessFrameGrabberRecognizerFactory>(DependencyFetchTarget.NewInstance).CreateSuccessFrameGrabberRecognizer(mrtdRecognizer);
+
+
+            // first create a recognizer collection from all recognizers that you want to use in recognition
+            // if some recognizer is wrapped with SuccessFrameGrabberRecognizer, then you should use only the wrapped one
+            var recognizerCollection = DependencyService.Get<IRecognizerCollectionFactory>().CreateRecognizerCollection(mrtdSuccessFrameGrabberRecognizer);
+
+            // using recognizerCollection, create overlay settings that will define the UI that will be used
+            // there are several available overlay settings classes in Microblink.Forms.Core.Overlays namespace
+            // document overlay settings is best for scanning identity documents
+            var documentOverlaySettings = DependencyService.Get<IDocumentOverlaySettingsFactory>().CreateDocumentOverlaySettings(recognizerCollection);
+
+            // start scanning
+            blinkID.Scan(documentOverlaySettings);
+        }
+
+        
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Newtonsoft.Json.Linq;
@@ -11,6 +12,7 @@ using Checkin.Data.Posting;
 using System.Diagnostics;
 using Rg.Plugins.Popup.Services;
 using Checkin.Views;
+using System.Threading.Tasks;
 
 namespace Checkin
 {
@@ -460,7 +462,6 @@ namespace Checkin
                                     items = new ItemList(guestdetails);
                                     GuestNameList.ItemsSource = items.Items;
 
-
                                     //Set Guest Signatures. Signatures loaded from service
                                     if (Constants._notAvailableSignatureAdded == false)
                                     {
@@ -734,21 +735,28 @@ namespace Checkin
                 }
 
 
-                await DisplayAlert(Constants._headerMessage, result, Constants._buttonOkay);
+                //await DisplayAlert(Constants._headerMessage, result, Constants._buttonOkay);
 
                 if (result == "Checked-In Successfully!")
                 {
                     Constants._reservationStatus = Constants._reservationStatusCheckedIn;
                     Constants._notAvailableSignatureAdded = false;
 
-					//Save usage time to API
-					var apires = await APIPostService.SaveTimeTrackToAPI();
+                    //Save usage time to API
+                    var apires = await APIPostService.SaveTimeTrackToAPI();
 
 					Debug.WriteLine("API Res " + apires);
+
+                    await DisplayAlert(Constants._headerMessage, result, Constants._buttonOkay);
 
                     //Checked in
                     MessagingCenter.Send<RegistrationCard, string>(this, Constants._reservationStatusCheckedIn, Constants._reservationStatus);
                 }
+                else
+                {
+                    await DisplayAlert(Constants._headerMessage, result, Constants._buttonOkay);
+                }
+
                 stopPageLoading();
             }
             else

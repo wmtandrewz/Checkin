@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Acr.XamForms;
-using Acr.XamForms.SignaturePad;
 using System.IO;
 using System.Text;
 using System.Runtime.Serialization.Formatters;
@@ -13,6 +11,7 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using Rg.Plugins.Popup.Services;
 using Checkin.Views;
+using SignaturePad.Forms;
 
 namespace Checkin
 {
@@ -44,7 +43,7 @@ namespace Checkin
                 string base64String, base64String2;
 
                 //Getting image from signaturepad as a stream
-                var inputStream = padView.GetImage(ImageFormatType.Png);
+                var inputStream = await padView.GetImageStreamAsync(SignatureImageFormat.Png);
 
                 //Getting Stream as a Memorystream
                 var signatureMemoryStream = inputStream as MemoryStream;

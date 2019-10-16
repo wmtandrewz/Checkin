@@ -8,6 +8,7 @@ using Checkin.Models.ModelClasses.Payloads;
 using Rg.Plugins.Popup.Services;
 using Checkin.Views;
 using System.Diagnostics;
+using Checkin.Data.Retrieving;
 
 namespace Checkin
 {
@@ -32,9 +33,13 @@ namespace Checkin
             //	CinnamonLogo.Source = "Hotel_" + Constants._hotel_code + ".bmp";
             //}
 
-			MessagingCenter.Subscribe<ReservationsList>(this, "chart", (sender) =>
+           
+
+            MessagingCenter.Subscribe<ReservationsList>(this, "chart", (sender) =>
     		{
 				DisplayCharts();
+                LoadTerms();
+
                 messegeBarLayout.IsVisible = true;
 
                 hotelNameLAbel.Text = Constants._hotel_name;
@@ -72,6 +77,31 @@ namespace Checkin
 		{
 			return true;
 		}
+
+
+        //Load Terms and Conistions from API DB
+
+         private async void LoadTerms()
+        {
+            try
+            {
+                var res = await APIGetService.GetTermsAndConditions();
+
+                string builder = string.Empty;
+
+                foreach (var item in res)
+                {
+                    builder += $"{item.Order}) {item.Description}@@";
+                }
+
+                Constants._termsAndConditionsAPI = builder;
+            }
+
+            catch (Exception)
+            {
+                Constants._termsAndConditionsAPI = Constants._termsAndConditionsDefaults;
+            }
+        }
 
         //Charts
         

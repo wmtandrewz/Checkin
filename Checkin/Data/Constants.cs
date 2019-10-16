@@ -21,7 +21,7 @@ namespace Checkin
         //public static string _gatewayURL = "https://alastor.keells.lk:44300";
         //public static string _cookie = "sap-XSRF_GWP_100";
         public static string _azureAPIMDEVBase = "https://jkhapimdev.azure-api.net/api/beta/v1/";
-        public static string _azureAPIMPRDBase = "https://cheetah.azure-api.net/api/v1/";
+        public static string _azureAPIMPRDBase = "https://octopus.keells.lk/api/v1/";
         ////*************************************** Production Settings ***********************
 
         //Device Related
@@ -75,11 +75,12 @@ namespace Checkin
 		public static ReservationDetails result;
 		public static string resultMain = "";
 
-		//Reservation Status for Checkin or save signature
-		public static string _reservationStatus;
+        //Reservation Status for Checkin or save signature
+        public static string _reservationStatus;
 
 		//Imagesource for Updated images
 		public static ImageSource _guestSignatureBase64;
+        public static byte[] ImageBytes { get; set; }
 
 		public static int _number;
 
@@ -92,8 +93,12 @@ namespace Checkin
 		public static string _identificationMethodNumber = "";
 
 
-		//Message Header
-		public static string _headerConnectionLost = "Connection Lost";
+        //Passport Image
+
+        public static ImageSource PassportCopy { get; set; }
+
+        //Message Header
+        public static string _headerConnectionLost = "Connection Lost";
 		public static string _headerUpdateAvailable = "Update Available";
 		public static string _headerHowTo = "How to Log In?";
 		public static string _headerMessage = "Message";
@@ -180,7 +185,9 @@ namespace Checkin
 		public static bool _notAvailableSignatureAdded;
 		public static bool _guestEditedStatus;
 
-		//Terms and conditions
+        //Terms and conditions
+        public static string _termsAndConditionsAPI = "";
+
 		public static string _termsAndConditionsDefaults = "1. The guest signing this form and  @@accepting these terms " +
 												   "and conditions shall be deemed to have so signed and accepted the same " +
 												   "for and on behalf of those persons whose names are listed in this form.@@" +

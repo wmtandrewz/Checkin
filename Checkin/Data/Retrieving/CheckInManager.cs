@@ -28,7 +28,7 @@ namespace Checkin
 
 		public async Task<String> GetReservationsListAsync(String hotel_date)
 		{
-			DateTime dt = DateTime.ParseExact(hotel_date, "dd-MM-yyyy",
+            DateTime dt = DateTime.ParseExact(hotel_date, "dd-MM-yyyy",
 							  CultureInfo.InvariantCulture);
 			string temporary_date_holder = dt.ToString("yyyy-MM-dd");
 
@@ -129,40 +129,47 @@ namespace Checkin
 
         public async Task<string> GetAttachments(string fileType)
         {
-
-            //Refresh Token if expires
-            if (Convert.ToDateTime(Settings.ExpiresTime) <= DateTime.Now)
-            {
-                //Authenticate against ADFS and NW Gateway
-                oAuthLogin oauthlogin = new oAuthLogin();
-                String access_token = await oauthlogin.LoginUserAsync(Constants._user);
-                if (access_token == "" && access_token == Constants._userNotExistInNWGateway)
-                {
-                    userLogout.logout();
-                }
-            }
-
-            //string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'"; //Dev
-            string url = $"https://cheetah.azure-api.net/api/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'";
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(url);
-                // Request headers
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
-                //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");//DEV
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dbaee796a5fe47bf8f4c467cd7cf9d4d");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-
-                var response = await client.GetAsync(url);
-                using (HttpContent content = response.Content)
-                {
-                    string result = await content.ReadAsStringAsync();
-                    return result;
-                }
-            }
+            string url = $"/sap/opu/odata/sap/ZTMS_RESERVATION_ATTACHMENTS_SRV/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'";
+            return await this.GetODataService(url);
         }
+
+
+        //public async Task<string> GetAttachments(string fileType)
+        //{
+
+        //    //Refresh Token if expires
+        //    if (Convert.ToDateTime(Settings.ExpiresTime) <= DateTime.Now)
+        //    {
+        //        //Authenticate against ADFS and NW Gateway
+        //        oAuthLogin oauthlogin = new oAuthLogin();
+        //        String access_token = await oauthlogin.LoginUserAsync(Constants._user);
+        //        if (access_token == "" && access_token == Constants._userNotExistInNWGateway)
+        //        {
+        //            userLogout.logout();
+        //        }
+        //    }
+
+        //    //string url = $"https://jkhapimdev.azure-api.net/api/beta/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'"; //Dev
+        //    string url = $"https://octopus.keells.lk/api/v1/getattachments/getReservationAttachmentSet?$filter=IXhotelId eq '{Constants._hotel_code}' and IXreservaId eq '{Constants._reservation_id}' and IXtype eq '{fileType}'";
+
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri(url);
+        //        // Request headers
+        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Constants._access_token);
+        //        //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7ab76f2c1d7b41c3b6c07a0d2ee492c3");//DEV
+        //        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dbaee796a5fe47bf8f4c467cd7cf9d4d");
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+        //        var response = await client.GetAsync(url);
+        //        using (HttpContent content = response.Content)
+        //        {
+        //            string result = await content.ReadAsStringAsync();
+        //            return result;
+        //        }
+        //    }
+        //}
 
         public async Task<String> GetODataService(String url)
 		{
