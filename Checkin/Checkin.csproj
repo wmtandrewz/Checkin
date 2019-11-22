@@ -246,6 +246,7 @@
     <Compile Include="Interface\IImageConverter.cs" />
     <Compile Include="Data\Retrieving\APIGetService.cs" />
     <Compile Include="Models\ModelClasses\Terms.cs" />
+    <Compile Include="Models\ModelClasses\DeviceModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http">

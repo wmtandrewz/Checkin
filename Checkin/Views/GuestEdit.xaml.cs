@@ -603,7 +603,7 @@ namespace Checkin
                 }
             };
         }
-        /*
+
         //Update Guest Details
         async void saveButton(object sender, EventArgs e)
         {
@@ -677,13 +677,14 @@ namespace Checkin
 
                     Constants._guestNumber = "";
                     Constants._guestNumber = guestNumber.Text;
-                    stopPageLoading();
 
 
                     if (Constants.PassportCopy != null)
                     {
-                        await FTPService.UploadPassportCopy(Constants.PassportCopy);
+                        await FTPService.UploadPassportCopy(Constants.PassportCopy, GuestFisrtName.Text);
                     }
+
+                    stopPageLoading();
 
                     //Guest details updateindicator, Reload content page
                     MessagingCenter.Send<GuestEdit, List<guestDetails>>(this, Constants._guestEdited, guestdetails);
@@ -704,20 +705,20 @@ namespace Checkin
             }
         }
 
-        */
 
-        //for testing
-        async void saveButton(object sender, EventArgs e)
-        {
 
-            if (Constants.PassportCopy != null)
-            {
-                await FTPService.UploadPassportCopy(Constants.PassportCopy, GuestFisrtName.Text);
-            }
+        ////for testing
+        //async void saveButton(object sender, EventArgs e)
+        //{
 
-            //Close this content page
-            this.Navigation.RemovePage(this);
-        }
+        //    if (Constants.PassportCopy != null)
+        //    {
+        //        await FTPService.UploadPassportCopy(Constants.PassportCopy, GuestFisrtName.Text);
+        //    }
+
+        //    //Close this content page
+        //    this.Navigation.RemovePage(this);
+        //}
 
             //On page loading
             void pageLoading()
@@ -780,11 +781,13 @@ namespace Checkin
             // both these license keys are demo license keys for bundleID/applicationID com.microblink.xamarin.blinkid
             if (Device.RuntimePlatform == Device.iOS)
             {
-                licenseKey = @"sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+                //licenseKey = @"sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+                licenseKey = @"sRwAAAETY29tLmNobWwuaXQuY2hlY2tpbgGm5r7k3Ek2zECA87ExzLf1KJZaW29XBS/9dg+G7MK6iq76H9mvl6iZWyFCQIZkJDJtfeI4Ojyvaa33CV/GUaGfjAeT/gbPdEECFLJdiJzYEAFGXlwFYpkfb4wDuHefL7y+R4dJFOdoCKFTG78XSRWoeIMReXDXzayIXHmSn09Fw9fzpkcM3eDNmtxnza4a6M07yoU=";
             }
             else
             {
-                licenseKey = "sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+                //licenseKey = "sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5jX+o5uIzyxuRON+o5AprGt1y0HRXyOS3r7Xn/J8u2qeYccWpDTk0d8mdaDPrcaJjP7EUTBVG7BwPOlZfYAd4bPftj+19de9RS9WPc8U+nSNUgG39oaeL7cG4/J8B6V13gvRYYCDRAQh8EUDUy7R77C7WcuFQ4UMs2c7MkJxwFuxtX0k2W5TvMANrFRd31HhWVGYl8v1QsBgD2qxPBDq1QIXNdmmfHd0PCavSzTUVXE0tuTGjm7ZiY";
+                licenseKey = "sRwAAAATY29tLmNobWwuaXQuY2hlY2tpbtRm4Sqvhw507E+XVCNTtcxAXSpC2KKosWxzcIjD++kxxsJIOUU4a8rhxtQ3g30tGeoYbJOCycdV/DSfLEmiz1E2g4PgA53THm1J2IyLsczXEmhqqAAEO3wmKSIwi2jgO8MHZvu35bDgH9/EV34AuKVxE97kdVh4LIIxmbaOcJFMzH9syNrE8Qfano3mAP8O4zxg0/c=";
             }
 
             // since DependencyService requires implementations to have default constructor, a factory is needed

@@ -48,7 +48,7 @@
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>false</MtouchFastDev>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-    <CodesignProvision>Guest Feedback-PRD-2020</CodesignProvision>
+    <CodesignProvision>Checkin-PRD-2020</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <Optimize>true</Optimize>
@@ -73,7 +73,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Kasun Sahabandu (9777XGYK9E)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -84,7 +84,6 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Legacy</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>Guest Feedback Dev</CodesignProvision>
     <MtouchSdkVersion>13.0</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>

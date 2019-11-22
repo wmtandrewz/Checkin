@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using Rg.Plugins.Popup.Services;
 using Checkin.Views;
 using SignaturePad.Forms;
+using Checkin.Data.Posting;
 
 namespace Checkin
 {
@@ -76,6 +77,8 @@ namespace Checkin
                     obj.cellColor = "Purple";
                     obj.guestNameColor = "White";
                     obj.imageAvailability = "";
+
+                    APIPostService.UploadImageHttpPost(data, Constants._hotel_code, Constants._reservation_id, signature.ToString());
 
                     //Passing message (New Signature added)
                     MessagingCenter.Send<Signature, List<guestSignature>>(this, Constants._signatureAddedMessage, guestsignature);
@@ -165,72 +168,6 @@ namespace Checkin
         //Terms and Conditions Button clicked
         async void TermsandConditions(object sender, EventArgs e)
         {
-            //string text;
-
-            //switch(Constants._hotel_code)
-            //{
-            //    case "3000": text = Constants._termsAndConditionsCNG;
-            //        break;
-
-            //    case "3005":
-            //        text = Constants._termsAndConditionsCNL;
-            //        break;
-
-            //    case "3015":
-            //        text = Constants._termsAndConditionsRED;
-            //        break;
-
-            //    case "3100":
-            //        text = Constants._termsAndConditionsBBH;
-            //        break;
-
-            //    case "3110":
-            //        text = Constants._termsAndConditionsCIT;
-            //        break;
-
-            //    case "3115":
-            //        text = Constants._termsAndConditionsLOD;
-            //        break;
-
-            //    case "3120":
-            //        text = Constants._termsAndConditionsVIL;
-            //        break;
-
-            //    case "3150":
-            //        text = Constants._termsAndConditionsWLD;
-            //        break;
-
-            //    case "3160":
-            //        text = Constants._termsAndConditionsBEY;
-            //        break;
-
-            //    case "3165":
-            //        text = Constants._termsAndConditionsBLU;
-            //        break;
-
-            //    case "3170":
-            //        text = Constants._termsAndConditionsTRA;
-            //        break;
-
-            //    case "3300":
-            //        text = Constants._termsAndConditionsELL;
-            //        break;
-
-            //    case "3305":
-            //        text = Constants._termsAndConditionsHAK;
-            //        break;
-
-            //    case "3310":
-            //        text = Constants._termsAndConditionsDHO;
-            //        break;
-
-            //    default:
-            //        text = Constants._termsAndConditionsDefaults;
-            //        break;
-            //}
-
-            //text = text.Replace("@", " " + Environment.NewLine);
-            //await DisplayAlert(Constants._termsAndConditionsMessage, text, Constants._buttonOkay);
 
             await PopupNavigation.PushAsync(new PopupTermsnConditions());
         }

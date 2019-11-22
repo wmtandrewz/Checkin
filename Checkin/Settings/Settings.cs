@@ -36,13 +36,13 @@ namespace Checkin
 		private static readonly string HotelCodeDefault = string.Empty;
 
 		private const string SAPURL = "SAPURL";
-		private static readonly string SettingsSAPURLDefault = string.Empty;
+		private static readonly string SettingsSAPURLDefault = "https://alastor.keells.lk:44300";
 
 		private const string SAPHanaURL = "SAPHanaURL";
 		private static readonly string SettingsSAPHanaURLDefault = string.Empty;
 
 		private const string SAPCookie = "SAPCookie";
-		private static readonly string SettingsSAPCookieDefault = string.Empty;
+		private static readonly string SettingsSAPCookieDefault = "sap-XSRF_GWP_100";
 
 		private const string User = "User";
 		private static readonly string SettingsUser = string.Empty;
@@ -146,5 +146,30 @@ namespace Checkin
 				AppSettings.AddOrUpdateValue(HotelCodeKey, value);
 			}
 		}
-	}
+
+        public static string UUID
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("UUID", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("UUID", value);
+            }
+        }
+
+        public static bool IsRegistered
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("IsRegistered", false);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("IsRegistered", value);
+            }
+        }
+
+    }
 }

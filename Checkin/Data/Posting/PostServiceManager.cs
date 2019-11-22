@@ -215,6 +215,7 @@ namespace Checkin
             //If result is success
             if (result == "success")
             {
+                Constants.PassportCopy = null;
                 return "success";
             }
 

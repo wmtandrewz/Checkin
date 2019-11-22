@@ -8,15 +8,17 @@ namespace Checkin
 	public static class Constants
 	{
 
-		//*************************************** Development Settings ***********************
-		//DEV URL
-		//public static string _gatewayURL = "https://nwgateway.keells.lk:44300";
-		//public static string _cookie = "sap-XSRF_NWG_100";XSRF_NWG_100
-		//*************************************** Development Settings ***********************
+        public static string _version = "1.70";
 
-		////*************************************** Production settings ***********************
-		////DEV URL
-		public static string _gatewayURL = "";
+        //*************************************** Development Settings ***********************
+        //DEV URL
+        //public static string _gatewayURL = "https://nwgateway.keells.lk:44300";
+        //public static string _cookie = "sap-XSRF_NWG_100";XSRF_NWG_100
+        //*************************************** Development Settings ***********************
+
+        ////*************************************** Production settings ***********************
+        ////DEV URL
+        public static string _gatewayURL = "";
 		public static string _cookie = "";
         //public static string _gatewayURL = "https://alastor.keells.lk:44300";
         //public static string _cookie = "sap-XSRF_GWP_100";
@@ -404,7 +406,7 @@ namespace Checkin
 		//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //Alert messages
-        public static string _agreementInformation = "I agree that liability for my account is not waived and agree to" + " be held personally liable in the event that the indicated person, company, " + "association or credit card company details indicated fails to pay for any part or" + " the full amount of the charges. I agree and confirm that if payment is to be" + " made by credit card, my signature below shall constitute authority to debit the" + " nominated credit card or the deposit paid to the hotel with the total amount" + " due from me to the hotel including delayed and/or amended charges and/or in respect " + "of damages, even in the absence of my signature on the sales slip. @@  Non registered" + " visitors are not permitted to remain in guest rooms/floors between 9pm-6am." + " You are kindly requested to adhere to this hotel regulation in order to avoid " + "any unnecessary inconvenience. As per the regulations, the hotel check in time " + "is 1300hrs and departure time is 1200hrs. Unless otherwise pre agreed late departures" + " are subject to a charge. All charges are inclusive of 10% service charge and other" + " government taxes. @@  I hereby agree on my departure to accept in Sri Lankan Rupees any " + "balance of monies deposited upon arrival (i.e. in foreign currency). @@  I state that the " + "information given by me above is correct and having read and understood the terms and" + " conditions of stay/having been explained to my satisfaction the true meaning and" + " purport of the terms and conditions of stay, I hereby for myself, and for and on" + " behalf of those whose names are listed in this form, consent to the same.";
+        public static string _agreementInformation = "I agree that liability for my account is not waived and agree to" + " be held personally liable in the event that the indicated person, company, " + "association or credit card company details indicated fails to pay for any part or" + " the full amount of the charges. I agree and confirm that if payment is to be" + " made by credit card, my signature below shall constitute authority to debit the" + " nominated credit card or the deposit paid to the hotel with the total amount" + " due from me to the hotel including delayed and/or amended charges and/or in respect " + "of damages, even in the absence of my signature on the sales slip. @@  Non registered" + " visitors are not permitted to remain in guest rooms/floors between 9pm-6am." + " You are kindly requested to adhere to this hotel regulation in order to avoid " + "any unnecessary inconvenience. As per the regulations, the hotel check in time " + "is 1300hrs and departure time is 1200hrs. Unless otherwise pre agreed late departures" + " are subject to a charge. All charges are inclusive of 10% service charge and other" + " government taxes. @@  I state that the " + "information given by me above is correct and having read and understood the terms and" + " conditions of stay/having been explained to my satisfaction the true meaning and" + " purport of the terms and conditions of stay, I hereby for myself, and for and on" + " behalf of those whose names are listed in this form, consent to the same.";
 
         public static string _privacyStatement = "I confirm that I will be providing you with my personal data and hereby expressly consent to the use of such data for the purpose of the booking made with you. This includes express permission to share the personal data information with your service providers and agents. I also further expressly consent to the use of my personal data to promote products and services of your company or brand. I confirm that I have read through your data policy and have understood my rights in relation to the personal data which I am providing to you.";
 
@@ -525,6 +527,14 @@ namespace Checkin
                 new AccountDetailsModel
                 {
                     HotelCode = "3310",
+                    AccountHolder = "TRANQUILITY (PVT) LIMITED",
+                    BankName = "HONGKONG & SHANGHAI BANKING CORPORATION LTD",
+                    AccountNumber = "USD 200-000016-101 / GBP 200-000016-103",
+                    SwiftCode = "HSBCMVMV"
+                },
+                new AccountDetailsModel
+                {
+                    HotelCode = "3315",
                     AccountHolder = "TRANQUILITY (PVT) LIMITED",
                     BankName = "HONGKONG & SHANGHAI BANKING CORPORATION LTD",
                     AccountNumber = "USD 200-000016-101 / GBP 200-000016-103",
