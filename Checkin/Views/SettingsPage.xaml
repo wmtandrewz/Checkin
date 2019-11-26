@@ -10,7 +10,7 @@
 			</StackLayout>
 			<StackLayout Padding="10,10,10,10">
                 <Label x:Name="registeredLabel" FontSize="Large"/>
-                <Entry x:Name="uuidEnry" Placeholder="Enter UUID here"/>
+                <Entry x:Name="uuidEnry" Placeholder="Enter Registration Code Here Ex: XXX01"/>
                 <Button x:Name="registerButton" Text="Register" FontSize="Large"/>
             </StackLayout>
 

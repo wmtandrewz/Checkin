@@ -8,7 +8,7 @@ namespace Checkin
 	public static class Constants
 	{
 
-        public static string _version = "1.70";
+        public static string _version = "1.71";
 
         //*************************************** Development Settings ***********************
         //DEV URL

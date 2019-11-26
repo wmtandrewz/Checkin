@@ -824,8 +824,8 @@ namespace Checkin
                             var result = mrtdRecognizer.Result;
 
 
-                            fname = result.MrzResult.PrimaryId;
-                            lname = result.MrzResult.SecondaryId;
+                            lname = result.MrzResult.PrimaryId;
+                            fname = result.MrzResult.SecondaryId;
                             nationality = result.MrzResult.Nationality;
                             gender = result.MrzResult.Gender;
                             PassportNumber = Regex.Replace(result.MrzResult.DocumentNumber, "[^A-Za-z0-9 _]", "");

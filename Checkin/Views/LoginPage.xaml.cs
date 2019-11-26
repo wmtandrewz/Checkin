@@ -38,69 +38,46 @@ namespace Checkin
             if (CrossConnectivity.Current.IsConnected)
             {
 
-                if (!Settings.IsRegistered)
-                {
-                    var settings_page = new NavigationPage(new SettingsPage());
-                    settings_page.BarBackgroundColor = Color.FromHex("#660099");
-                    settings_page.BarTextColor = Color.White;
-                    await Navigation.PushModalAsync(settings_page);
-                    stopLoading();
-                }
-                else
-                {
-                    //Check Settings are configured
-                    bool isConfigured = await SettingsChecker();
 
+                //Check Settings are configured
+                bool isConfigured = await SettingsChecker();
+
+
+                if (isConfigured)
+                {
+                    var user = new User();
                     try
                     {
-                        bool isRegistered = await APIGetService.IsDeviceRegistered(Settings.UUID, Constants._version);
-
-                        if(!isRegistered)
+                        //Check username and0 password is not null
+                        user = new User()
                         {
-                            Settings.IsRegistered = false;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-
-                    
-                    if (isConfigured)
-                    {
-                        var user = new User();
-                        try
+                            Username = LoginEntryUsername.Text.ToString(),
+                            Password = LoginEntryPassword.Text.ToString()
+                        };
+                        if (LoginEntryUsername.Text.ToString() != "" && LoginEntryPassword.Text.ToString() != "")
                         {
-                            //Check username and0 password is not null
-                            user = new User()
-                            {
-                                Username = LoginEntryUsername.Text.ToString(),
-                                Password = LoginEntryPassword.Text.ToString()
-                            };
-                            if (LoginEntryUsername.Text.ToString() != "" && LoginEntryPassword.Text.ToString() != "")
-                            {
 
-                                await oAuthLogin(user);
+                            await oAuthLogin(user);
 
-                            }
-                            else
-                            {
-                                stopLoading();
-                                await DisplayAlert(Constants._headerMessage, Constants._providelogincredentials, Constants._buttonClose);
-                            }
                         }
-                        catch (Exception)
+                        else
                         {
                             stopLoading();
                             await DisplayAlert(Constants._headerMessage, Constants._providelogincredentials, Constants._buttonClose);
                         }
                     }
-                    else
+                    catch (Exception)
                     {
                         stopLoading();
-
+                        await DisplayAlert(Constants._headerMessage, Constants._providelogincredentials, Constants._buttonClose);
                     }
                 }
+                else
+                {
+                    stopLoading();
+
+                }
+
             }
 
             else

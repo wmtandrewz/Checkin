@@ -73,7 +73,7 @@
 						<Button Grid.Row="0" Grid.Column="2" x:Name="ContactButton" Clicked="ContactUsClickedEvent" Text="Contact Us" BackgroundColor="Transparent" BorderRadius="0" TextColor="#cecece" FontSize="14" Opacity="0"
 							HorizontalOptions="Start" VerticalOptions="StartAndExpand" />
 					</Grid>-->
-					<Label x:Name="TradeMark" Text="Designed and Developed by Cinnamon IT  |  All rights reserved  |  Ver. 1.70  |  Copyrights © 2018" TextColor="#BF9BC4" FontSize="14" HorizontalTextAlignment="Center" IsVisible="false" VerticalOptions="Start" HeightRequest="40"/>
+					<Label x:Name="TradeMark" Text="Designed and Developed by Cinnamon IT  |  All rights reserved  |  Ver. 1.71  |  Copyrights © 2018" TextColor="#BF9BC4" FontSize="14" HorizontalTextAlignment="Center" IsVisible="false" VerticalOptions="Start" HeightRequest="40"/>
 				</StackLayout>
 			</StackLayout>
 		</ScrollView>

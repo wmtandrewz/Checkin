@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using checkin;
 using Checkin.Data.Retrieving;
 using Xamarin.Forms;
@@ -18,6 +19,13 @@ namespace Checkin
                 uuidEnry.Text = Settings.UUID;
                 registeredLabel.Text = "Device has been Registered";
                 registeredLabel.TextColor = Color.Green;
+            }
+            else
+            {
+                uuidEnry.IsEnabled = true;
+                uuidEnry.Text = "";
+                registeredLabel.Text = "Device Unregistered";
+                registeredLabel.TextColor = Color.Red;
             }
 
 
@@ -98,6 +106,42 @@ namespace Checkin
 			MessagingCenter.Send<SettingsPage, String>(this, "settingsSaved", "");
 			Navigation.PopModalAsync(true);
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CheckRegistration();
+        }
+
+        private async void CheckRegistration()
+        {
+            try
+            {
+
+                var res = await APIGetService.IsDeviceRegistered(Settings.UUID, Constants._version);
+
+                if (res)
+                {
+                    uuidEnry.IsVisible = false;
+                    registerButton.IsVisible = false;
+                    registeredLabel.Text = "Device has been Registered";
+                    registeredLabel.TextColor = Color.Green;
+                }
+                else
+                {
+                    uuidEnry.IsEnabled = true;
+                    uuidEnry.IsVisible = true;
+                    uuidEnry.Text = "";
+                    registeredLabel.Text = "Device Unregistered";
+                    registeredLabel.TextColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+    }
 
 }
